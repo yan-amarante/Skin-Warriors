@@ -14,13 +14,8 @@ max-width: 100px;
     width: 30%;
     min-width: 200px;
 }
-.tituloHeader{
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2rem;
-    max-width: 20px;
-}
 .barraPesquisa{
+
 }
 .inputPesquisar{
     background: white;
