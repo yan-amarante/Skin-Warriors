@@ -1,19 +1,24 @@
 import "./Header.css"
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaShoppingCart } from "react-icons/fa";
 
 
 function Header() {
     return (
         <header className="containerHeader">
             <div className="logoTituloHeader">
-                <img className="logoHeader" src={"../../../public/skinWarriorsHtml.png"} />
-                <h1 className="tituloHeader">SKIN WARRIORS</h1>
+            <img className="logoHeader" src={"../../public/skinwarriorslogo.png"} />
             </div>
             <div className="barraPesquisa">
                 <input className="inputPesquisar" type="text">
                 </input>
                 <button className="botaoPesquisar">
-                    <img className="lupaLogo" src="/lupaLogo.png" />
+                <FaMagnifyingGlass className="lupaLogo"/>
                 </button>
+            </div>
+            <div className="barraCarrinho">
+            <FaShoppingCart className="carrinhoCompras"/>
+            <p className="quantidadeCarrinho">0</p>
             </div>
         </header>
     )
