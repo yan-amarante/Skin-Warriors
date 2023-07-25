@@ -7,7 +7,7 @@ function NavBar() {
         <nav>
             <div className="containerNavBar">
                 <Link to="/skin/faca" className="linkNavBar">Facas</Link>
-                <Link to="/skin/luvas" className="linkNavBar">Luvas</Link>
+                <Link to="/skin/luva" className="linkNavBar">Luvas</Link>
                 <Link to="/skin/rifle" className="linkNavBar">Rifles</Link>
                 <Link to="/skin/sniperRifle" className="linkNavBar">Sniper Rifles</Link>
                 <Link to="/skin/pistola" className="linkNavBar">Pistolas</Link>

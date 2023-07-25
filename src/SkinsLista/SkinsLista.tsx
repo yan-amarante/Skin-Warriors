@@ -27,7 +27,7 @@ interface SkinInfos {
         foto: "https://community.akamai.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAX1R3LjtQurWzLhRfwP_BcjZ95t2xgYGZqOD8Oq_UqWNU6dNoteXA54vwxlXj-EVtY2GhcI-XcFRsZ1DU_APtx--918S06svNm3divHRz7CndnxGpwUYbCdJgqAA/360fx360f",
         nome: "Driver Gloves | Snow Leopard",
         preco: "R$ 2.357,33",
-        categoria: "luvas",
+        categoria: "luva",
         condicao: "Battle-Scarred",
     },
     {
@@ -45,5 +45,21 @@ interface SkinInfos {
         preco: "R$ 177,06",
         categoria: "sniperRifle",
         condicao: "Factory New",
+    },
+    {
+        id: 6,
+        foto: "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PTbTjlH7du6kb-Oj_jLPr7Vn35c18lwmO7Eu42jjVbk_Uc_Zzv3J4CWdlU_YA7ZqwTqx-jtjcC6uZmby3Br6CIk43_D30vgzyRDF4Y/360fx360f",
+        nome: "Desert Eagle | Light Rail",
+        preco: "R$ 2,60",
+        categoria: "pistola",
+        condicao: "Well-Worn",
+    },
+    {
+        id: 7,
+        foto: "https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0Ob3ZDBSuImJhJKCmvb4ILrTk3lu5cB1g_zMyoD0mlOx5RFqN2ylLILGe1VtMg3W_APoxunqgpa7u8zNmndiunYm5irflkHm0hlSLrs4t3JJVc8/360fx360f",
+        nome: "UMP-45 | Primal Saber",
+        preco: "R$ 13,05",
+        categoria: "smg",
+        condicao: "Field-Tested",
     },
     ]

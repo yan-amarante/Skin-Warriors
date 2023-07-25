@@ -18,3 +18,7 @@
 .nomeSkinCard{
     text-align: center;
 }
+.linkSkinCard{
+    text-decoration: none;
+    color: black;
+}
