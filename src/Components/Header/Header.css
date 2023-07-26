@@ -1,5 +1,4 @@
 .containerHeader{
-    background-color: black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,20 +14,24 @@ max-width: 100px;
     min-width: 200px;
 }
 .barraPesquisa{
-
+    display: flex;
+    flex-direction: row;
 }
 .inputPesquisar{
-    background: white;
     border: none;
+    border-bottom: solid;
+    border-width: 1px;
+    position: relative;
+    width: 100%;
 }
 .botaoPesquisar{
-    background: white;
     border: none;
+    background-color: white;
 }
 .lupaLogo{
 }
 .carrinhoCompras{
-    color: white;
+    color: black;
 }
 .barraCarrinho{
     display: flex;
@@ -37,6 +40,6 @@ max-width: 100px;
     gap: 1rem;
 }
 .quantidadeCarrinho{
-    color: white;
-    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-family: 'Inter', sans-serif;
 }

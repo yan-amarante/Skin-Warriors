@@ -1,9 +1,17 @@
 .containerHomeScreen{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
 }
 .listaHomeScreen{
     list-style: none;
+}
+.imagemHomeScreen{
+    border-radius: 1.25rem;
+    width: 60%;
+}
+.ofertasHomeScreen{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

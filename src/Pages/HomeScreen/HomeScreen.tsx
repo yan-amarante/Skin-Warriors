@@ -1,7 +1,6 @@
 import CardSkin from "../../Components/CardSkin/CardSkin"
 import "./HomeScreen.css"
 import { lista } from "../../SkinsLista/SkinsLista.tsx"
-import HomeScreenInfos from "../../Components/HomeScreenInfos/HomeScreenInfos.tsx"
 
 interface SkinInfos {
     id: number;
@@ -24,7 +23,10 @@ function HomeScreen() {
 
     return (
         <div className="containerHomeScreen">
-            <HomeScreenInfos/>
+            <img src="/awpduality.jpg" className="imagemHomeScreen" />
+            <div className="ofertasHomeScreen">
+                {listaItens}
+            </div>
         </div>
     )
 }

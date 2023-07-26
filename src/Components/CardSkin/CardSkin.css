@@ -1,22 +1,40 @@
 .containerSkinCard{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f9f9f9;
+    width: 90%;
+    min-width: 400px;
+    border-radius: 1.25rem;
+    justify-content: space-between;
+}
+.containerInfosSkinCard{
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: #d3d3d3;
-    border-bottom: solid;
-    border-width: 1;
-    width: 80%;
-    max-width: 300px;
-    min-height: 550px;
-    border-radius: 4px;
 }
 .fotoSkinCard{
-    width: 50%;
-    min-width: 200px;
+    width: 30%;
+    min-width: 180px;
+    border-right: solid;
+    border-width: 1px;
 }
 .nomeSkinCard{
     text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.precoSkinCard{
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.categoriaSkinCard{
+    font-family: 'Inter', sans-serif;
+}
+.condicaoSkinCard{
+    font-family: 'Inter', sans-serif;
 }
 .linkSkinCard{
     text-decoration: none;
