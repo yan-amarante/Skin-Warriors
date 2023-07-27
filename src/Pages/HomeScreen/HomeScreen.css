@@ -2,16 +2,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 .listaHomeScreen{
     list-style: none;
 }
 .imagemHomeScreen{
     border-radius: 1.25rem;
-    width: 60%;
+    width: 95%;
+    max-height: 400px;
+    object-fit: cover;
 }
 .ofertasHomeScreen{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.cardSkinHomeScreen{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    overflow: hidden;
+}
+.verMaisHomeScreen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10%;
+    height: 10%;
+}
+.iconeVerMaisHomeScreen{
+    width: 100px;
+    height: 100px;
+}
+.textoVerMaisHomeScreen{
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
 }

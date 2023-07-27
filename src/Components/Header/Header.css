@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-between;
     max-height: 100px;
+    width: 100%;
 }
 .logoTituloHeader{
 max-width: 100px;

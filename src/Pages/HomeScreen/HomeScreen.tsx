@@ -1,6 +1,7 @@
 import CardSkin from "../../Components/CardSkin/CardSkin"
 import "./HomeScreen.css"
 import { lista } from "../../SkinsLista/SkinsLista.tsx"
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 interface SkinInfos {
     id: number;
@@ -25,7 +26,13 @@ function HomeScreen() {
         <div className="containerHomeScreen">
             <img src="/awpduality.jpg" className="imagemHomeScreen" />
             <div className="ofertasHomeScreen">
-                {listaItens}
+                <div className="cardSkinHomeScreen">
+                    {listaItens}
+                </div>
+                <div className="verMaisHomeScreen">
+                    <MdOutlineKeyboardArrowRight className="iconeVerMaisHomeScreen" />
+                    <p className="textoVerMaisHomeScreen">Ver Mais</p>
+                </div>
             </div>
         </div>
     )
