@@ -6,6 +6,7 @@ import HomeScreen from './Pages/HomeScreen/HomeScreen.tsx'
 import './index.css'
 import SkinPesquisa from './Pages/SkinPesquisa/SkinPesquisa.tsx'
 import SkinDetalhes from './Pages/SkinDetalhes/SkinDetalhes.tsx'
+import OfertasScreen from './Pages/OfertasScreen/OfertasScreen.tsx'
 
 const router = createBrowserRouter(
   [
@@ -25,7 +26,11 @@ const router = createBrowserRouter(
         {
           path: "/skinDetalhes/:id",
           element: <SkinDetalhes/>
-        }
+        },
+        {
+          path: "/ofertas",
+          element: <OfertasScreen/>
+        },
       ]
     }
   ]

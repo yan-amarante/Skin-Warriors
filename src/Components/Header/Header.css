@@ -3,44 +3,44 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-height: 100px;
-    width: 100%;
+    max-height: 150px;
 }
-.logoTituloHeader{
-max-width: 100px;
+.logoContainerHeader{
+    width: 30%;
 }
 .logoHeader{
-    padding-left: 0.5rem;
-    width: 30%;
-    min-width: 200px;
+    width: 100%;
+    max-width: 300px;
 }
-.barraPesquisa{
+.barraPesquisaContainerHeader{
     display: flex;
     flex-direction: row;
+    width: 40%;
 }
-.inputPesquisar{
+.inputPesquisaHeader{
     border: none;
     border-bottom: solid;
     border-width: 1px;
-    position: relative;
-    width: 100%;
+    width: 90%;
+    max-width: 300px;
 }
-.botaoPesquisar{
+.botaoPesquisaHeader{
     border: none;
-    background-color: white;
+    background: none;
 }
-.lupaLogo{
+.lupaPesquisaHeader{
+    width: 100%;
+    min-width: 20px;
 }
-.carrinhoCompras{
-    color: black;
-}
-.barraCarrinho{
+.barraCarrinhoContainerHeader{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    width: 10%;
 }
-.quantidadeCarrinho{
-    color: black;
+.carrinhoComprasHeader{
+}
+.quantidadeCarrinhoHeader{
     font-family: 'Inter', sans-serif;
+    font-weight: bold;
 }

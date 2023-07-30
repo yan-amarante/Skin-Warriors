@@ -12,6 +12,7 @@
     width: 95%;
     max-height: 400px;
     object-fit: cover;
+    margin: 2rem;
 }
 .ofertasHomeScreen{
     display: flex;
@@ -40,4 +41,18 @@
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
+}
+.ofertasTituloHomeScreen{
+    display: flex;
+    align-items: flex-start;
+    width: 95%;
+}
+.tituloOfertasHomeScreen{
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 2.0rem;
+}
+.linkHomeScreen{
+    text-decoration: none;
+    color: black;
 }

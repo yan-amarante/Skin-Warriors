@@ -20,7 +20,7 @@ function Header() {
         } else setErro(true)
     }
 
-    function enterPesquisa(evento:any) {
+    function enterPesquisa(evento: any) {
         if (evento.key === 'Enter') {
             verificarPesquisa()
         }
@@ -28,22 +28,22 @@ function Header() {
 
     return (
         <header className="containerHeader">
-            <div className="logoTituloHeader">
+            <div className="logoContainerHeader">
                 <Link to="/">
                     <img className="logoHeader" src={"../../public/skinwarriorslogoPreto.png"} />
                 </Link>
             </div>
-            <div className="barraPesquisa">
-                <input className="inputPesquisar" type="text" onChange={evento => setPesquisa(evento.target.value)} onKeyPress={enterPesquisa}>
+            <div className="barraPesquisaContainerHeader">
+                <input className="inputPesquisaHeader" type="text" onChange={evento => setPesquisa(evento.target.value)} onKeyPress={enterPesquisa}>
                 </input>
-                <button onClick={verificarPesquisa} className="botaoPesquisar">
-                    <FaMagnifyingGlass className="lupaLogo" />
+                <button onClick={verificarPesquisa} className="botaoPesquisaHeader">
+                    <FaMagnifyingGlass className="lupaPesquisaHeader" />
                 </button>
-                {erro ? <p className="quantidadeCarrinho">Erro de pesquisa</p> : null}
+                {erro ? <p className="quantidadeCarrinhoHeader">Erro de pesquisa</p> : null}
             </div>
-            <div className="barraCarrinho">
-                <FaShoppingCart className="carrinhoCompras" />
-                <p className="quantidadeCarrinho">0</p>
+            <div className="barraCarrinhoContainerHeader">
+                <FaShoppingCart className="carrinhoComprasHeader" />
+                <p className="quantidadeCarrinhoHeader">0</p>
             </div>
         </header>
     )

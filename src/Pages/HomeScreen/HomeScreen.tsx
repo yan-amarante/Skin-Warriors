@@ -2,15 +2,7 @@ import CardSkin from "../../Components/CardSkin/CardSkin"
 import "./HomeScreen.css"
 import { lista } from "../../SkinsLista/SkinsLista.tsx"
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
-interface SkinInfos {
-    id: number;
-    foto: string;
-    nome: string;
-    preco: string;
-    categoria: string;
-    condicao: string;
-}
+import { Link } from "react-router-dom"
 
 function HomeScreen() {
 
@@ -25,15 +17,20 @@ function HomeScreen() {
     return (
         <div className="containerHomeScreen">
             <img src="/awpduality.jpg" className="imagemHomeScreen" />
-            <div className="ofertasHomeScreen">
-                <div className="cardSkinHomeScreen">
-                    {listaItens}
-                </div>
-                <div className="verMaisHomeScreen">
-                    <MdOutlineKeyboardArrowRight className="iconeVerMaisHomeScreen" />
-                    <p className="textoVerMaisHomeScreen">Ver Mais</p>
-                </div>
+            <div className="ofertasTituloHomeScreen">
+            <h1 className="tituloOfertasHomeScreen">Ofertas</h1>
             </div>
+                <div className="ofertasHomeScreen">
+                    <div className="cardSkinHomeScreen">
+                        {listaItens}
+                    </div>
+                    <div className="verMaisHomeScreen">
+                        <Link to="/ofertas" className="linkHomeScreen">
+                        <MdOutlineKeyboardArrowRight className="iconeVerMaisHomeScreen" />
+                        <p className="textoVerMaisHomeScreen">Ver Mais</p>
+                        </Link>
+                    </div>
+                </div>
         </div>
     )
 }
