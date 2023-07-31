@@ -6,23 +6,22 @@
     max-height: 150px;
 }
 .logoContainerHeader{
-    width: 30%;
 }
 .logoHeader{
-    width: 100%;
+    width: 80%;
     max-width: 300px;
 }
 .barraPesquisaContainerHeader{
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 50%;
 }
 .inputPesquisaHeader{
     border: none;
     border-bottom: solid;
     border-width: 1px;
-    width: 90%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 600px;
 }
 .botaoPesquisaHeader{
     border: none;
@@ -36,11 +35,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 10%;
 }
 .carrinhoComprasHeader{
 }
 .quantidadeCarrinhoHeader{
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+}
+.inputPesquisaHeader:focus{
+    outline: none;
 }

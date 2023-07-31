@@ -1,19 +1,29 @@
 import { useParams } from "react-router-dom"
 import { lista } from "../../SkinsLista/SkinsLista.tsx"
- 
-function SkinDetalhes (){
+import "./SkinDetalhes.css"
 
-    const{ id } = useParams();
-    // let skinAtual = {};
+function SkinDetalhes() {
 
-    // const listaItem = lista.map(lista => {
-    //     if(id == lista.id){
-    //     }
-    // })
+    const { id } = useParams();
+    let skinAtual: any;
 
-    return(
+    const listaItem = lista.map(lista => {
+        if (id == lista.id) {
+            skinAtual = { id: lista.id, foto: lista.foto, nome: lista.nome, preco: lista.preco, categoria: lista.categoria, condicao: lista.condicao }
+        }
+    })
+
+    return (
         <div className="containerSkinDetalhes">
-        <img/>
+            <div className="skinInfosSkinDetalhes">
+                <img src={skinAtual.foto} />
+                <div className="textoContainerSkinDetalhes">
+                <h1>{skinAtual.nome}</h1>
+                <p>{skinAtual.preco}</p>
+                <p>{skinAtual.categoria}</p>
+                <p>{skinAtual.condicao}</p>
+                </div>
+            </div>
         </div>
     )
 }

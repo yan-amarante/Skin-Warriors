@@ -3,8 +3,8 @@
     flex-direction: row;
     align-items: center;
     background-color: #f9f9f9;
-    width: 90%;
     min-width: 400px;
+    max-width: 400px;
     border-radius: 1.25rem;
     justify-content: space-between;
 }
@@ -15,7 +15,7 @@
 }
 .fotoSkinCard{
     width: 30%;
-    min-width: 180px;
+    max-width: 200px;
     border-right: solid;
     border-width: 1px;
 }

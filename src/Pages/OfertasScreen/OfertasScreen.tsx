@@ -13,7 +13,7 @@ function OfertasScreen(){
     );
 
     return(
-        <div>
+        <div className="containerOfertasScreen">
             {listaItens}
         </div>
     )
