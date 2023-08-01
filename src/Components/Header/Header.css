@@ -5,11 +5,18 @@
     justify-content: space-between;
     max-height: 150px;
 }
+.sideBarELogoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 40%;
+}
 .logoContainerHeader{
-    width: 30%;
+    width: 100%;
 }
 .logoHeader{
     width: 100%;
+    max-width: 100px;
 }
 .barraPesquisaContainerHeader{
     display: flex;
@@ -21,7 +28,7 @@
     border: none;
     outline: none;
     border-bottom: solid 1px;
-    width: 100%;
+    background-color: aqua;
 }
 .botaoPesquisaHeader{
     border: none;
@@ -29,7 +36,12 @@
 }
 .lupaPesquisaHeader{
     width: 100%;
-    height: auto;
+    min-height: 25px;
+}
+.pesquisaECarrinhoContainerHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .barraCarrinhoContainerHeader{
     display: flex;
