@@ -3,8 +3,11 @@
     flex-direction: row;
     align-items: center;
     background-color: #f9f9f9;
-    min-width: 400px;
+    width: 100%;
+    min-width: 150px;
     max-width: 400px;
+    min-height: 150px;
+    max-height: 200px;
     border-radius: 1.25rem;
     justify-content: space-between;
 }
@@ -14,29 +17,63 @@
     align-items: center;
 }
 .fotoSkinCard{
-    width: 30%;
+    width: 40%;
     max-width: 200px;
-    border-right: solid;
-    border-width: 1px;
 }
 .nomeSkinCard{
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
+    
+    @media screen and (max-width:500px) {
+        font-size: 0.5rem;
+    }
 }
 .precoSkinCard{
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 1.2rem;
+
+    @media screen and (max-width:500px) {
+        font-size: 0.4rem;
+    }
 }
 .categoriaSkinCard{
     font-family: 'Inter', sans-serif;
+
+    @media screen and (max-width:500px) {
+        font-size: 0.4rem;
+    }
 }
 .condicaoSkinCard{
     font-family: 'Inter', sans-serif;
+
+    @media screen and (max-width:500px) {
+        font-size: 0.4rem;
+    }
 }
 .linkSkinCard{
     text-decoration: none;
     color: black;
 }
+/* width */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #dadada;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

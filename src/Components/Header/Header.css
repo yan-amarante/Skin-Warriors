@@ -6,22 +6,22 @@
     max-height: 150px;
 }
 .logoContainerHeader{
+    width: 30%;
 }
 .logoHeader{
-    width: 80%;
-    max-width: 300px;
+    width: 100%;
 }
 .barraPesquisaContainerHeader{
     display: flex;
     flex-direction: row;
-    width: 50%;
+    align-items: center;
+    width: 40%;
 }
 .inputPesquisaHeader{
     border: none;
-    border-bottom: solid;
-    border-width: 1px;
+    outline: none;
+    border-bottom: solid 1px;
     width: 100%;
-    max-width: 600px;
 }
 .botaoPesquisaHeader{
     border: none;
@@ -29,19 +29,38 @@
 }
 .lupaPesquisaHeader{
     width: 100%;
-    min-width: 20px;
+    height: auto;
 }
 .barraCarrinhoContainerHeader{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.carrinhoComprasHeader{
-}
 .quantidadeCarrinhoHeader{
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    padding: 0.2rem;
 }
-.inputPesquisaHeader:focus{
-    outline: none;
+.carrinhoComprasHeader{
+    width: 100%;
 }
+
+  @media (min-width: 480px) {
+  }
+  
+  @media (min-width: 768px) {
+  }
+  
+  @media (min-width: 1024px) {
+
+  }
+  
+  @media (min-width: 1200px) {
+  }
+
+  @media (min-width: 1920px) {
+  }
+
+  @media (min-width: 2560px) {
+  }
+ 

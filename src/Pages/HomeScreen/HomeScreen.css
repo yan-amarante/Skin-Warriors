@@ -10,7 +10,7 @@
 }
 .imagemHomeScreen{
     border-radius: 1.25rem;
-    width: 95%;
+    width: 98%;
     max-height: 400px;
     object-fit: cover;
     margin: 2rem;
@@ -31,12 +31,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 10%;
-    height: 10%;
+    width: 50%;
+    max-width: 200px;
 }
 .iconeVerMaisHomeScreen{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
 }
 .textoVerMaisHomeScreen{
     font-size: 1.5rem;
@@ -52,8 +52,16 @@
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 2.0rem;
+    @media screen and (max-width:500px) {
+        font-size: 1.3rem
+    }
 }
 .linkHomeScreen{
     text-decoration: none;
     color: black;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    padding-right: 1rem;
 }

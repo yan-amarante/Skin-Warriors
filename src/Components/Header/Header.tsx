@@ -30,7 +30,7 @@ function Header() {
         <header className="containerHeader">
             <div className="logoContainerHeader">
                 <Link to="/">
-                    <img className="logoHeader" src={"../../public/skinwarriorslogoPreto.png"} />
+                    <img className="logoHeader" src={"../../public/logo.png"} />
                 </Link>
             </div>
             <div className="barraPesquisaContainerHeader">
