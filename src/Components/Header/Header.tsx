@@ -3,7 +3,8 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { useNavigate, Link } from 'react-router-dom'
 import { useState } from "react"
-import NavBar from "../NavBar/NavBar";
+import SideBar from "../SideBar/SideBar";
+
 
 function Header() {
 
@@ -11,16 +12,13 @@ function Header() {
 
     const [pesquisa, setPesquisa] = useState("");
 
-    const [erro, setErro] = useState(false)
-
     const [pesquisaClick, setPesquisaClick] = useState(false);
 
     function verificarPesquisa() {
 
         if (pesquisa == "luva" || "faca" || "rifle" || "sniperRifle" || "pistola" || "smg") {
             navigate(`/skin/${pesquisa}`);
-            setErro(false);
-        } else setErro(true)
+        }
     }
 
     function enterPesquisa(evento: any) {
@@ -40,29 +38,28 @@ function Header() {
     }
 
     return (
-        <header className="containerHeader">
-            <div className="sideBarELogoContainer">
-                <NavBar />
-                <div className="logoContainerHeader">
+        <header className="container-header">
+            <div className="sidebar-logo-container-header">
+                <SideBar />
+                <div className="logo-container-header">
                     <Link to="/">
-                        <img className="logoHeader" src={"../../public/logo.png"} />
+                        <img className="logo-header" src={"../../public/logo.png"} />
                     </Link>
                 </div>
             </div>
-            <div className="pesquisaECarrinhoContainerHeader">
-                <div className="barraPesquisaContainerHeader">
+            <div className="pesquisa-carrinho-container-header">
+                <div className="pesquisa-container-header">
                     {pesquisaClick ? (
-                        <input className="inputPesquisaHeader" type="text" onChange={evento => setPesquisa(evento.target.value)} onKeyPress={enterPesquisa}>
+                        <input className="input-pesquisa-header" type="text" onChange={evento => setPesquisa(evento.target.value)} onKeyPress={enterPesquisa}>
                         </input>
                     ) : null}
-                    <button onClick={ativarPesquisa} className="botaoPesquisaHeader">
-                        <FaMagnifyingGlass className="lupaPesquisaHeader" />
+                    <button className="botao-pesquisa-header" onClick={ativarPesquisa} >
+                        <FaMagnifyingGlass className="lupa-pesquisa-header" />
                     </button>
-                    {erro ? <p className="quantidadeCarrinhoHeader">Erro de pesquisa</p> : null}
                 </div>
-                <div className="barraCarrinhoContainerHeader">
-                    <FaShoppingCart className="carrinhoComprasHeader" />
-                    <p className="quantidadeCarrinhoHeader">0</p>
+                <div className="carrinho-container-header">
+                    <FaShoppingCart className="carrinho-logo-header" />
+                    <p className="quantidade-carrinho-header">0</p>
                 </div>
             </div>
         </header>

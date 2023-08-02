@@ -1,60 +1,57 @@
-.containerHeader{
+.container-header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-height: 150px;
-}
-.sideBarELogoContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 40%;
-}
-.logoContainerHeader{
-    width: 100%;
-}
-.logoHeader{
-    width: 100%;
-    max-width: 100px;
-}
-.barraPesquisaContainerHeader{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 40%;
-}
-.inputPesquisaHeader{
-    border: none;
-    outline: none;
-    border-bottom: solid 1px;
     background-color: aqua;
-}
-.botaoPesquisaHeader{
-    border: none;
-    background: none;
-}
-.lupaPesquisaHeader{
+    min-height:  15vh;
     width: 100%;
-    min-height: 25px;
 }
-.pesquisaECarrinhoContainerHeader{
+
+
+.sidebar-logo-container-header{
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 30%;
 }
-.barraCarrinhoContainerHeader{
+.logo-container-header{
+    width: 70%;
+}
+.logo-header{
+    width: 100%;
+}
+
+.pesquisa-carrinho-container-header{
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 15%;
 }
-.quantidadeCarrinhoHeader{
-    font-family: 'Inter', sans-serif;
+.pesquisa-container-header{
+    width: 50%;
+}
+.botao-pesquisa-header{
+    width: 100%;
+}
+.lupa-pesquisa-header{
+    width: 100%;
+    height: auto;
+}
+
+.carrinho-container-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+}
+.carrinho-logo-header{
+    width: 100%;
+    height: auto;
+}
+.quantidade-carrinho-header{
     font-weight: bold;
-    padding: 0.2rem;
-}
-.carrinhoComprasHeader{
-    width: 100%;
+    font-size: 1rem;
 }
 
   @media (min-width: 480px) {

@@ -1,19 +1,6 @@
 .containerNavBar{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 250px;
 }
 .linkNavBar{
-    border: none;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    text-decoration: none;
-}
-.sideMenuNavBar{
-    width: 100%;
-    min-height: 45px;
 }
 
 @media (min-width: 480px) {
