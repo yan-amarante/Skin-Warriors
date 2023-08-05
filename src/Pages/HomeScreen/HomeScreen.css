@@ -1,4 +1,4 @@
-.containerHomeScreen{
+.container-homeScreen{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,12 +8,12 @@
 .listaHomeScreen{
     list-style: none;
 }
-.imagemHomeScreen{
+.imagem-homeScreen{
     border-radius: 1.25rem;
-    width: 98%;
-    max-height: 400px;
+    width: 95%;
+    height: 30vh;
     object-fit: cover;
-    margin: 2rem;
+    margin: 1rem;
 }
 .ofertasHomeScreen{
     display: flex;
@@ -43,7 +43,7 @@
     font-weight: bold;
     font-family: 'Inter', sans-serif;
 }
-.ofertasTituloHomeScreen{
+.ofertas-titulo-homeScreen{
     display: flex;
     align-items: flex-start;
     width: 95%;
@@ -52,9 +52,6 @@
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 2.0rem;
-    @media screen and (max-width:500px) {
-        font-size: 1.3rem
-    }
 }
 .linkHomeScreen{
     text-decoration: none;

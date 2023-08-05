@@ -16,15 +16,19 @@ function SideBar() {
     }
 
     const sideMenuTrue = {
-        height: "100%",/* 100% Full-height */
-        width: "50%", /* 0 width - change this with JavaScript */
-        position: "fixed",/* Stay in place */
-        zIndex: 1, /* Stay on top */
-        top: 0, /* Stay at the top */
+        height: "100%",
+        width: "50%", 
+        position: "fixed",
+        top: 0, 
         left: 0,
-        backgroundColor: "#f9f9f9", /* Black*/
-        overflowX: "hidden", /* Disable horizontal scroll */
+        backgroundColor: "#f9f9f9",
+        overflowX: "hidden", 
         border: "#none",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        minWidth: "160px",
     } as React.CSSProperties
 
     const sideMenuFalse = {
@@ -35,16 +39,20 @@ function SideBar() {
     return (
         <div className="side-menu-container">
             {sideMenu == false ? (
-                <button className="botao-side-menu" style={sideMenuFalse} onClick={clickSideMenuAtivar}>
+                <button className="botao-sidemenu" style={sideMenuFalse} onClick={clickSideMenuAtivar}>
                     <HiMenu className="icone-side-menu" />
                 </button>
             ) : (
-                <button style={sideMenuTrue} onClick={clickSideMenuDesativar}>
-                    <MdClose />
-                    <div className="containerNavBar">
+                <div style={sideMenuTrue}>
+                <button className="botao-fechar-sidemenu" onClick={clickSideMenuDesativar}>
+                    <MdClose className="icone-fechar-sidemenu" />
+                </button>
+                <div className="navbar-container-sidebar">
+                        <h1 className="h1-sidebar">Categorias</h1>
                         <NavBar />
                     </div>
-                </button>
+                    <h1 className="h1-sidebar">Sobre Nós</h1>
+                </div>
             )
             }
         </div>

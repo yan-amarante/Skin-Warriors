@@ -15,9 +15,9 @@ function HomeScreen() {
     );
 
     return (
-        <div className="containerHomeScreen">
-            <img src="/awpduality.jpg" className="imagemHomeScreen" />
-            <div className="ofertasTituloHomeScreen">
+        <div className="container-homeScreen">
+            <img src="/awpduality.jpg" className="imagem-homeScreen" />
+            <div className="ofertas-titulo-homeScreen">
             <h1 className="tituloOfertasHomeScreen">Ofertas</h1>
             </div>
                 <div className="ofertasHomeScreen">

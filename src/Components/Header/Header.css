@@ -3,17 +3,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: aqua;
     min-height:  15vh;
     width: 100%;
 }
-
-
 .sidebar-logo-container-header{
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 30%;
+    min-width: 96px;
+    min-height: 67px;
 }
 .logo-container-header{
     width: 70%;
@@ -21,43 +20,25 @@
 .logo-header{
     width: 100%;
 }
-
-.pesquisa-carrinho-container-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 15%;
-}
-.pesquisa-container-header{
-    width: 50%;
-}
-.botao-pesquisa-header{
-    width: 100%;
-}
-.lupa-pesquisa-header{
-    width: 100%;
-    height: auto;
-}
-
 .carrinho-container-header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 50%;
+    width: 10%;
 }
 .carrinho-logo-header{
     width: 100%;
     height: auto;
+    min-width: 21px;
+    min-height: 21px;
 }
 .quantidade-carrinho-header{
     font-weight: bold;
-    font-size: 1rem;
+    font-size: clamp(1rem, 5vw, 3rem);
 }
-
-  @media (min-width: 480px) {
-  }
   
   @media (min-width: 768px) {
+    body{background-color: red;}
   }
   
   @media (min-width: 1024px) {

@@ -1,11 +1,25 @@
 .side-menu-container{
-    margin-top: 0.5rem;
     width: 20%;
 }
-.botao-side-menu{
+.botao-sidemenu{
     width: 100%;
 }
 .icone-side-menu{
+    width: 100%;
+    height: auto;
+}
+.h1-sidebar{
+    font-weight: bold;
+    font-size: clamp(1.3rem, 5vw, 2.3rem);
+}
+.botao-fechar-sidemenu{
+    background: none;
+    border: none;
+}
+.botao-fechar-sidemenu{
+    width: 15%;
+}
+.icone-fechar-sidemenu{
     width: 100%;
     height: auto;
 }
