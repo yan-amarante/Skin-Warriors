@@ -1,64 +1,53 @@
-.container-homeScreen{
+.container-homeScreen {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
+    height: 100vh;
 }
-.listaHomeScreen{
-    list-style: none;
+
+.titulo-homeScreen {
+    color: #000;
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.texto-homeScreen {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+.imagem-containe-homeScreen{
+    width: 150px;
+    min-height: 150px;;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #182E6C 8.33%, #F00 40.10%, #F5BD05 91.15%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .imagem-homeScreen{
-    border-radius: 1.25rem;
-    width: 95%;
-    height: 30vh;
-    object-fit: cover;
-    margin: 1rem;
-}
-.ofertasHomeScreen{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     width: 100%;
 }
-.cardSkinHomeScreen{
-    display: flex;
-    flex-direction: row;
+.botao-ofertas-homeScreen{
     width: 90%;
-    overflow: hidden;
+    height: 6%;
+    border-radius: 1.25rem;
+    background-color: black;
+    border: none;
 }
-.verMaisHomeScreen{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50%;
-    max-width: 200px;
-}
-.iconeVerMaisHomeScreen{
-    width: 100%;
-    height: 100%;
-}
-.textoVerMaisHomeScreen{
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Inter', sans-serif;
-}
-.ofertas-titulo-homeScreen{
-    display: flex;
-    align-items: flex-start;
-    width: 95%;
-}
-.tituloOfertasHomeScreen{
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    font-size: 2.0rem;
-}
-.linkHomeScreen{
-    text-decoration: none;
-    color: black;
-}
-ul{
-    margin: 0;
-    padding: 0;
-    padding-right: 1rem;
+.texto-botao-homeScreen{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

@@ -8,17 +8,16 @@ function Header() {
 
     return (
         <header className="container-header">
-            <div className="sidebar-logo-container-header">
+            <div className="sidebar-container-header">
                 <SideBar />
-                <div className="logo-container-header">
-                    <Link to="/">
-                        <img className="logo-header" src={"../../public/logo.png"} />
-                    </Link>
-                </div>
+            </div>
+            <div className="logo-container-header">
+                <Link to="/">
+                    <img className="logo-header" src={"https://imgur.com/EJzKeci.png"} />
+                </Link>
             </div>
             <div className="carrinho-container-header">
                 <FaShoppingCart className="carrinho-logo-header" />
-                <p className="quantidade-carrinho-header">0</p>
             </div>
         </header>
     )
