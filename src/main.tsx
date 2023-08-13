@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import HomeScreen from './Pages/HomeScreen/HomeScreen.tsx'
+import Home from './Pages/HomeScreen/Home.tsx'
 import './index.css'
 import SkinPesquisa from './Pages/SkinPesquisa/SkinPesquisa.tsx'
 import SkinDetalhes from './Pages/SkinDetalhes/SkinDetalhes.tsx'
@@ -17,7 +17,7 @@ const router = createBrowserRouter(
       [
         {
           path: "/",
-          element: <HomeScreen/>
+          element: <Home/>
         },
         {
           path: "/skin/:id",

@@ -1,0 +1,131 @@
+.container-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100vh;
+}
+
+.titulo-descricao-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.titulo-home {
+    color: #000;
+    font-family: Exo;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.0225rem;
+    text-align: center;
+}
+
+.titulo-home::after {
+    color: #B97D24;
+    content: " loja de skins";
+}
+
+.descricao-home {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-align: center;
+    width: 90%;
+}
+
+.lista-skins-home {
+    list-style: none;
+}
+
+.lista-infos-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lista-ofertas-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.lista-container-home {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 130px;
+    overflow-y: scroll;
+    width: 60%;
+    gap: 1rem;
+}
+.logo-lista-home{
+    position: absolute;
+    opacity: 0.06;
+    width: 100%;
+    height: auto;
+}
+
+.imagem-skin-home {
+    width: 100%;
+    height: auto;
+}
+
+.nome-skin-lista-home {
+    border-radius: 2px;
+    background: #000;
+    width: 100%;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.ofertas-cadastradas-home {
+    color: #B97D24;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.ofertas-cadastradas-home::after {
+    content: " Ofertas cadastradas";
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.botao-container-home {
+    width: 95%;
+}
+
+.botao-ofertas-home {
+    background-color: #B97D24;
+    border: #B97D24;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.botao-texto-home {
+    color: #F6FBFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
