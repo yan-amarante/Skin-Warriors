@@ -7,24 +7,36 @@ function Home() {
     const [skinsGrid, setSkinsGrid] = useState<any[]>([])
     const [ofertasCadastradas, setOfertasCadastradas] = useState<any[]>([])
 
+    const telaWidht: number = window.innerWidth;
+
     useEffect(() => {
         chamarGridSkins();
         chamarTamanhoTabela();
     }, [])
 
     async function chamarGridSkins() {
-        const res = await fetch("http://localhost:3000/api/v1/skins/buscar-grid-skins");
+        const res = await fetch("https://api-skin-warriors.onrender.com/api/v1/skins/buscar-grid-skins");
         const data = await res.json();
-        setSkinsGrid(data.skins)
+
+        //reduzir o tamanho do array que vai ser renderizado na tela para 4, para se adequar com o layout feito para dispositivos mobile
+        if (telaWidht < 768) {
+            for (let i = 0; i < 2; i++) {
+                data.skins.pop()
+            }
+            setSkinsGrid(data.skins)
+        } else {
+            setSkinsGrid(data.skins)
+        }
+
     }
 
     async function chamarTamanhoTabela() {
-        const res = await fetch("http://localhost:3000/api/v1/skins/consultar-tamanho-tabela");
+        const res = await fetch("https://api-skin-warriors.onrender.com/api/v1/skins/consultar-tamanho-tabela");
         const data = await res.json();
         setOfertasCadastradas(data.tamanho[0].count)
     }
 
-    const GridSkins = skinsGrid.map(skin =>
+    const gridSkins = skinsGrid.map(skin =>
         <ul className="lista-skins-home" key={skin.id}>
             <li className="lista-infos-home">
                 <img className="imagem-skin-home" src={skin.imagem} />
@@ -42,10 +54,10 @@ function Home() {
                 </p>
             </article>
             <section className="lista-ofertas-home">
+                <img className="logo-lista-home" src="https://imgur.com/VR75vso.png" />
                 <section className="lista-container-home">
-                    {GridSkins}
+                    {gridSkins}
                 </section>
-                <img className="logo-lista-home" src="https://imgur.com/VR75vso.png"/>
                 <p className="ofertas-cadastradas-home">{ofertasCadastradas}</p>
             </section>
             <section className="botao-container-home">

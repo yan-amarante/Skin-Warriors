@@ -1,7 +1,7 @@
 import "./Header.css"
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-import SideBar from "../SideBar/SideBar";
+import NavBar from "../NavBar/NavBar";
 
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
     return (
         <header className="container-header">
             <div className="sidebar-container-header">
-                <SideBar />
+                <NavBar/>
             </div>
             <div className="logo-container-header">
                 <Link to="/">
