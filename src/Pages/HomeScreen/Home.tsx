@@ -7,8 +7,6 @@ function Home() {
     const [skinsGrid, setSkinsGrid] = useState<any[]>([])
     const [ofertasCadastradas, setOfertasCadastradas] = useState<any[]>([])
 
-    const telaWidht: number = window.innerWidth;
-
     useEffect(() => {
         chamarGridSkins();
         chamarTamanhoTabela();
@@ -17,17 +15,7 @@ function Home() {
     async function chamarGridSkins() {
         const res = await fetch("https://api-skin-warriors.onrender.com/api/v1/skins/buscar-grid-skins");
         const data = await res.json();
-
-        //reduzir o tamanho do array que vai ser renderizado na tela para 4, para se adequar com o layout feito para dispositivos mobile
-        if (telaWidht < 768) {
-            for (let i = 0; i < 2; i++) {
-                data.skins.pop()
-            }
-            setSkinsGrid(data.skins)
-        } else {
-            setSkinsGrid(data.skins)
-        }
-
+        setSkinsGrid(data.skins)
     }
 
     async function chamarTamanhoTabela() {

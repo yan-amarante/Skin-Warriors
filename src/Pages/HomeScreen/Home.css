@@ -44,6 +44,9 @@
 .lista-skins-home {
     list-style: none;
 }
+.lista-skins-home:nth-of-type(1n+5) {
+    display: none;
+} 
 
 .lista-infos-home {
     display: flex;
@@ -60,7 +63,7 @@
 
 .lista-container-home {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     width: 60%;
     column-gap: 1rem;
     align-items: center;
@@ -128,9 +131,22 @@
 }
 
 @media (min-width: 768px) {
-    
+    .lista-container-home{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .logo-lista-home{
+        width: 55%;
+    }
+    .lista-skins-home:nth-of-type(n) {
+        display: block;
+    } 
 }
 
 @media (min-width: 1024px) {
-
+    .container-home {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 }

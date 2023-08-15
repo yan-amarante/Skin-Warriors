@@ -22,14 +22,12 @@ function NavBar() {
         zIndex: 1,
         top: 0,
         left: 0,
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#FFFFFF",
         overflowX: "hidden",
         border: "#none",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-between",
-        minWidth: "160px",
     } as React.CSSProperties
 
     const sideMenuFalse = {
@@ -49,12 +47,17 @@ function NavBar() {
                         <MdClose className="icone-fechar-navbar" />
                     </button>
                     <section className="links-container-navbar">
-                        <Link to="/" className="linkNavBar">Home</Link>
-                        <Link to="/ofertas" className="linkNavBar">Ofertas</Link>
+                        <Link to="/" className="link-navbar">Home</Link>
+                        <Link to="/ofertas" className="link-navbar">Ofertas</Link>
                     </section>
                 </section>
             )
             }
+            <section className="links-container768px-navbar">
+                <Link to="/" className="link-navbar">Home</Link>
+                <Link to="/ofertas" className="link-navbar">Ofertas</Link>
+            </section>
+
         </nav>
     )
 }
