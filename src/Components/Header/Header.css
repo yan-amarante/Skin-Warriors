@@ -6,28 +6,21 @@
     width: 100%;
 }
 .sidebar-container-header{
-    width: 10%;
+    width: 8%;
     margin: 0.3rem;
 }
 .logo-container-header{
-    width: 15%;
+    width: 12%;
     margin-top: 0.2rem;
 }
 .logo-header{
     width: 100%;
 }
 .carrinho-container-header{
-    width: 10%;
+    width: 7%;
     margin-right: 0.2rem;
 }
 .carrinho-logo-header{
     width: 100%;
     height: auto;
 }
-  
-  @media (min-width: 768px) {
-  }
-  
-  @media (min-width: 1024px) {
-
-  }
