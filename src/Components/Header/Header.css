@@ -24,3 +24,12 @@
     width: 100%;
     height: auto;
 }
+
+@media (min-width: 1366px) {
+    .logo-container-header{
+        width: 5%;
+    }
+    .carrinho-container-header{
+        width: 3%;
+    }
+}

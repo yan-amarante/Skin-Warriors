@@ -17,7 +17,7 @@
 .titulo-home {
     color: #000;
     font-family: Exo;
-    font-size: clamp(1rem, 2.14vw + 1rem, 4rem);
+    font-size: clamp(1.5rem, 0.7905rem + 3.0272vw, 3.375rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -33,7 +33,7 @@
 .descricao-home {
     color: #000;
     font-family: Inter;
-    font-size: clamp(0.75rem, 0.01vw + 1rem, 1.4rem);
+    font-size: clamp(1rem, 0.8108rem + 0.8073vw, 1.5rem);
     font-style: normal;
     font-weight: 200;
     line-height: normal;
@@ -73,7 +73,7 @@
 .logo-lista-home {
     position: absolute;
     opacity: 0.06;
-    width: 90%;
+    width: 80%;
 }
 
 .imagem-skin-home {
@@ -86,7 +86,7 @@
     width: 100%;
     color: #FFF;
     font-family: Inter;
-    font-size: clamp(0.75rem, 0.01vw + 1rem, 1.4rem);
+    font-size: clamp(1rem, 0.8108rem + 0.8073vw, 1.5rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -96,7 +96,7 @@
 .ofertas-cadastradas-home {
     color: #B97D24;
     font-family: Inter;
-    font-size: clamp(1rem, 2.14vw + 1rem, 4rem);
+    font-size: clamp(1.5rem, 1.1216rem + 1.6145vw, 2.5rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -126,10 +126,11 @@
 .botao-texto-home {
     color: #F6FBFF;
     font-family: Inter;
-    font-size: clamp(1rem, 2.14vw + 1rem, 4rem);
+    font-size: clamp(1.5rem, 1.1216rem + 1.6145vw, 2.5rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -154,33 +155,42 @@
         align-items: center;
         position: relative;
     }
-    .titulo-descricao-container{
+
+    .titulo-descricao-container {
         align-items: flex-start;
     }
-    .titulo-home{
+
+    .titulo-home {
         text-align: left;
+        max-height: 72px;
+        white-space: nowrap;
+
     }
-    .descricao-home{
+
+    .descricao-home {
         text-align: left;
+        max-width: 790px;
     }
-    .ofertas-cadastradas-home{
+
+    .ofertas-cadastradas-home {
         text-align: right;
     }
-    .lista-ofertas-home{
+
+    .lista-ofertas-home {
         align-items: flex-end;
     }
-    .lista-container-home{
+
+    .lista-container-home {
         width: 90%;
+    }
+    .logo-lista-home{
+        width: 80%;
     }
 
     .botao-container-home {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        bottom: 10%;
-        left: 1%;
-        width: 40%;
+        position: relative;
     }
-    .botao-texto-home{
+    .botao-ofertas-home{
+        position: absolute;
     }
 }
