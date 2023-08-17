@@ -40,9 +40,9 @@ function Home() {
                 <p className="descricao-home">
                     estamos empenhados em oferecer a melhor experiência de compra possível. Queremos ser sua escolha confiável para encontrar as skins dos seus sonhos e elevar sua experiência
                 </p>
+                <button className="botao-ofertas1366-home"><label className="botao-texto-home">Ofertas</label></button>
             </article>
             <section className="lista-ofertas-home">
-                <img className="logo-lista-home" src="https://imgur.com/VR75vso.png" />
                 <section className="lista-container-home">
                     {gridSkins}
                 </section>

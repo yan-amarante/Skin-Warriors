@@ -133,6 +133,13 @@
     text-align: center;
 }
 
+.botao-ofertas1366-home {
+    display: none;
+    background-color: #B97D24;
+    border: #B97D24;
+    border-radius: 5px;
+}
+
 @media (min-width: 768px) {
     .lista-container-home {
         display: grid;
@@ -157,40 +164,38 @@
     }
 
     .titulo-descricao-container {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .titulo-home {
-        text-align: left;
         max-height: 72px;
         white-space: nowrap;
 
     }
 
     .descricao-home {
-        text-align: left;
         max-width: 790px;
     }
 
-    .ofertas-cadastradas-home {
-        text-align: right;
-    }
-
     .lista-ofertas-home {
-        align-items: flex-end;
+        align-items: center;
     }
 
     .lista-container-home {
         width: 90%;
     }
-    .logo-lista-home{
-        width: 80%;
+
+    .logo-lista-home {
+        width: 100%;
     }
 
     .botao-container-home {
-        position: relative;
+        display: none;
     }
-    .botao-ofertas-home{
-        position: absolute;
+
+    .botao-ofertas1366-home {
+        display: block;
+        width: 20%;
+        margin-top: 3rem;
     }
 }
