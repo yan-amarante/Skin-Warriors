@@ -4,19 +4,24 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-    min-height: 90vh;
 }
 
-.titulo-descricao-container {
+.bem-vindo-container-home {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.bem-vindo-texto-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-.titulo-home {
+.bem-vindo-titulo-home {
     color: #000;
-    font-family: Exo;
+    font-family: inter;
     font-size: clamp(1.5rem, 0.7905rem + 3.0272vw, 3.375rem);
     font-style: normal;
     font-weight: 700;
@@ -25,12 +30,7 @@
     text-align: center;
 }
 
-.titulo-home::after {
-    color: #B97D24;
-    content: " loja de skins";
-}
-
-.descricao-home {
+.bem-vindo-descricao-home {
     color: #000;
     font-family: Inter;
     font-size: clamp(1rem, 0.8108rem + 0.8073vw, 1.5rem);
@@ -39,163 +39,99 @@
     line-height: normal;
     text-align: center;
     width: 90%;
+    margin-top: 0.3rem;
 }
 
-.lista-skins-home {
-    list-style: none;
-}
-
-.lista-skins-home:nth-of-type(1n+5) {
-    display: none;
-}
-
-.lista-infos-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lista-ofertas-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.imagem-container-home {
+    width: 100%;
     position: relative;
 }
 
-.lista-container-home {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 70%;
-    column-gap: 1rem;
+.retangulo-home {
+    background-color: #FF5733;
+    width: 100%;
+    position: absolute;
+    bottom: 0.1%;
+}
+
+.retangulo-home::after {
+    content: "";
+    display: block;
+    padding-bottom: 57%;
+}
+
+.imagem-home {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+.variedade-container-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1D1F;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+.variedade-texto-home {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.logo-lista-home {
-    position: absolute;
-    opacity: 0.06;
-    width: 80%;
-}
-
-.imagem-skin-home {
-    width: 100%;
-}
-
-.nome-skin-lista-home {
-    border-radius: 2px;
-    background: #000;
-    width: 100%;
+.variedade-titulo-home {
     color: #FFF;
-    font-family: Inter;
-    font-size: clamp(1rem, 0.8108rem + 0.8073vw, 1.5rem);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
     text-align: center;
-}
-
-.ofertas-cadastradas-home {
-    color: #B97D24;
     font-family: Inter;
-    font-size: clamp(1.5rem, 1.1216rem + 1.6145vw, 2.5rem);
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-top: 0.2rem;
+    letter-spacing: -0.03rem;
 }
 
-.ofertas-cadastradas-home::after {
-    content: " Ofertas cadastradas";
-    color: #000;
+.variedade-descricao-home {
+    color: #FFF;
+    text-align: center;
     font-family: Inter;
+    font-size: 1rem;
     font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+.variedade-ofertas-cadastradas-home {
+    color: #FF5733;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.variedade-ofertas-cadastradas-home::after {
+    content: " Skins cadastradas";
+    color: #FFF;
     font-weight: 300;
-    line-height: normal;
 }
-
-.botao-container-home {
-    width: 95%;
+.grid-skins-lista-home{
+    list-style: none;
 }
-
-.botao-ofertas-home {
-    background-color: #B97D24;
-    border: #B97D24;
+.grid-skins-variedade-home{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.grid-skins-imagem-home{
+    width: 50%;
+    background-color: #FF5733;
     border-radius: 5px;
-    width: 100%;
 }
-
-.botao-texto-home {
-    color: #F6FBFF;
-    font-family: Inter;
-    font-size: clamp(1.5rem, 1.1216rem + 1.6145vw, 2.5rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-align: center;
-}
-
-.botao-ofertas1366-home {
+.grid-skins-lista-home:nth-of-type(n+4) {
     display: none;
-    background-color: #B97D24;
-    border: #B97D24;
-    border-radius: 5px;
 }
 
-@media (min-width: 768px) {
-    .lista-container-home {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media (min-width: 768px) {}
 
-    .logo-lista-home {
-        width: 55%;
-    }
-
-    .lista-skins-home:nth-of-type(n) {
-        display: block;
-    }
-}
-
-@media (min-width: 1366px) {
-    .container-home {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        position: relative;
-    }
-
-    .titulo-descricao-container {
-        align-items: center;
-    }
-
-    .titulo-home {
-        max-height: 72px;
-        white-space: nowrap;
-
-    }
-
-    .descricao-home {
-        max-width: 790px;
-    }
-
-    .lista-ofertas-home {
-        align-items: center;
-    }
-
-    .lista-container-home {
-        width: 90%;
-    }
-
-    .logo-lista-home {
-        width: 100%;
-    }
-
-    .botao-container-home {
-        display: none;
-    }
-
-    .botao-ofertas1366-home {
-        display: block;
-        width: 20%;
-        margin-top: 3rem;
-    }
-}
+@media (min-width: 1366px) {}
