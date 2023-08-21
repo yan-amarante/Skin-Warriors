@@ -1,0 +1,52 @@
+.container-avaliacao-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px;
+    border-color: #D2D3D6;
+    border-radius: 5px;
+    width: 55%;
+    gap: 1rem;
+}
+
+.foto-usuario-avaliacao-card {
+    width: 20%;
+}
+
+.titulo-avaliacao-card {
+    font-size: clamp(1.5rem, 1.3786rem + 0.5178vw, 2rem);
+    color: #000;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.03rem;
+}
+
+.texto-avaliacao-card {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: clamp(0.875rem, 0.7233rem + 0.6472vw, 1.5rem);
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    letter-spacing: -0.0175rem;
+}
+.estrelas-container-avaliacao-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.teste {
+    color: #D2D3D6;
+}
+
+.teste2 {
+    color: #FF5733;
+}
+
+.teste3 {
+    color: #FF5733;
+}
