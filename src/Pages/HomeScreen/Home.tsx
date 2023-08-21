@@ -1,5 +1,6 @@
 import "./Home.css"
 import { useEffect, useState } from "react"
+import BulletCard from "../../Components/BulletSectionCard/BulletCard"
 
 
 function Home() {
@@ -36,7 +37,7 @@ function Home() {
         <main className="container-home">
             <section className="bem-vindo-container-home">
                 <article className="bem-vindo-texto-home">
-                    <h2 className="bem-vindo-titulo-home">Bem-vindo a nossa loja de skins</h2>
+                    <h1 className="bem-vindo-titulo-home">Bem-vindo a nossa</h1>
                     <p className="bem-vindo-descricao-home">
                         estamos empenhados em oferecer a melhor experiência de compra possível. Queremos ser sua escolha confiável para encontrar as skins dos seus sonhos e elevar sua experiência
                     </p>
@@ -45,19 +46,19 @@ function Home() {
                     <img className="imagem-home" src="https://imgur.com/FpvtQXS.png" />
                     <div className="retangulo-home"></div>
                 </section>
+                <h2 className="h2-final-home">Por que escolher nossa</h2>
             </section>
             <section className="variedade-container-home">
-                <section className="grid-skins-variedade-home">
-                    {gridSkins}
+                <section className="variedade-cards-container-home">
+                    <BulletCard imagem="https://imgur.com/kxoPj85.png" titulo="Preços Competitivos"/>
+                    <BulletCard imagem="https://imgur.com/Jse3797.png" titulo="Variedade Excepcional"/>
+                    <BulletCard imagem="https://imgur.com/mp3ZCH4.png" titulo="Atualizações Constantes"/>
                 </section>
                 <article className="variedade-texto-home">
                     <h2 className="variedade-titulo-home">Variedade Excepcional</h2>
                     <p className="variedade-descricao-home"> Nossa vasta seleção abrange desde skins clássicas até as mais recentes e cobiçadas. Seja qual for o seu estilo, temos algo para você.</p>
                     <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas}</p>
                 </article>
-                <section className="grid-skins-variedade-home">
-                    {gridSkins}
-                </section>
             </section>
         </main>
     )

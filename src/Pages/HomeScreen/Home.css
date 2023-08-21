@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     width: 100%;
 }
 
@@ -10,8 +9,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
+
 .bem-vindo-texto-home {
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
 .bem-vindo-titulo-home {
     color: #000;
     font-family: inter;
-    font-size: clamp(1.5rem, 0.7905rem + 3.0272vw, 3.375rem);
+    font-size: clamp(1.5rem, 0.8932rem + 2.5890vw, 4rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -30,10 +30,15 @@
     text-align: center;
 }
 
+.bem-vindo-titulo-home::after {
+    color: #FF5733;
+    content: " loja de skins";
+}
+
 .bem-vindo-descricao-home {
     color: #000;
     font-family: Inter;
-    font-size: clamp(1rem, 0.8108rem + 0.8073vw, 1.5rem);
+    font-size: clamp(1rem, 0.5146rem + 2.0712vw, 3rem);
     font-style: normal;
     font-weight: 200;
     line-height: normal;
@@ -48,16 +53,19 @@
 }
 
 .retangulo-home {
-    background-color: #FF5733;
-    width: 100%;
+    width: 75%;
     position: absolute;
     bottom: 0.1%;
+    left: 13%;
+    border: solid 1px;
+    border-color: #D2D3D6;
+    border-radius: 5px;
 }
 
 .retangulo-home::after {
     content: "";
     display: block;
-    padding-bottom: 57%;
+    padding-bottom: 77%;
 }
 
 .imagem-home {
@@ -66,12 +74,33 @@
     position: relative;
 }
 
+.h2-final-home {
+    color: #000;
+    font-family: inter;
+    font-size: clamp(1.25rem, 0.7342rem + 2.2006vw, 3.375rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.0225rem;
+    text-align: center;
+}
+
+.h2-final-home::after {
+    color: #FF5733;
+    content: " loja";
+}
+.variedade-cards-container-home{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
 .variedade-container-home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1C1D1F;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 100vh;
 }
 .variedade-texto-home {
@@ -81,7 +110,7 @@
 }
 
 .variedade-titulo-home {
-    color: #FFF;
+    color: black;
     text-align: center;
     font-family: Inter;
     font-size: 1.5rem;
@@ -92,7 +121,7 @@
 }
 
 .variedade-descricao-home {
-    color: #FFF;
+    color: black;
     text-align: center;
     font-family: Inter;
     font-size: 1rem;
@@ -109,25 +138,30 @@
     font-weight: 700;
     line-height: normal;
 }
+
 .variedade-ofertas-cadastradas-home::after {
     content: " Skins cadastradas";
-    color: #FFF;
+    color: black;
     font-weight: 300;
 }
-.grid-skins-lista-home{
+
+.grid-skins-lista-home {
     list-style: none;
 }
-.grid-skins-variedade-home{
+
+.grid-skins-variedade-home {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.grid-skins-imagem-home{
+
+.grid-skins-imagem-home {
     width: 50%;
     background-color: #FF5733;
     border-radius: 5px;
 }
+
 .grid-skins-lista-home:nth-of-type(n+4) {
     display: none;
 }
