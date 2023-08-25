@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import BulletCard from "../../Components/BulletSectionCard/BulletCard"
 import InfosCheck from "../../Components/InfosCheck/InfosCheck"
 import AvaliacaoCard from "../../Components/AvaliacaoCard/AvaliacaoCard"
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+
 
 function Home() {
 
@@ -69,11 +71,22 @@ function Home() {
                 <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas}</p>
             </section>
             <section className="avaliacoes-container-home">
-                <AvaliacaoCard 
-                foto="https://imgur.com/QZhf5LT.png" 
-                nome="Ava" 
-                texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                <MdKeyboardArrowLeft className="icone-seta-home" />
+                <AvaliacaoCard
+                    foto="https://imgur.com/QZhf5LT.png"
+                    nome="Ava"
+                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
                 />
+                <MdKeyboardArrowRight className="icone-seta-home" />
+            </section>
+            <section className="final-continer-home">
+                <article className="texto-descricao-final-home">
+                    <h2 className="titulo-final-home">Personalize, Domine, Impressione!</h2>
+                    <p className="descricao-final-home">Eleve seu jogo a um novo patamar com nossas skins impressionantes. Personalize suas armas, destaque-se no campo de batalha e mostre sua personalidade única para os jogadores de todo o mundo. Explore agora e mergulhe no emocionante mundo das skins de CS:GO!</p>
+                </article>
+                <button className="botao-final-home">
+                    <label className="label-botao-final-home">Ofertas</label>
+                </button>
             </section>
         </main>
     )

@@ -6,7 +6,7 @@
 }
 
 .bem-vindo-container-home {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -17,12 +17,13 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    justify-content: center;
 }
 
 .bem-vindo-titulo-home {
     color: #000;
     font-family: inter;
-    font-size: clamp(1.5rem, 0.8932rem + 2.5890vw, 4rem);
+    font-size: clamp(1.5rem, 1.1359rem + 1.5534vw, 3rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -38,7 +39,7 @@
 .bem-vindo-descricao-home {
     color: #000;
     font-family: Inter;
-    font-size: clamp(1rem, 0.5146rem + 2.0712vw, 3rem);
+    font-size: clamp(1rem, 0.7573rem + 1.0356vw, 2rem);
     font-style: normal;
     font-weight: 200;
     line-height: normal;
@@ -77,7 +78,7 @@
 .h2-final-home {
     color: #000;
     font-family: inter;
-    font-size: clamp(1.25rem, 0.7342rem + 2.2006vw, 3.375rem);
+    font-size: clamp(1.25rem, 0.9466rem + 1.2945vw, 2.5rem);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -89,7 +90,8 @@
     color: #FF5733;
     content: " loja";
 }
-.variedade-cards-container-home{
+
+.variedade-cards-container-home {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -103,6 +105,7 @@
     justify-content: space-between;
     height: 100vh;
 }
+
 .variedade-texto-home {
     display: flex;
     flex-direction: column;
@@ -145,12 +148,14 @@
     color: black;
     font-weight: 300;
 }
-.infos-check-container-home{
+
+.infos-check-container-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
 .grid-skins-lista-home {
     list-style: none;
 }
@@ -170,14 +175,102 @@
     border-color: #D2D3D6;
     border-radius: 5px;
 }
-.avaliacoes-container-home{
+
+.avaliacoes-container-home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.icone-seta-home {
+    width: 15%;
+    height: auto;
+    border: solid 1px;
+    border-color: #D2D3D6;
+    border-radius: 5px;
+    color: #FF5733;
+    margin: 0 auto;
+}
+
+.final-continer-home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    height: 45vh;
+    justify-content: space-around;
+}
+.texto-descricao-final-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (min-width: 768px) {}
+.titulo-final-home {
+    font-size: clamp(1.5rem, 1.1359rem + 1.5534vw, 3rem);
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.0225rem;
+}
 
-@media (min-width: 1366px) {}
+.descricao-final-home {
+    font-size: clamp(1rem, 0.7573rem + 1.0356vw, 2rem);
+    width: 50%;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+.botao-final-home {
+    border: solid 1px;
+    border-color: #D2D3D6;
+    border-radius: 5px;
+    background: none;
+    width: 15%;
+}
+
+.label-botao-final-home {
+    font-size: clamp(1.5rem, 1.1359rem + 1.5534vw, 3rem);
+    color: #FF5733;
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+@media (min-width: 1366px) {
+    .bem-vindo-container-home {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .h2-final-home {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .bem-vindo-titulo-home,
+    .bem-vindo-descricao-home {
+        text-align: left;
+    }
+
+    .grid-skins-container-home {
+        width: 30%;
+    }
+
+    .variedade-container-home {
+
+    }
+}
