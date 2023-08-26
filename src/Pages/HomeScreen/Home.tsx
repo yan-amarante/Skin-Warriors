@@ -40,7 +40,7 @@ function Home() {
         <main className="container-home">
             <section className="bem-vindo-container-home">
                 <article className="bem-vindo-texto-home">
-                    <h1 className="bem-vindo-titulo-home">Bem-vindo a nossa</h1>
+                    <h1 className="bem-vindo-titulo-home">Bem-vindo a nossa loja de skins</h1>
                     <p className="bem-vindo-descricao-home">
                         estamos empenhados em oferecer a melhor experiência de compra possível. Queremos ser sua escolha confiável para encontrar as skins dos seus sonhos e elevar sua experiência
                     </p>
