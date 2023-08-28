@@ -19,7 +19,7 @@ function NavBar() {
         height: "100%",
         width: "50%",
         position: "fixed",
-        zIndex: 1,
+        zIndex: 2,
         top: 0,
         left: 0,
         backgroundColor: "#FFFFFF",

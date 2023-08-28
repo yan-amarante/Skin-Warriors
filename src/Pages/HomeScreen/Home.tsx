@@ -57,6 +57,7 @@ function Home() {
                     <BulletCard imagem="https://imgur.com/Jse3797.png" titulo="Variedade Excepcional" />
                     <BulletCard imagem="https://imgur.com/mp3ZCH4.png" titulo="Atualizações Constantes" />
                 </section>
+                <section className="variedade-tela-container">
                 <article className="variedade-texto-home">
                     <h2 className="variedade-titulo-home">Variedade Excepcional</h2>
                     <p className="variedade-descricao-home"> Seja qual for o seu estilo, temos algo para você</p>
@@ -68,7 +69,8 @@ function Home() {
                 <section className="grid-skins-container-home">
                     {gridSkins}
                 </section>
-                <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas}</p>
+                <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas} Skins cadastradas</p>
+                </section>
             </section>
             <section className="avaliacoes-container-home">
                 <MdKeyboardArrowLeft className="icone-seta-home" />

@@ -7,16 +7,16 @@
 }
 
 .icone-infos-check {
-    color: #FF5733;
-    width: 4%;
+    color: black;
+    width: 3%;
     height: auto;
 }
 
 .titulo-infos-check {
-    font-size: clamp(1rem, 0.5146rem + 2.0712vw, 3rem);
-    color: #FF5733;
+    font-size: var(--descricao-font-size);
+    color: black;
     font-family: Inter;
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--descricao-font-weight);
     line-height: normal;
 }

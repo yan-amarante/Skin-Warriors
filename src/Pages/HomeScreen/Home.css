@@ -6,7 +6,7 @@
 }
 
 .bem-vindo-container-home {
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -53,7 +53,7 @@
     bottom: 0.1%;
     left: 13%;
     border: solid 1px;
-    border-color: #D2D3D6;
+    border-color: var(--color-neutral-200);
     border-radius: 5px;
 }
 
@@ -72,16 +72,17 @@
 .h2-final-home {
     color: #000;
     font-family: inter;
-    font-size: clamp(1.25rem, 0.9466rem + 1.2945vw, 2.5rem);
+    font-size: var(--h3-font-size);
     font-style: normal;
-    font-weight: 700;
+    font-weight: var(--h3-font-weight);
     line-height: normal;
     letter-spacing: -0.0225rem;
     text-align: center;
 }
 
 .h2-final-home::after {
-    color: #FF5733;
+    color: var(--color-laranja-500);
+    font-weight: 600;
     content: " loja";
 }
 
@@ -89,15 +90,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
+    width: 70%;
 }
 
 .variedade-container-home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 100vh;
+    justify-content: space-around;
+    height: 85vh;
 }
 
 .variedade-texto-home {
@@ -111,9 +112,9 @@
     color: black;
     text-align: center;
     font-family: Inter;
-    font-size: clamp(1.5rem, 0.8932rem + 2.5890vw, 4rem);
+    font-size: var(--h2-font-size);
     font-style: normal;
-    font-weight: 700;
+    font-weight: var(--h2-font-weight);
     line-height: normal;
     letter-spacing: -0.03rem;
 }
@@ -122,25 +123,19 @@
     color: black;
     text-align: center;
     font-family: Inter;
-    font-size: clamp(1rem, 0.5146rem + 2.0712vw, 3rem);
+    font-size: var(--descricao-font-size);
     font-style: normal;
-    font-weight: 200;
+    font-weight: var(--descricao-font-weight);
     line-height: normal;
 }
 
 .variedade-ofertas-cadastradas-home {
-    color: #FF5733;
-    font-family: Inter;
-    font-size: clamp(1.5rem, 0.8932rem + 2.5890vw, 4rem);
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.variedade-ofertas-cadastradas-home::after {
-    content: " Skins cadastradas";
     color: black;
-    font-weight: 300;
+    font-family: Inter;
+    font-size: var(--h3-font-size);
+    font-style: normal;
+    font-weight: var(--h3-font-weight);
+    line-height: normal;
 }
 
 .infos-check-container-home {
@@ -166,7 +161,7 @@
     width: 100%;
     background-color: white;
     border: solid 1px;
-    border-color: #D2D3D6;
+    border-color: var(--color-neutral-200);
     border-radius: 5px;
 }
 
@@ -183,9 +178,9 @@
     width: 15%;
     height: auto;
     border: solid 1px;
-    border-color: #D2D3D6;
+    border-color: var(--color-neutral-200);
     border-radius: 5px;
-    color: #FF5733;
+    color: var(--color-laranja-500);
     margin: 0 auto;
 }
 
@@ -203,42 +198,42 @@
 }
 
 .titulo-final-home {
-    font-size: clamp(1.5rem, 1.1359rem + 1.5534vw, 3rem);
+    font-size: var(--h2-font-size);
     color: #000;
     text-align: center;
     font-family: Inter;
     font-style: normal;
-    font-weight: 700;
+    font-weight: var(--h2-font-weight);
     line-height: normal;
     letter-spacing: -0.0225rem;
 }
 
 .descricao-final-home {
-    font-size: clamp(1rem, 0.7573rem + 1.0356vw, 2rem);
+    font-size: var(--descricao-font-size);
     width: 50%;
     color: #000;
     text-align: center;
     font-family: Inter;
     font-style: normal;
-    font-weight: 200;
+    font-weight: var(--descricao-font-weight);
     line-height: normal;
 }
 
 .botao-final-home {
     border: solid 1px;
-    border-color: #D2D3D6;
+    border-color: var(--color-neutral-200);
     border-radius: 5px;
     background: none;
-    width: 15%;
+    width: 25%;
 }
 
 .label-botao-final-home {
-    font-size: clamp(1.5rem, 1.1359rem + 1.5534vw, 3rem);
-    color: #FF5733;
+    font-size: var(--h3-font-size);
+    color: var(--color-laranja-500);
     text-align: center;
     font-family: Inter;
     font-style: normal;
-    font-weight: 700;
+    font-weight: var(--h3-font-weight);
     line-height: normal;
 }
 
@@ -249,22 +244,30 @@
         align-items: center;
         justify-content: center;
     }
+    .bem-vindo-titulo-home{
+        text-align: left;
+        width: 90%;
+        white-space: nowrap;
+    }
+    .bem-vindo-descricao-home{
+        text-align: left;
+    }
 
     .h2-final-home {
         grid-column-start: 1;
         grid-column-end: 3;
     }
-
-    .bem-vindo-titulo-home,
-    .bem-vindo-descricao-home {
-
+    .imagem-container-home{
+        width: 70%;
+        justify-self: flex-end;
     }
-
-    .grid-skins-container-home {
-        width: 30%;
+    .variedade-tela-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-content: center;
     }
-
-    .variedade-container-home {
-
+    .grid-skins-container-home{
+        width: 30%
     }
 }

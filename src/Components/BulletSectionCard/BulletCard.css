@@ -1,7 +1,8 @@
-.card-containar-bullet{
+.card-container-bullet{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 .cards-images-container-bullet {
     display: flex;
@@ -11,36 +12,19 @@
 }
 
 .imagem-card-bullet {
-    width: 40%;
-}
-
-.circulo-icone-card-bullet {
-    position: absolute;
-    border: solid 1px;
-    border-color: #D2D3D6;
-    border-radius: 50%;
     width: 35%;
-    bottom: -30%;
-    left: 33%;
-}
-
-.circulo-icone-card-bullet::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
 }
 .titulo-container-bullet{
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 0.8rem;
 }
 .card-info-bullet {
-    font-size: clamp(0.5rem, 0.1359rem + 1.5534vw, 2rem);
+    font-size: var(--descricao-font-size);
     color: #000;
     font-family: Inter;
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--descricao-font-weight);
     line-height: normal;
-    letter-spacing: -0.01rem;
+    text-align: center;
 }
