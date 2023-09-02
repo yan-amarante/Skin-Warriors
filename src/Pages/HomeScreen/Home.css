@@ -27,14 +27,100 @@
     top: 0;
     background: linear-gradient(250deg, #FFBD33 0%, #FF5733 100%);
     z-index: -1;
-    padding-top: 55%;
+    padding-top: 65%;
+}
+.hero_section-container-first_section-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.circle_top-skin_info-first_section-home{
+    position: absolute;
+    width: 2%;
+    background-color: white;
+    padding-top: 2%;
+    border-radius: 50%;
+    bottom: 44%;
+    left: 39.8%;
+}
+.line_top-skin_info-first_section-home{
+    position: absolute;
+    width: 0.48%;
+    background-color: white;
+    padding-top: 28%;
+    bottom: 46%;
+    left: 40.4%;
+}
+.balloon_top-skin_info-first_section-home{
+    position: absolute;
+    background-color: white;
+    width: 31.3%;
+    border-radius: 15.7vw;
+    bottom: 108%;
+    left: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.skin_name_top-skin_info-home{
+    font-size: var(--descricao-font-size);
+    font-weight: var(--descricao-font-weight);
+    font-family: inter;
+    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.skin_img_top-skin_info-home{
+    width: 30%;
+}
+
+.circle_bottom-skin_info-first_section-home{
+    position: absolute;
+    width: 2%;
+    background-color: var(--color-laranja-500);
+    padding-top: 2%;
+    border-radius: 50%;
+    bottom: 34%;
+    left: 46.6%;
+}
+.line_bottom-skin_info-first_section-home{
+    position: absolute;
+    width: 0.48%;
+    background-color: var(--color-laranja-500);
+    padding-top: 23.5%;
+    bottom: -18%;
+    left: 47.4%;
+    border-radius: 0px 0px 5px 0px;
+}
+.balloon_bottom-skin_info-first_section-home{
+    position: absolute;
+    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    width: 31.3%;
+    border-radius: 15.7vw;
+    bottom: -35%;
+    left: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.skin_name_bottom-skin_info-home{
+    font-size: var(--descricao-font-size);
+    font-weight: var(--descricao-font-weight);
+    font-family: inter;
+    color: white;
+}
+.skin_img_bottom-skin_info-home{
+    width: 30%;
 }
 
 .hero_image-first_section-home {
     border: solid 2px #FFFFFF;
     border-radius: 5px;
     width: 50%;
-    align-self: center;
     animation: firstLoad 0.7s ease-out;
     /*animation name duration timing-function delay iteration-count irection fill-mode*/
 }

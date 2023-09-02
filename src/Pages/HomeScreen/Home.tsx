@@ -8,6 +8,9 @@ import heroImage from "../../assets/hero-image.jpg"
 
 function Home() {
 
+    const imgSkinTopHeroSection: string = "https://community.akamai.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhnwMzJemkV09m7hJKOhOTLP7LWnn9u5MRjjeyP89SkjAS2-0Q4MDjwLIeTcQNtaVGG_VXskrq9g8S6uMzPnSNl7ygjtmGdwUJqmcyS6w/360fx360f"
+    const imgSkinBottomHeroSection: string = "https://community.akamai.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1JmMR1osbaqPQJz7ODYfi9W9eO7nYyCg_bmKoTdn2xZ_Pp9i_vG8MKh2QK1_kRtNzyhJY-dcgU7NF7Z-QLvxuq70Je7vsydy3Ay7iEq7X_UgVXp1uxQF-Nd/360fx360f"
+
     const [skinsGrid, setSkinsGrid] = useState<any[]>([])
     const [ofertasCadastradas, setOfertasCadastradas] = useState<any[]>([])
 
@@ -41,7 +44,21 @@ function Home() {
         <main className="container-home">
             <section className="first_section-container-home">
                 <div className="square-background-first_section-home"></div>
-                <img className="hero_image-first_section-home" src={heroImage} />
+                <section className="hero_section-container-first_section-home">
+                    <div className="circle_top-skin_info-first_section-home"></div>
+                    <div className="line_top-skin_info-first_section-home"></div>
+                    <div className="balloon_top-skin_info-first_section-home">
+                        <img className="skin_img_top-skin_info-home" src={imgSkinTopHeroSection} />
+                        <p className="skin_name_top-skin_info-home">The Empress</p>
+                    </div>
+                    <div className="circle_bottom-skin_info-first_section-home"></div>
+                    <div className="line_bottom-skin_info-first_section-home"></div>
+                    <div className="balloon_bottom-skin_info-first_section-home">
+                        <img className="skin_img_bottom-skin_info-home" src={imgSkinBottomHeroSection} />
+                        <p className="skin_name_bottom-skin_info-home">Sport Gloves</p>
+                    </div>
+                    <img className="hero_image-first_section-home" src={heroImage} />
+                </section>
                 <article className="article-first_section-home">
                     <h1 className="title-first_section-home">Preços baixos, segurança e variedade tudo em um só lugar</h1>
                     <p className="description-first_section-home">
