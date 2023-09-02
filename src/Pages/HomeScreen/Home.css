@@ -1,3 +1,13 @@
+@keyframes firstLoad {
+    0%{
+        translate: -100%;
+    }
+    100%{
+       translate: 0;
+    }
+}
+
+
 .container-home {
     display: flex;
     flex-direction: column;
@@ -9,7 +19,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 .square-background-first_section-home{
     width: 100%;
@@ -25,6 +35,8 @@
     border-radius: 5px;
     width: 50%;
     align-self: center;
+    animation: firstLoad 0.7s ease-out;
+    /*animation name duration timing-function delay iteration-count irection fill-mode*/
 }
 .article-first_section-home {
     display: flex;
@@ -32,6 +44,7 @@
     align-items: center;
     width: 100%;
     justify-content: center;
+    animation: firstLoad 1s ease-out;
 }
 
 .title-first_section-home {
@@ -43,6 +56,7 @@
     line-height: normal;
     letter-spacing: -0.0225rem;
     text-align: center;
+    width: 95%;
 }
 
 .description-first_section-home {
