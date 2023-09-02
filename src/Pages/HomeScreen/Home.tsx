@@ -4,7 +4,7 @@ import BulletCard from "../../Components/BulletSectionCard/BulletCard"
 import InfosCheck from "../../Components/InfosCheck/InfosCheck"
 import AvaliacaoCard from "../../Components/AvaliacaoCard/AvaliacaoCard"
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
-
+import heroImage from "../../assets/hero-image.jpg"
 
 function Home() {
 
@@ -37,20 +37,24 @@ function Home() {
     )
 
     return (
+
         <main className="container-home">
-            <section className="bem-vindo-container-home">
-                <article className="bem-vindo-texto-home">
-                    <h1 className="bem-vindo-titulo-home">Bem-vindo a nossa loja de skins</h1>
-                    <p className="bem-vindo-descricao-home">
-                        estamos empenhados em oferecer a melhor experiência de compra possível. Queremos ser sua escolha confiável para encontrar as skins dos seus sonhos e elevar sua experiência
+            <section className="first_section-container-home">
+                <div className="square-background-first_section-home"></div>
+                <img className="hero_image-first_section-home" src={heroImage} />
+                <article className="article-first_section-home">
+                    <h1 className="title-first_section-home">Preços baixos, segurança e variedade tudo em um só lugar</h1>
+                    <p className="description-first_section-home">
+                        Nosso objetivo é criar um ambiente seguro e intuitivo, para que você possa passar mais tempo aproveitando suas skins
                     </p>
+                    <button className="cta-button-home">
+                        <label className="cta-label-home">Ofertas</label>
+                    </button>
                 </article>
-                <section className="imagem-container-home">
-                    <img className="imagem-home" src="https://imgur.com/FpvtQXS.png" />
-                    <div className="retangulo-home"></div>
-                </section>
-                <h2 className="h2-final-home">Por que escolher nossa</h2>
+                <h2 className="hook_title-first_section-home">Por que escolher nossa</h2>
             </section>
+
+
             <section className="variedade-container-home">
                 <section className="variedade-cards-container-home">
                     <BulletCard imagem="https://imgur.com/kxoPj85.png" titulo="Preços Competitivos" />
@@ -58,20 +62,22 @@ function Home() {
                     <BulletCard imagem="https://imgur.com/mp3ZCH4.png" titulo="Atualizações Constantes" />
                 </section>
                 <section className="variedade-tela-container">
-                <article className="variedade-texto-home">
-                    <h2 className="variedade-titulo-home">Variedade Excepcional</h2>
-                    <p className="variedade-descricao-home"> Seja qual for o seu estilo, temos algo para você</p>
-                    <section className="infos-check-container-home">
-                        <InfosCheck titulo="Todos os estilos de skins" />
-                        <InfosCheck titulo="Facas, Luvas, Agentes" />
+                    <article className="variedade-texto-home">
+                        <h2 className="variedade-titulo-home">Variedade Excepcional</h2>
+                        <p className="variedade-descricao-home"> Seja qual for o seu estilo, temos algo para você</p>
+                        <section className="infos-check-container-home">
+                            <InfosCheck titulo="Todos os estilos de skins" />
+                            <InfosCheck titulo="Facas, Luvas, Agentes" />
+                        </section>
+                    </article>
+                    <section className="grid-skins-container-home">
+                        {gridSkins}
                     </section>
-                </article>
-                <section className="grid-skins-container-home">
-                    {gridSkins}
-                </section>
-                <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas} Skins cadastradas</p>
+                    <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas} Skins cadastradas</p>
                 </section>
             </section>
+
+
             <section className="avaliacoes-container-home">
                 <MdKeyboardArrowLeft className="icone-seta-home" />
                 <AvaliacaoCard
@@ -81,6 +87,8 @@ function Home() {
                 />
                 <MdKeyboardArrowRight className="icone-seta-home" />
             </section>
+
+
             <section className="final-continer-home">
                 <article className="texto-descricao-final-home">
                     <h2 className="titulo-final-home">Personalize, Domine, Impressione!</h2>
