@@ -1,13 +1,3 @@
-@keyframes firstLoad {
-    0%{
-        translate: -100%;
-    }
-    100%{
-       translate: 0;
-    }
-}
-
-
 .container-home {
     display: flex;
     flex-direction: column;
@@ -21,7 +11,8 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
-.square-background-first_section-home{
+
+.square-background-first_section-home {
     width: 100%;
     position: absolute;
     top: 0;
@@ -29,32 +20,39 @@
     z-index: -1;
     padding-top: 65%;
 }
-.hero_section-container-first_section-home{
+
+.hero_section-container-first_section-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
-.circle_top-skin_info-first_section-home{
+
+.circle_top-skin_info-first_section-home {
     position: absolute;
     width: 2%;
-    background-color: white;
     padding-top: 2%;
+    z-index: -2;
+    background-color: white;
     border-radius: 50%;
     bottom: 44%;
     left: 39.8%;
+    animation: circle-growth-hero_image 0.5s forwards ease-out 0.7s;
 }
-.line_top-skin_info-first_section-home{
+
+.line_top-skin_info-first_section-home {
     position: absolute;
     width: 0.48%;
-    background-color: white;
     padding-top: 28%;
     bottom: 46%;
     left: 40.4%;
+    background-color: transparent;
+    animation: line-growth-hero_image 1s forwards ease-out 1.2s;
 }
-.balloon_top-skin_info-first_section-home{
+
+.balloon_top-skin_info-first_section-home {
     position: absolute;
-    background-color: white;
+    background-color: transparent;
     width: 31.3%;
     border-radius: 15.7vw;
     bottom: 108%;
@@ -63,41 +61,50 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    animation: balloon_top-hero_image 0.2s forwards linear 2s;
 }
-.skin_name_top-skin_info-home{
+
+.skin_name_top-skin_info-home {
     font-size: var(--descricao-font-size);
     font-weight: var(--descricao-font-weight);
     font-family: inter;
-    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background: transparent;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-.skin_img_top-skin_info-home{
-    width: 30%;
+    animation: skin_name_top-hero_image 2s forwards ease-out 2s;
 }
 
-.circle_bottom-skin_info-first_section-home{
+.skin_img-skin_info-home {
+    width: 0%;
+    animation: skin_img-hero_image 2s forwards ease-out 2s;
+}
+
+.circle_bottom-skin_info-first_section-home {
     position: absolute;
     width: 2%;
+    z-index: -2;
     background-color: var(--color-laranja-500);
     padding-top: 2%;
     border-radius: 50%;
     bottom: 34%;
     left: 46.6%;
+    animation: circle-growth-hero_image 0.5s forwards ease-out 0.7s;
 }
-.line_bottom-skin_info-first_section-home{
+
+.line_bottom-skin_info-first_section-home {
     position: absolute;
     width: 0.48%;
-    background-color: var(--color-laranja-500);
+    background-color: transparent;
     padding-top: 23.5%;
     bottom: -18%;
     left: 47.4%;
-    border-radius: 0px 0px 5px 0px;
+    animation: line_bottom-growth-hero_image 1s forwards ease-out 1.2s;
 }
-.balloon_bottom-skin_info-first_section-home{
+
+.balloon_bottom-skin_info-first_section-home {
     position: absolute;
-    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background: transparent;
     width: 31.3%;
     border-radius: 15.7vw;
     bottom: -35%;
@@ -106,15 +113,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    animation: balloon_bottom-hero_image 0.2s forwards linear 2s;
 }
-.skin_name_bottom-skin_info-home{
+
+.skin_name_bottom-skin_info-home {
     font-size: var(--descricao-font-size);
     font-weight: var(--descricao-font-weight);
     font-family: inter;
-    color: white;
-}
-.skin_img_bottom-skin_info-home{
-    width: 30%;
+    color: transparent;
+    animation: skin_name_bottom-hero_image 2s forwards ease-out 2s;
 }
 
 .hero_image-first_section-home {
@@ -124,13 +131,14 @@
     animation: firstLoad 0.7s ease-out;
     /*animation name duration timing-function delay iteration-count irection fill-mode*/
 }
+
 .article-first_section-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     justify-content: center;
-    animation: firstLoad 1s ease-out;
+    animation: firstLoad 1.5s ease-out;
 }
 
 .title-first_section-home {
@@ -158,7 +166,7 @@
 
 .cta-button-home {
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(to right, #FFBD33, #FF5733) border-box;
+        linear-gradient(to right, #FFBD33, #FF5733) border-box;
     border-radius: 5px;
     border: 1px solid transparent;
     width: 20%;
@@ -382,5 +390,118 @@
 
     .grid-skins-container-home {
         width: 30%
+    }
+}
+
+@keyframes firstLoad {
+    0% {
+        opacity: 0;
+        translate: -100%;
+    }
+    100% {
+        opacity: 1;
+        translate: 0;
+    }
+}
+
+@keyframes circle-growth-hero_image {
+    0% {
+        opacity: 0;
+        scale: 0;
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        z-index: 0;
+    }
+}
+
+@keyframes line-growth-hero_image {
+    0% {
+        padding-top: 0;
+        background-color: white;
+    }
+
+    100% {
+        background-color: white;
+        padding-top: 1;
+    }
+}
+
+@keyframes line_bottom-growth-hero_image {
+    0% {
+        background-color: var(--color-laranja-500);
+        padding-top: 0;
+        bottom: 35%;
+    }
+
+    100% {
+        background-color: var(--color-laranja-500);
+        padding-top: 1;
+        bottom: 1;
+    }
+}
+
+@keyframes balloon_top-hero_image {
+    0% {
+        background-color: white;
+        opacity: 0;
+    }
+
+    100% {
+        background-color: white;
+        opacity: 1;
+    }
+}
+
+@keyframes balloon_bottom-hero_image {
+    0% {
+        background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+        opacity: 0;
+    }
+
+    100% {
+        background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+        opacity: 1;
+    }
+}
+
+@keyframes skin_img-hero_image {
+    0% {
+        width: 30%;
+        opacity: 0;
+    }
+
+    100% {
+        width: 30%;
+        opacity: 1;
+    }
+}
+
+@keyframes skin_name_top-hero_image {
+    0% {
+        background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+        -webkit-background-clip: text;
+        opacity: 0;
+    }
+
+    100% {
+        background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+        -webkit-background-clip: text;
+        opacity: 1;
+    }
+}
+
+@keyframes skin_name_bottom-hero_image {
+    0% {
+        color: white;
+        opacity: 0;
+    }
+
+    100% {
+        color: white;
+        opacity: 1;
     }
 }

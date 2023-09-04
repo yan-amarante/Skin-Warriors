@@ -48,13 +48,13 @@ function Home() {
                     <div className="circle_top-skin_info-first_section-home"></div>
                     <div className="line_top-skin_info-first_section-home"></div>
                     <div className="balloon_top-skin_info-first_section-home">
-                        <img className="skin_img_top-skin_info-home" src={imgSkinTopHeroSection} />
+                        <img className="skin_img-skin_info-home" src={imgSkinTopHeroSection} />
                         <p className="skin_name_top-skin_info-home">The Empress</p>
                     </div>
                     <div className="circle_bottom-skin_info-first_section-home"></div>
                     <div className="line_bottom-skin_info-first_section-home"></div>
                     <div className="balloon_bottom-skin_info-first_section-home">
-                        <img className="skin_img_bottom-skin_info-home" src={imgSkinBottomHeroSection} />
+                        <img className="skin_img-skin_info-home" src={imgSkinBottomHeroSection} />
                         <p className="skin_name_bottom-skin_info-home">Sport Gloves</p>
                     </div>
                     <img className="hero_image-first_section-home" src={heroImage} />
