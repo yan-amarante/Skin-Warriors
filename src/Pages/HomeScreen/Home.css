@@ -201,19 +201,69 @@
     content: " loja";
 }
 
-.variedade-cards-container-home {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 70%;
-}
-
-.variedade-container-home {
+.second_section-container-home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 85vh;
+    height: 100vh;
+}
+.background_lines-bullet_points-home{
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: -75%;
+}
+
+.bullet_points-container-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #FFBD33, #FF5733) border-box;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    width: 50%;
+    height: 80%;
+}
+
+.title-bullet_points-home {
+    font-family: inter;
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    text-align: center;
+}
+.description-bullet_points-home {
+    font-family: inter;
+    font-size: var(--descricao-font-size);
+    font-weight: var(--descricao-font-weight);
+    text-align: center;
+}
+.middle_border-bullet_points-home{
+    border: 1px solid #E8E9EA;
+    width: 50%;
+}
+.tittle_1::after{
+    content: " Competitivos";
+    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.tittle_2::after{
+    content: " Excepcional";
+    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.tittle_3::after{
+    content: " Garantida";
+    background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .variedade-texto-home {
@@ -398,6 +448,7 @@
         opacity: 0;
         translate: -100%;
     }
+
     100% {
         opacity: 1;
         translate: 0;

@@ -6,14 +6,14 @@
 :root{
   --h1-font-size: clamp(1.25rem, 0.7146rem + 2.6769vw, 3rem);
   --h1-font-weight: 500;
-  --descricao-font-size: clamp(0.625rem, 0.3573rem + 1.3384vw, 1.5rem);
+  --descricao-font-size: clamp(0.625rem, 0.5103rem + 0.5736vw, 1rem);;
   --descricao-font-weight: 200;
   --h2-font-size: clamp(1rem, 0.5411rem + 2.2945vw, 2.5rem);
   --h2-font-weight: 400;
   --h3-font-size: clamp(0.875rem, 0.4543rem + 2.1033vw, 2.25rem);
   --h3-font-weight: 300;
   --h4-font-size: clamp(0.75rem, 0.3676rem + 1.9120vw, 2rem);
-  --h4-font-weight: 300;
+  --h4-font-weight: 400;
   --color-laranja-500: #FF5733;
   --color-neutral-200: #D2D3D6;
 }

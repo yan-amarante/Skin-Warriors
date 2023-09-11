@@ -5,6 +5,8 @@ import InfosCheck from "../../Components/InfosCheck/InfosCheck"
 import AvaliacaoCard from "../../Components/AvaliacaoCard/AvaliacaoCard"
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import heroImage from "../../assets/hero-image.jpg"
+import backgroundLines from "../../assets/bgLines.png"
+import backgroundLinesMobile from "../../assets/bgLinesMobile.png"
 
 function Home() {
 
@@ -72,25 +74,26 @@ function Home() {
             </section>
 
 
-            <section className="variedade-container-home">
-                <section className="variedade-cards-container-home">
-                    <BulletCard imagem="https://imgur.com/kxoPj85.png" titulo="Preços Competitivos" />
-                    <BulletCard imagem="https://imgur.com/Jse3797.png" titulo="Variedade Excepcional" />
-                    <BulletCard imagem="https://imgur.com/mp3ZCH4.png" titulo="Atualizações Constantes" />
-                </section>
-                <section className="variedade-tela-container">
-                    <article className="variedade-texto-home">
-                        <h2 className="variedade-titulo-home">Variedade Excepcional</h2>
-                        <p className="variedade-descricao-home"> Seja qual for o seu estilo, temos algo para você</p>
-                        <section className="infos-check-container-home">
-                            <InfosCheck titulo="Todos os estilos de skins" />
-                            <InfosCheck titulo="Facas, Luvas, Agentes" />
-                        </section>
-                    </article>
-                    <section className="grid-skins-container-home">
-                        {gridSkins}
+            <section className="second_section-container-home">
+                <picture>
+                <source srcSet={backgroundLines} media="(min-width: 768px)" />
+                <img className="background_lines-bullet_points-home" src={backgroundLinesMobile} />
+                </picture>
+                <section className="bullet_points-container-home">
+                    <section>
+                        <h4 className="title-bullet_points-home tittle_1">Preços</h4>
+                        <p className="description-bullet_points-home">Estamos comprometidos em oferecer as melhores ofertas sem comprometer a qualidade. Sua satisfação é nossa prioridade</p>
                     </section>
-                    <p className="variedade-ofertas-cadastradas-home">{ofertasCadastradas} Skins cadastradas</p>
+                    <div className="middle_border-bullet_points-home"></div>
+                    <section>
+                        <h4 className="title-bullet_points-home tittle_2">Variedade</h4>
+                        <p className="description-bullet_points-home">Nossa vasta seleção abrange desde skins clássicas até as mais recentes e cobiçadas</p>
+                    </section>
+                    <div className="middle_border-bullet_points-home"></div>
+                    <section>
+                        <h4 className="title-bullet_points-home tittle_3">Segurança</h4>
+                        <p className="description-bullet_points-home">Garantimos transações seguras e proteção de dados, para que você possa aproveitar suas skins sem preocupações</p>
+                    </section>
                 </section>
             </section>
 
