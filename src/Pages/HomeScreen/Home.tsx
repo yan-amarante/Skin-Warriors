@@ -98,14 +98,26 @@ function Home() {
             </section>
 
 
-            <section className="avaliacoes-container-home">
-                <MdKeyboardArrowLeft className="icone-seta-home" />
+            <section className="third_section-container-home">
+                <h2 className="title-tird_section-home">Avaliações dos usuários</h2>
                 <AvaliacaoCard
                     foto="https://imgur.com/QZhf5LT.png"
                     nome="Ava"
                     texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                    nota={9}
                 />
-                <MdKeyboardArrowRight className="icone-seta-home" />
+                <AvaliacaoCard
+                    foto="https://imgur.com/QZhf5LT.png"
+                    nome="Ava"
+                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                    nota={10}
+                />
+                <AvaliacaoCard
+                    foto="https://imgur.com/QZhf5LT.png"
+                    nome="Ava"
+                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                    nota={8.5}
+                />
             </section>
 
 
