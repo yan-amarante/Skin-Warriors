@@ -126,9 +126,9 @@ function Home() {
                     <h2 className="titulo-final-home">Personalize, Domine, Impressione!</h2>
                     <p className="descricao-final-home">Eleve seu jogo a um novo patamar com nossas skins impressionantes. Personalize suas armas, destaque-se no campo de batalha e mostre sua personalidade única para os jogadores de todo o mundo. Explore agora e mergulhe no emocionante mundo das skins de CS:GO!</p>
                 </article>
-                <button className="botao-final-home">
-                    <label className="label-botao-final-home">Ofertas</label>
-                </button>
+                <button className="cta-button-home">
+                        <label className="cta-label-home">Ofertas</label>
+                    </button>
             </section>
         </main>
     )

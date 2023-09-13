@@ -358,8 +358,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 45vh;
-    justify-content: space-around;
 }
 
 .texto-descricao-final-home {
@@ -381,30 +379,11 @@
 
 .descricao-final-home {
     font-size: var(--descricao-font-size);
-    width: 50%;
     color: #000;
     text-align: center;
     font-family: Inter;
     font-style: normal;
     font-weight: var(--descricao-font-weight);
-    line-height: normal;
-}
-
-.botao-final-home {
-    border: solid 1px;
-    border-color: var(--color-neutral-200);
-    border-radius: 5px;
-    background: none;
-    width: 25%;
-}
-
-.label-botao-final-home {
-    font-size: var(--h3-font-size);
-    color: var(--color-laranja-500);
-    text-align: center;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: var(--h3-font-weight);
     line-height: normal;
 }
 
