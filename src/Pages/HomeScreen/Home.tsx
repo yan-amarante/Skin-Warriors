@@ -7,6 +7,7 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import heroImage from "../../assets/hero-image.jpg"
 import backgroundLines from "../../assets/bgLines.png"
 import backgroundLinesMobile from "../../assets/bgLinesMobile.png"
+import rectangleDesktop from "../../assets/rectangleDesktop.png"
 
 function Home() {
 
@@ -46,6 +47,7 @@ function Home() {
         <main className="container-home">
             <section className="first_section-container-home">
                 <div className="square-background-first_section-home"></div>
+                <img className="rectangle_desktop-home" src={rectangleDesktop} />
                 <section className="hero_section-container-first_section-home">
                     <div className="circle_top-skin_info-first_section-home"></div>
                     <div className="line_top-skin_info-first_section-home"></div>
@@ -66,7 +68,7 @@ function Home() {
                     <p className="description-first_section-home">
                         Nosso objetivo é criar um ambiente seguro e intuitivo, para que você possa passar mais tempo aproveitando suas skins
                     </p>
-                    <button className="cta-button-home">
+                    <button className="cta-button-home first_button-home">
                         <label className="cta-label-home">Ofertas</label>
                     </button>
                 </article>
@@ -76,21 +78,21 @@ function Home() {
 
             <section className="second_section-container-home">
                 <picture>
-                <source srcSet={backgroundLines} media="(min-width: 768px)" />
-                <img className="background_lines-bullet_points-home" src={backgroundLinesMobile} />
+                    <source srcSet={backgroundLines} media="(min-width: 768px)" />
+                    <img className="background_lines-bullet_points-home" src={backgroundLinesMobile} />
                 </picture>
                 <section className="bullet_points-container-home">
-                    <section>
+                    <section className="section-bullet_points-home">
                         <h4 className="title-bullet_points-home tittle_1">Preços</h4>
                         <p className="description-bullet_points-home">Estamos comprometidos em oferecer as melhores ofertas sem comprometer a qualidade. Sua satisfação é nossa prioridade</p>
                     </section>
                     <div className="middle_border-bullet_points-home"></div>
-                    <section>
+                    <section className="section-bullet_points-home">
                         <h4 className="title-bullet_points-home tittle_2">Variedade</h4>
                         <p className="description-bullet_points-home">Nossa vasta seleção abrange desde skins clássicas até as mais recentes e cobiçadas</p>
                     </section>
                     <div className="middle_border-bullet_points-home"></div>
-                    <section>
+                    <section className="section-bullet_points-home">
                         <h4 className="title-bullet_points-home tittle_3">Segurança</h4>
                         <p className="description-bullet_points-home">Garantimos transações seguras e proteção de dados, para que você possa aproveitar suas skins sem preocupações</p>
                     </section>
@@ -100,24 +102,26 @@ function Home() {
 
             <section className="third_section-container-home">
                 <h2 className="title-tird_section-home">Avaliações dos usuários</h2>
-                <AvaliacaoCard
-                    foto="https://imgur.com/QZhf5LT.png"
-                    nome="Ava"
-                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
-                    nota={9}
-                />
-                <AvaliacaoCard
-                    foto="https://imgur.com/QZhf5LT.png"
-                    nome="Ava"
-                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
-                    nota={10}
-                />
-                <AvaliacaoCard
-                    foto="https://imgur.com/QZhf5LT.png"
-                    nome="Ava"
-                    texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
-                    nota={8.5}
-                />
+                <section className="rating_card-container-home">
+                    <AvaliacaoCard
+                        foto="https://imgur.com/QZhf5LT.png"
+                        nome="Ava"
+                        texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                        nota={9}
+                    />
+                    <AvaliacaoCard
+                        foto="https://imgur.com/QZhf5LT.png"
+                        nome="Ava"
+                        texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                        nota={10}
+                    />
+                    <AvaliacaoCard
+                        foto="https://imgur.com/QZhf5LT.png"
+                        nome="Ava"
+                        texto="Adoro como este site torna a experiência de compra de skins tão fácil e segura. Já comprei skins em outros lugares antes e sempre fiquei nervosa com a segurança dos meus dados. Aqui, tudo é feito de forma profissional e tranquila. Minhas skins chegaram rapidamente e sem problemas"
+                        nota={8.5}
+                    />
+                </section>
             </section>
 
 
@@ -126,9 +130,9 @@ function Home() {
                     <h2 className="titulo-final-home">Personalize, Domine, Impressione!</h2>
                     <p className="descricao-final-home">Eleve seu jogo a um novo patamar com nossas skins impressionantes. Personalize suas armas, destaque-se no campo de batalha e mostre sua personalidade única para os jogadores de todo o mundo. Explore agora e mergulhe no emocionante mundo das skins de CS:GO!</p>
                 </article>
-                <button className="cta-button-home">
-                        <label className="cta-label-home">Ofertas</label>
-                    </button>
+                <button className="cta-button-home final_button-home">
+                    <label className="cta-label-home">Ofertas</label>
+                </button>
             </section>
         </main>
     )

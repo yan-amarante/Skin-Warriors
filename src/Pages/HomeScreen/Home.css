@@ -21,6 +21,15 @@
     padding-top: 65%;
 }
 
+.rectangle_desktop-home {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 50%;
+}
+
 .hero_section-container-first_section-home {
     display: flex;
     flex-direction: column;
@@ -172,6 +181,12 @@
     width: 20%;
     margin: 1rem 0;
 }
+.first_button-home{
+    @media (min-width: 1366px) {
+            align-self: flex-start;
+            margin: 1rem 1.4rem;
+    }
+}
 
 .cta-label-home {
     font-family: inter;
@@ -208,11 +223,15 @@
     justify-content: space-around;
     height: 100vh;
 }
-.background_lines-bullet_points-home{
+
+.background_lines-bullet_points-home {
     position: absolute;
     z-index: -1;
     left: 0;
     bottom: -75%;
+    @media (min-width: 1366px) {
+        bottom: -89%;
+    }
 }
 
 .bullet_points-container-home {
@@ -221,11 +240,23 @@
     align-items: center;
     justify-content: space-around;
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(to right, #FFBD33, #FF5733) border-box;
+        linear-gradient(to right, #FFBD33, #FF5733) border-box;
     border-radius: 5px;
     border: 1px solid transparent;
     width: 50%;
     height: 80%;
+
+    @media (min-width: 1366px) {
+        width: 90%;
+        height: 20%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+.section-bullet_points-home{
+    @media (min-width: 1366px) {
+        width: 30%;
+    }
 }
 
 .title-bullet_points-home {
@@ -233,32 +264,50 @@
     font-size: var(--h4-font-size);
     font-weight: var(--h4-font-weight);
     text-align: center;
+
+    @media (min-width: 1366px) {
+        text-align: left;
+    }
 }
+
 .description-bullet_points-home {
     font-family: inter;
     font-size: var(--descricao-font-size);
     font-weight: var(--descricao-font-weight);
     text-align: center;
+
+    @media (min-width: 1366px) {
+        text-align: left;
+    }
 }
-.middle_border-bullet_points-home{
+
+.middle_border-bullet_points-home {
     border: 1px solid #E8E9EA;
     width: 50%;
+
+    @media (min-width: 1366px) {
+        width: 1px;
+        height: 50%;
+    }
 }
-.tittle_1::after{
+
+.tittle_1::after {
     content: " Competitivos";
     background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.tittle_2::after{
+
+.tittle_2::after {
     content: " Excepcional";
     background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.tittle_3::after{
+
+.tittle_3::after {
     content: " Garantida";
     background: linear-gradient(90deg, #FFBD33 0%, #FF5733 100%);
     background-clip: text;
@@ -336,9 +385,24 @@
     align-items: center;
     height: 120vh;
     width: 100%;
-    gap: 1rem;
+    justify-content: space-evenly;
 }
-.title-tird_section-home{
+
+.rating_card-container-home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+
+    @media (min-width: 1366px) {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
+.title-tird_section-home {
     font-size: var(--h2-font-size);
     font-weight: var(--h2-font-weight);
     font-family: Inter;
@@ -358,6 +422,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 50vh;
+
+    @media (min-width: 1366px) {
+        justify-content: space-evenly;
+    }
 }
 
 .texto-descricao-final-home {
@@ -385,45 +454,48 @@
     font-style: normal;
     font-weight: var(--descricao-font-weight);
     line-height: normal;
+
+    @media (min-width: 1366px) {
+        width: 40%;
+}
 }
 
 @media (min-width: 1366px) {
-    .bem-vindo-container-home {
+    .first_section-container-home {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         justify-content: center;
     }
 
-    .bem-vindo-titulo-home {
-        text-align: left;
-        width: 90%;
-        white-space: nowrap;
+    .square-background-first_section-home {
+        display: none;
     }
 
-    .bem-vindo-descricao-home {
+    .rectangle_desktop-home {
+        display: block;
+    }
+
+    .article-first_section-home {
+        order: 1;
+    }
+
+    .title-first_section-home {
         text-align: left;
     }
 
-    .h2-final-home {
+    .description-first_section-home {
+        text-align: left;
+    }
+
+    .hero_section-container-first_section-home {
+        order: 2;
+    }
+
+    .hook_title-first_section-home {
+        order: 3;
         grid-column-start: 1;
         grid-column-end: 3;
-    }
-
-    .imagem-container-home {
-        width: 70%;
-        justify-self: flex-end;
-    }
-
-    .variedade-tela-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        justify-content: center;
-    }
-
-    .grid-skins-container-home {
-        width: 30%
     }
 }
 

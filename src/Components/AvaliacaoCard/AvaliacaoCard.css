@@ -8,6 +8,10 @@
     border: 1px solid transparent;
     width: 70%;
     gap: 0.5rem;
+
+    @media (min-width: 1366px) {
+        width: 25%;
+    }
 }
 
 .foto-usuario-avaliacao-card {
