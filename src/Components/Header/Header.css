@@ -2,34 +2,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
+    padding: 0.8rem;
 }
-.sidebar-container-header{
-    width: 8%;
-    margin: 0.3rem;
-}
-.logo-container-header{
-    width: 12%;
-    margin: auto 0;
-}
-.logo-header{
-    width: 100%;
-}
-.carrinho-container-header{
-    width: 7%;
-    margin-right: 0.2rem;
-}
-.carrinho-logo-header{
-    width: 100%;
-    height: auto;
-}
-
-@media (min-width: 1366px) {
-    .logo-container-header{
-        width: 5%;
-    }
-    .carrinho-container-header{
-        width: 3%;
-    }
+.site-logo{
+    margin: 0 auto;
 }
