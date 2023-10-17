@@ -1,4 +1,4 @@
-.container-header{
+.container-header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -6,6 +6,7 @@
     height: 10vh;
     padding: 0.8rem;
 }
-.site-logo{
+
+.site-logo {
     margin: 0 auto;
 }

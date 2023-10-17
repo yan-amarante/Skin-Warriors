@@ -1,6 +1,6 @@
 import "./Home.css"
 import { useEffect, useState } from "react"
-import heroImage from "../../assets/heroImage.png"
+import { useNavigate } from "react-router-dom"
 
 
 function Home() {
@@ -10,6 +10,8 @@ function Home() {
 
     const [skinsGrid, setSkinsGrid] = useState<any[]>([])
     const [ofertasCadastradas, setOfertasCadastradas] = useState<any[]>([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         chamarGridSkins();
@@ -28,10 +30,14 @@ function Home() {
         setOfertasCadastradas(data.tamanho[0].count)
     }
 
+    function mudarPagina(){
+        navigate("/ofertas")
+    }
+
     return (
 
         <main className="container-home">
-            <button className="cta-button-home"><p className="cta-button-text">OFERTAS</p></button>
+            <button onClick={mudarPagina} className="cta-button-home"><p className="cta-button-text">OFERTAS</p></button>
         </main>
     )
 }
