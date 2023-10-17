@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     background-image: url("../../assets/heroImage.png");
     background-repeat: no-repeat;
     background-position: 60% 100%;
@@ -17,13 +17,18 @@
     width: 11%;
     height: 8%;
     position: relative;
+    bottom: 10%;
     transition: box-shadow 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .cta-button-text{
     color: white;
     font-family: oswald;
     font-weight: 300;
-    font-size: 2.25rem;
+    font-size: 2rem;
     position: relative;
     z-index: 1;
 }
