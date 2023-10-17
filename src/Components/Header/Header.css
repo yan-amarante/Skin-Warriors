@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
+    height: 10vh;
     padding: 0.8rem;
 }
 .site-logo{
