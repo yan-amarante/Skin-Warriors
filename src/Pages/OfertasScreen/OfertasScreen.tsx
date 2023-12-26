@@ -19,9 +19,11 @@ function SkinCard() {
             <section className="image-container">
                 <img className="skin-image" src={skinTeste.image} alt="" />
             </section>
-            <h2>{skinTeste.weapon.name}</h2>
-            <p>{skinTeste.pattern.name}</p>
-            <p>{skinTeste.wears[0].name}</p>
+            <article className="skin-infos">
+                <h2 className="skin-name">{skinTeste.weapon.name}</h2>
+                <p className="skin-pattern">{skinTeste.pattern.name}</p>
+                <p className="skin-wear">{skinTeste.wears[0].name}</p>
+            </article>
         </section>
     )
 }
