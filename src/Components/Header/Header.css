@@ -5,8 +5,22 @@
     width: 100%;
     height: 10vh;
     padding: 0.8rem;
-}
 
-.site-logo {
-    margin: 0 auto;
+    .site-logo {
+        margin: 0 auto;
+    }
+
+    .menu-icon {
+        color: white;
+        transition: color 0.2s ease-out;
+        opacity: 1;
+    }
+    .menu-disabled{
+        opacity: 0;
+    }
+
+    .menu-icon:hover {
+        color: #F52B00;
+    }
+
 }
