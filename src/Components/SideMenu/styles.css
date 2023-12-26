@@ -1,4 +1,4 @@
-.menu-container{
+.menu-container {
     width: 20%;
     height: 100%;
     border: 1px solid #212325;
@@ -12,16 +12,24 @@
     top: 0;
     left: 0;
     z-index: 1;
-    transition: display 5s ease-out;
+    transition: all 0.3s ease-out;
+    translate: -100%;
+    padding: 2vw;
 
-    .close-menu{
+    .close-menu {
         width: 10%;
         height: 10%;
         color: white;
         transition: 0.2s ease-out;
+        align-self: flex-start;
+
     }
 
-    .close-menu:hover{
+    .close-menu:hover {
         color: #F52B00;
     }
+}
+
+.transition-side_menu {
+    translate: 0;
 }
