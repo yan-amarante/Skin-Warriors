@@ -15,6 +15,8 @@ const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/lis
 
 const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
 
+const API_POST_SALE: string = "https://api-skin-warriors.onrender.com/sales/create-sale"
+
 
 export type Sale = {
 
@@ -44,6 +46,22 @@ export type Categories = {
 
 }
 
+type formInfos = {
+
+    image: string | null | undefined;
+
+    pattern: string | null | undefined;
+
+    wear: string | null | undefined;
+
+    price: number | null | undefined;
+
+    category: string | null | undefined;
+
+    name: string | null | undefined;
+
+}
+
 
 function OfertasScreen() {
 
@@ -53,18 +71,34 @@ function OfertasScreen() {
 
     const [categories, setCategories] = useState<Categories[] | null>(null)
 
-    const [currentCategory, setCurrentCategory] = useState<string | null | undefined>(null)
+    const [formInfos, setformInfos] = useState<formInfos>({
 
-    const [currentWeaponName, setCurrentWeaponName] = useState<string | null | undefined>(null)
+        image: null,
 
-    const [currentPatternName, setCurrentPatternName] = useState<string | null | undefined>(null)
+        pattern: null,
+
+        wear: null,
+
+        price: null,
+
+        category: null,
+
+        name: null
+
+    })
 
 
     const categoriesSelect = useRef<HTMLSelectElement>(null)
 
-    const weaponNameSelect = useRef<HTMLSelectElement>(null)
+    const nameSelect = useRef<HTMLSelectElement>(null)
 
     const patternNameSelect = useRef<HTMLSelectElement>(null)
+
+    const wearSelect = useRef<HTMLSelectElement>(null)
+
+    const priceSelect = useRef<HTMLInputElement>(null)
+
+    const imageSrc = useRef<HTMLImageElement>(null)
 
 
     useEffect(() => {
@@ -77,9 +111,15 @@ function OfertasScreen() {
 
         fetchCategories()
 
-        updateCurrentSelectedWeaponName()
+        updateFormInfos("name", nameSelect.current?.value)
 
-    }, [currentCategory])
+    }, [formInfos.category])
+
+    useEffect(() => {
+
+        updateFormInfos("image", imageSrc.current?.src)
+
+    }, [imageSrc.current?.src])
 
 
     async function listSales() {
@@ -127,7 +167,7 @@ function OfertasScreen() {
 
     async function fetchCategories() {
 
-        const ENDPOINT = `${API_SEARCH_CATEGORIES}?patterns=${currentCategory}`
+        const ENDPOINT = `${API_SEARCH_CATEGORIES}?patterns=${formInfos.category}`
 
         const response: Response = await fetch(ENDPOINT)
 
@@ -162,7 +202,7 @@ function OfertasScreen() {
 
         return categories?.map((item: any) => {
 
-            if (item.categoryName === currentCategory) {
+            if (item.categoryName === formInfos.category) {
 
                 return Object.keys(item.weapons).map((item: any) => {
 
@@ -176,21 +216,9 @@ function OfertasScreen() {
 
     }
 
-    function updateCurrentSelectedOption() {
+    function updateFormInfos(keyName: string, value: string | number | undefined) {
 
-        setCurrentCategory(categoriesSelect.current?.value)
-
-    }
-
-    function updateCurrentSelectedWeaponName() {
-
-        setCurrentWeaponName(weaponNameSelect.current?.value)
-
-    }
-
-    function updateCurrentSelectedPatternName() {
-
-        setCurrentPatternName(patternNameSelect.current?.value)
+        setformInfos((prevState) => ({ ...prevState, [keyName]: value }))
 
     }
 
@@ -198,11 +226,11 @@ function OfertasScreen() {
 
         return categories?.map((item: any) => {
 
-            if (item.categoryName === currentCategory) {
+            if (item.categoryName === formInfos.category) {
 
-                if (currentWeaponName && item.weapons[currentWeaponName] !== undefined) {
+                if (formInfos.name && item.weapons[formInfos.name] !== undefined) {
 
-                    return Object.keys(item.weapons[currentWeaponName]).map((item: any) => {
+                    return Object.keys(item.weapons[formInfos.name]).map((item: any) => {
 
                         if (!null) return <option value={item}>{item}</option>
 
@@ -220,11 +248,11 @@ function OfertasScreen() {
 
         return categories?.map((item: any) => {
 
-            if (item.categoryName === currentCategory && categories !== null) {
+            if (item.categoryName === formInfos.category && categories !== null) {
 
-                if (currentWeaponName && currentPatternName) {
+                if (formInfos.name && formInfos.pattern) {
 
-                    return item.weapons[currentWeaponName][currentPatternName].wears.map((item: any) => {
+                    return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
 
                         if (!null) return <option value={item.name}>{item.name}</option>
 
@@ -238,35 +266,96 @@ function OfertasScreen() {
 
     }
 
+    function renderSkinImage(): string {
+
+        const skinImage = categories?.map((item: any) => {
+
+            if (formInfos.name && formInfos.pattern) {
+
+                return item.weapons[formInfos.name]?.[formInfos.pattern]?.image || null
+
+            }
+
+            return null
+
+        })
+
+        const validSkinImage = (skinImage ?? []).filter(image => image !== null && image !== undefined)[0]
+
+        return validSkinImage || ""
+
+    }
+
+    async function sendSale() {
+
+            const config: any = {
+
+                method: "POST",
+
+                body: JSON.stringify({
+
+                    image: formInfos.image,
+
+                    name: formInfos.name,
+
+                    pattern: formInfos.pattern,
+
+                    wear: formInfos.wear,
+
+                    price: formInfos.price,
+
+                    category: formInfos.category,
+
+                }),
+
+                headers: {
+
+                    "Content-Type": "application/json",
+
+                    "Access-Control-Allow-Origin": "*",
+
+                    "mode": "no-cors"
+
+                }
+
+            }
+        
+        await fetch(API_POST_SALE, config)
+
+        alert("sucesso")
+
+    }
+
     function renderCreateSaleForm() {
 
         if (createSale) {
 
             return (
 
-                <section className="elements-background create-sale-container">
+                <section onClick={() => console.log(formInfos)} className="elements-background create-sale-container">
                     <Close onClick={updateCreateSale} className="close-create-sale" />
                     <form className="create-sale-form">
                         <h3 className="input-label">Categorias</h3>
-                        <select onChange={updateCurrentSelectedOption} ref={categoriesSelect} name="categories" id="">
+                        <select onChange={() => updateFormInfos("category", categoriesSelect.current?.value)} ref={categoriesSelect} name="categories" id="">
                             <option value="default">Selecione uma categoria</option>
                             {renderCategoriesOptions()}
                         </select>
                         <h3 className="input-label">Nome</h3>
-                        <select onChange={updateCurrentSelectedWeaponName} ref={weaponNameSelect} name="name" id="">
+                        <select onChange={() => updateFormInfos("name", nameSelect.current?.value)} ref={nameSelect} name="name" id="">
                             {renderSkinsNameOptions()}
                         </select>
                         <h3 className="input-label">Pintura</h3>
-                        <select onChange={updateCurrentSelectedPatternName} ref={patternNameSelect} name="pattern" id="">
+                        <select onChange={() => updateFormInfos("pattern", patternNameSelect.current?.value)} ref={patternNameSelect} name="pattern" id="">
                             {renderSkinsPatterns()}
                         </select>
                         <h3 className="input-label">Qualidade</h3>
-                        <select name="wear" id="">
+                        <select onChange={() => updateFormInfos("wear", wearSelect.current?.value)} ref={wearSelect} name="wear" id="">
                             {renderSkinsWears()}
                         </select>
-                        <Input title="Preço" />
+                        <input onChange={() => updateFormInfos("price", priceSelect.current?.value)} ref={priceSelect} type="text" />
+                        <img src={renderSkinImage()} ref={imageSrc} alt="" />
                     </form>
-                    <button className="cta-button-home cta-button-text">Publicar Oferta</button>
+                    <button onClick={sendSale} className="cta-button-home cta-button-text">Publicar Oferta</button>
                 </section>
 
             )
