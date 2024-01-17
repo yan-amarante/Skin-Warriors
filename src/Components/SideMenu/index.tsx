@@ -63,11 +63,16 @@ function SideMenu({ state, updateState }: SideMenuProps) {
 
     }
 
+    function updateMenuState() {
+
+        updateState(false)
+
+    }
 
     return (
 
         <section className={`menu-container ${verifySideMenuState()}`}>
-            <Close className="close-menu" menuState={updateState} />
+            <Close onClick={updateMenuState} className="close-menu" />
             <ul className="list-nav" role="list">
                 <li onClick={() => changePage("/")} className="list-nav-items">
                     <HomeIcon className={`nav-icon ${verifyCurrentPage("/")}`} />
@@ -76,10 +81,6 @@ function SideMenu({ state, updateState }: SideMenuProps) {
                 <li onClick={() => changePage("/ofertas")} className="list-nav-items">
                     <SaleIcon className={`nav-icon ${verifyCurrentPage("/ofertas")}`} />
                     <h2 className={`nav-name ${verifyCurrentPage("/ofertas")}`}>Ofertas</h2>
-                </li>
-                <li onClick={() => changePage("/")} className="list-nav-items">
-                    <AddSaleIcon className={`nav-icon ${verifyCurrentPage("/")}`} />
-                    <h2 className={`nav-name ${verifyCurrentPage("/")}`}>Publicar Oferta</h2>
                 </li>
             </ul>
         </section>

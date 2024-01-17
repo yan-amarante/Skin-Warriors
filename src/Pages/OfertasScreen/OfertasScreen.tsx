@@ -1,94 +1,302 @@
 import "./OfertasScreen.css"
 
+import SkinCard from "../../Components/SkinCard"
+
+import { useState, useEffect, useRef } from "react"
+
+import Close from "../../Components/Icons/Close"
+
+import Input from "../../Components/Input"
+
+import Button from "../../Components/Button"
+
+
+const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales"
+
+const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
+
+
+export type Sale = {
+
+    float: number;
+
+    id: number;
+
+    image: string;
+
+    name: string;
+
+    pattern: string;
+
+    price: string;
+
+    wear: string;
+
+    category: string | null;
+
+}
+
+export type Categories = {
+
+    categoryName: string;
+
+    weapons: string[];
+
+}
+
+
 function OfertasScreen() {
 
-    return (
-        <div className="containerOfertasScreen">
-            <SkinCard />
-            <SkinCard />
-            <SkinCard />
-            <SkinCard />
-            <SkinCard />
-        </div>
-    )
-}
+    const [sales, setSales] = useState<Sale[] | null>(null)
 
-function SkinCard() {
-    return (
-        <section className="skin-card-container">
-            <section className="image-container">
-                <img className="skin-image" src={skinTeste.image} alt="" />
-            </section>
-            <article className="skin-infos">
-                <h2 className="skin-name">{skinTeste.weapon.name}</h2>
-                <p className="skin-pattern">{skinTeste.pattern.name}</p>
-                <p className="skin-wear">{skinTeste.wears[0].name}</p>
-            </article>
-            <section>
-                <AddCartIcon/>
-            </section>
-        </section>
-    )
-}
+    const [createSale, setCreateSale] = useState<boolean>(false)
 
-function AddCartIcon() {
+    const [categories, setCategories] = useState<Categories[] | null>(null)
 
-    return (
+    const [currentCategory, setCurrentCategory] = useState<string | null | undefined>(null)
 
-        <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.44444 13.7059H12.4444C12.9333 13.7059 13.3333 14.1029 13.3333 14.5882C13.3333 15.0735 12.9333 15.4706 12.4444 15.4706H3.55556C3.06667 15.4706 2.66667 15.0735 2.66667 14.5882V5.76471H0.888889C0.4 5.76471 0 5.36765 0 4.88235C0 4.39706 0.4 4 0.888889 4H3.55556C4.04444 4 4.44444 4.39706 4.44444 4.88235V6.64706H16L12.4444 12.8235H4.44444V13.7059ZM4 16.3529C4.73778 16.3529 5.33333 16.9441 5.33333 17.6765C5.33333 18.4088 4.73778 19 4 19C3.26222 19 2.66667 18.4088 2.66667 17.6765C2.66667 16.9441 3.26222 16.3529 4 16.3529ZM12 16.3529C12.7378 16.3529 13.3333 16.9441 13.3333 17.6765C13.3333 18.4088 12.7378 19 12 19C11.2622 19 10.6667 18.4088 10.6667 17.6765C10.6667 16.9441 11.2622 16.3529 12 16.3529Z" fill="currentColor" />
-            <path d="M17.5455 3.07692H15V4.92308H17.5455V8H19.4545V4.92308H22V3.07692H19.4545V0H17.5455V3.07692Z" fill="currentColor" />
-        </svg>
+    const [currentWeaponName, setCurrentWeaponName] = useState<string | null | undefined>(null)
 
-    )
+    const [currentPatternName, setCurrentPatternName] = useState<string | null | undefined>(null)
 
-}
 
-const skinTeste =
-{
-    "id": "skin-65684",
-    "name": "Desert Eagle | Chamas",
-    "description": "Tão cara quanto poderosa, a Desert Eagle é uma pistola icônica difícil de domar, mas surpreendentemente precisa a longa distância.",
-    "weapon": {
-        "id": "weapon_deagle",
-        "name": "Desert Eagle"
-    },
-    "category": {
-        "id": "csgo_inventory_weapon_category_pistols",
-        "name": "Pistolas"
-    },
-    "pattern": {
-        "id": "aa_flames",
-        "name": "Chamas"
-    },
-    "min_float": 0,
-    "max_float": 0.08,
-    "rarity": {
-        "id": "rarity_mythical_weapon",
-        "name": "Restrito"
-    },
-    "stattrak": false,
-    "souvenir": false,
-    "paint_index": "37",
-    "wears": [
-        {
-            "id": "SFUI_InvTooltip_Wear_Amount_0",
-            "name": "Nova de Fábrica"
-        },
-        {
-            "id": "SFUI_InvTooltip_Wear_Amount_1",
-            "name": "Pouco Usada"
+    const categoriesSelect = useRef<HTMLSelectElement>(null)
+
+    const weaponNameSelect = useRef<HTMLSelectElement>(null)
+
+    const patternNameSelect = useRef<HTMLSelectElement>(null)
+
+
+    useEffect(() => {
+
+        listSales()
+
+    }, [])
+
+    useEffect(() => {
+
+        fetchCategories()
+
+        updateCurrentSelectedWeaponName()
+
+    }, [currentCategory])
+
+
+    async function listSales() {
+
+        const response: Response = await fetch(API_LIST_SALES)
+
+        const data: Sale = await response.json()
+
+        transformToArray(data)
+
+    }
+
+    function transformToArray(object: Sale) {
+
+        const array: any[] = Object.values(object)
+
+        setSales(array)
+
+    }
+
+    function renderSalesList() {
+
+        return sales?.map((sale) => (
+
+            <li key={sale.id}>
+                <SkinCard
+                    float={sale.float}
+                    image={sale.image}
+                    name={sale.name}
+                    pattern={sale.pattern}
+                    price={sale.price}
+                    wear={sale.wear}
+                />
+            </li>
+
+        ))
+
+    }
+
+    function updateCreateSale() {
+
+        setCreateSale((prevCreateSale) => !prevCreateSale)
+
+    }
+
+    async function fetchCategories() {
+
+        const ENDPOINT = `${API_SEARCH_CATEGORIES}?patterns=${currentCategory}`
+
+        const response: Response = await fetch(ENDPOINT)
+
+        const data: Categories[] = await response.json()
+
+
+        setCategories(Object.values(data))
+
+    }
+
+    function renderCategoriesOptions() {
+
+        if (categories === null) {
+
+            fetchCategories()
+
         }
-    ],
-    "collections": [
-        {
-            "id": "collection-set-dust",
-            "name": "A Coleção Dust",
-            "image": "https://raw.githubusercontent.com/steamdatabase/gametracking-csgo/108f1682bf7eeb1420caaf2357da88b614a7e1b0/csgo/pak01_dir/resource/flash/econ/set_icons/set_dust.png"
+
+        return categories?.map((item) => {
+
+            return (
+
+                <option value={item.categoryName}>{item.categoryName}</option>
+
+            )
+
+        })
+
+    }
+
+    function renderSkinsNameOptions() {
+
+        return categories?.map((item: any) => {
+
+            if (item.categoryName === currentCategory) {
+
+                return Object.keys(item.weapons).map((item: any) => {
+
+                    return <option value={item}>{item}</option>
+
+                })
+
+            }
+
+        })
+
+    }
+
+    function updateCurrentSelectedOption() {
+
+        setCurrentCategory(categoriesSelect.current?.value)
+
+    }
+
+    function updateCurrentSelectedWeaponName() {
+
+        setCurrentWeaponName(weaponNameSelect.current?.value)
+
+    }
+
+    function updateCurrentSelectedPatternName() {
+
+        setCurrentPatternName(patternNameSelect.current?.value)
+
+    }
+
+    function renderSkinsPatterns() {
+
+        return categories?.map((item: any) => {
+
+            if (item.categoryName === currentCategory) {
+
+                if (currentWeaponName && item.weapons[currentWeaponName] !== undefined) {
+
+                    return Object.keys(item.weapons[currentWeaponName]).map((item: any) => {
+
+                        if (!null) return <option value={item}>{item}</option>
+
+                    })
+
+                }
+
+            }
+
+        })
+
+    }
+
+    function renderSkinsWears() {
+
+        return categories?.map((item: any) => {
+
+            if (item.categoryName === currentCategory && categories !== null) {
+
+                if (currentWeaponName && currentPatternName) {
+
+                    return item.weapons[currentWeaponName][currentPatternName].wears.map((item: any) => {
+
+                        if (!null) return <option value={item.name}>{item.name}</option>
+
+                    })
+
+                }
+
+            }
+
+        })
+
+    }
+
+    function renderCreateSaleForm() {
+
+        if (createSale) {
+
+            return (
+
+                <section className="elements-background create-sale-container">
+                    <Close onClick={updateCreateSale} className="close-create-sale" />
+                    <form className="create-sale-form">
+                        <h3 className="input-label">Categorias</h3>
+                        <select onChange={updateCurrentSelectedOption} ref={categoriesSelect} name="categories" id="">
+                            <option value="default">Selecione uma categoria</option>
+                            {renderCategoriesOptions()}
+                        </select>
+                        <h3 className="input-label">Nome</h3>
+                        <select onChange={updateCurrentSelectedWeaponName} ref={weaponNameSelect} name="name" id="">
+                            {renderSkinsNameOptions()}
+                        </select>
+                        <h3 className="input-label">Pintura</h3>
+                        <select onChange={updateCurrentSelectedPatternName} ref={patternNameSelect} name="pattern" id="">
+                            {renderSkinsPatterns()}
+                        </select>
+                        <h3 className="input-label">Qualidade</h3>
+                        <select name="wear" id="">
+                            {renderSkinsWears()}
+                        </select>
+                        <Input title="Preço" />
+                    </form>
+                    <button className="cta-button-home cta-button-text">Publicar Oferta</button>
+                </section>
+
+            )
+
         }
-    ],
-    "crates": [],
-    "image": "https://raw.githubusercontent.com/ByMykel/CSGO-API/4fdf048a2b6c21494df4fe915f5fdea5accc6a61/public/images/econ/default_generated/weapon_deagle_aa_flames_light.png"
+
+        return null
+
+    }
+
+
+    return (
+
+        <main className="sales-container">
+            <section className="elements-background skins-filters-container">
+
+            </section>
+            <section className="elements-background skins-categories-container">
+                <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
+            </section>
+            <ul role="list" className="skins-list-container">
+                {sales !== null ? renderSalesList() : null}
+            </ul>
+            {renderCreateSaleForm()}
+            <section></section>
+        </main>
+
+    )
+
 }
+
 
 export default OfertasScreen

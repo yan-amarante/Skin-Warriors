@@ -21,8 +21,6 @@ type pages = {
 
     ofertas: string;
 
-    publicarOfertas: string;
-
 }
 
 
@@ -36,8 +34,6 @@ function NavigationProvider({ children }: NavigationProviderProps) {
         home: "/",
 
         ofertas: "/ofertas",
-
-        publicarOfertas: "/"
 
     }
 

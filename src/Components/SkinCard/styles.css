@@ -1,0 +1,95 @@
+.skin-card-container {
+    width: 70%;
+    height: 50%;
+    max-height: 420px;
+    border: 1px solid #212325;
+    border-radius: 5px;
+    background: rgba(33, 35, 37, 0.01);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2vw;
+
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .skin-image {
+            width: 50%;
+            height: auto;
+            position: relative;
+        }
+    }
+
+    .image-container::before {
+        background-image: url('../../assets/skinCardBg.svg');
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    }
+
+
+    .skin-infos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .skin-name {
+            color: white;
+            font-family: oswald;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        .skin-pattern {
+            color: #666A70;
+            font-family: oswald;
+            font-weight: 300;
+            font-size: 0.875rem;
+        }
+
+        .skin-wear {
+            color: #666A70;
+            font-family: oswald;
+            font-weight: 300;
+            font-size: 0.75rem;
+        }
+
+        .skin-float {
+            color: #F52B00;
+            font-family: oswald;
+            font-weight: 300;
+            font-size: 0.625rem;
+        }
+
+        .add_cart-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .skin-price {
+                color: #ffffff;
+                font-family: oswald;
+                font-weight: 300;
+                font-size: 0.875rem;
+            }
+
+            .add_cart-icon{
+                color: #ffffff;
+                width: 70%;
+                height: 70%;
+            }
+        }
+
+
+    }
+}
