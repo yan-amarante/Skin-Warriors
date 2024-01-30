@@ -7,8 +7,6 @@ import Dropdown from "../../Components/Dropdown"
 import { Categories } from "../../Pages/OfertasScreen/OfertasScreen"
 
 
-const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales"
-
 const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
 
 const API_POST_SALE: string = "https://api-skin-warriors.onrender.com/sales/create-sale"

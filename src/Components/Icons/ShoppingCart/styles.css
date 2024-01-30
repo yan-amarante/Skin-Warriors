@@ -1,0 +1,8 @@
+.shopping-cart-icon {
+    color: white;
+    transition: color 0.2s ease-out
+}
+
+.shopping-cart-icon:hover {
+    color: #F52B00;
+}

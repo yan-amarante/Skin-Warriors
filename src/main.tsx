@@ -14,6 +14,8 @@ import OfertasScreen from './Pages/OfertasScreen/OfertasScreen.tsx'
 
 import { NavigationProvider } from './Context/navigationContext.jsx'
 
+import { CartProvider } from './Context/cartContext.jsx'
+
 
 const router = createBrowserRouter([
 
@@ -53,9 +55,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
   <React.StrictMode>
-    <NavigationProvider>
-      <RouterProvider router={router} />
-    </NavigationProvider>
-  </React.StrictMode>,
+    <CartProvider>
+      <NavigationProvider>
+        <RouterProvider router={router} />
+      </NavigationProvider>
+    </CartProvider>
+  </React.StrictMode >,
 
 )

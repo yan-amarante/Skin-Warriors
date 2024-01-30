@@ -8,8 +8,14 @@ import { useContext } from 'react'
 
 import { navigationContext } from "../../Context/navigationContext"
 
+import { cartContext } from "../../Context/cartContext"
+
+import SkinCard from "../SkinCard"
+
 
 type SideMenuProps = {
+
+    type: string;
 
     state: boolean;
 
@@ -24,26 +30,32 @@ type classNameProp = {
 }
 
 
-function SideMenu({ state, updateState }: SideMenuProps) {
+function SideMenu({ type, state, updateState }: SideMenuProps) {
 
-    const contextValue = useContext(navigationContext);
+    const navigationContextValue = useContext(navigationContext)
+
+    const cartContextValue = useContext(cartContext)
 
     const navigate = useNavigate()
 
 
-    if (!contextValue) {
+    if (!navigationContextValue) throw new Error("useNavigationContext deve ser usado dentro de um NavigationProvider")
 
-        throw new Error("useNavigationContext deve ser usado dentro de um NavigationProvider")
-
-    }
+    if (!cartContextValue) throw new Error("useCartContext deve ser usado dentro de um cartProvider")
 
 
-    const { currentPage, setCurrentPage } = contextValue
+    const { currentPage, setCurrentPage } = navigationContextValue
+
+    const { skin } = cartContextValue
 
 
     function verifySideMenuState() {
 
         if (state) return "transition-side_menu"
+
+        else if (!state && type === "menu") return "hide-left-side_menu"
+
+        else if (!state && type === "cart") return "hide-right-side_menu"
 
     }
 
@@ -69,20 +81,52 @@ function SideMenu({ state, updateState }: SideMenuProps) {
 
     }
 
+    function returnRightDirection() {
+
+        if (type === "menu") return "side-left"
+
+        else if (type === "cart") return "side-right"
+
+    }
+
     return (
 
-        <section className={`menu-container ${verifySideMenuState()}`}>
+        <section className={`menu-container ${verifySideMenuState()} ${returnRightDirection()}`}>
             <Close onClick={updateMenuState} className="close-menu" />
-            <ul className="list-nav" role="list">
-                <li onClick={() => changePage("/")} className="list-nav-items">
-                    <HomeIcon className={`nav-icon ${verifyCurrentPage("/")}`} />
-                    <h2 className={`nav-name ${verifyCurrentPage("/")}`}>Home</h2>
-                </li>
-                <li onClick={() => changePage("/ofertas")} className="list-nav-items">
-                    <SaleIcon className={`nav-icon ${verifyCurrentPage("/ofertas")}`} />
-                    <h2 className={`nav-name ${verifyCurrentPage("/ofertas")}`}>Ofertas</h2>
-                </li>
-            </ul>
+            {type === "menu" ?
+                <ul className="list-nav" role="list">
+                    <li onClick={() => changePage("/")} className="list-nav-items">
+                        <HomeIcon className={`nav-icon ${verifyCurrentPage("/")}`} />
+                        <h2 className={`nav-name ${verifyCurrentPage("/")}`}>Home</h2>
+                    </li>
+                    <li onClick={() => changePage("/ofertas")} className="list-nav-items">
+                        <SaleIcon className={`nav-icon ${verifyCurrentPage("/ofertas")}`} />
+                        <h2 className={`nav-name ${verifyCurrentPage("/ofertas")}`}>Ofertas</h2>
+                    </li>
+                </ul>
+                :
+                null
+            }
+            {type === "cart" ?
+                skin?.map((item) => {
+                    return (
+                        <>
+                            <li key={item.id}>
+                                <SkinCard
+                                    id={item.id}
+                                    image={item.image}
+                                    name={item.name}
+                                    pattern={item.pattern}
+                                    price={item.price}
+                                    wear={item.wear}
+                                    category={item.category}
+                                />
+                            </li>
+                        </>
+                    )
+                })
+                : null
+            }
         </section>
 
     )

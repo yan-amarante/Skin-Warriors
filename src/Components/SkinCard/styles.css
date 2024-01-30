@@ -87,6 +87,11 @@
                 color: #ffffff;
                 width: 70%;
                 height: 70%;
+                transition: color 0.2s ease-out;
+            }
+
+            .add_cart-icon:hover{
+                color: #F52B00;
             }
         }
 

@@ -12,8 +12,6 @@ const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/lis
 
 export type Sale = {
 
-    float: number;
-
     id: number;
 
     image: string;
@@ -77,12 +75,13 @@ function OfertasScreen() {
 
             <li key={sale.id}>
                 <SkinCard
-                    float={sale.float}
+                    id={sale.id}
                     image={sale.image}
                     name={sale.name}
                     pattern={sale.pattern}
                     price={sale.price}
                     wear={sale.wear}
+                    category={sale.category}
                 />
             </li>
 

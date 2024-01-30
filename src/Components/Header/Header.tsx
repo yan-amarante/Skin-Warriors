@@ -2,7 +2,7 @@ import "./Header.css"
 
 import { useNavigate } from 'react-router-dom'
 
-import shoppingCart from "../../assets/shoppingCart.svg"
+import ShoppingCartLogo from "../Icons/ShoppingCart"
 
 import SideMenu from "../SideMenu"
 
@@ -17,10 +17,18 @@ function Header() {
 
     const [menu, setMenu] = useState(false)
 
+    const [cart, setCart] = useState(false)
+
 
     function toggleMenu() {
 
         setMenu(true)
+
+    }
+
+    function toggleCart() {
+
+        setCart(true)
 
     }
 
@@ -29,16 +37,18 @@ function Header() {
         if (menu) return "menu-disabled"
 
         else return "menu-icon"
+
     }
 
 
     return (
 
         <header className="container-header">
-            <SideMenu state={menu} updateState={setMenu} />
+            <SideMenu type="menu" state={menu} updateState={setMenu} />
             <Menu onClick={() => toggleMenu()} className={changeMenuIconOpacity()} />
             <SiteLogo />
-            <img className="cart-icon" src={shoppingCart} alt="" />
+            <ShoppingCartLogo onClick={() => toggleCart()} />
+            <SideMenu type="cart" state={cart} updateState={setCart}/>
         </header>
 
     )

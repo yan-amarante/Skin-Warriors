@@ -10,10 +10,8 @@
     align-items: center;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 1;
     transition: all 0.3s ease-out;
-    translate: -100%;
     padding: 2vw;
 
     .close-menu {
@@ -74,4 +72,18 @@
 
 .transition-side_menu {
     translate: 0;
+}
+
+.side-left{
+    left: 0;
+}
+.side-right{
+    right: 0;
+}
+
+.hide-left-side_menu{
+    translate: -100%;
+}
+.hide-right-side_menu{
+    translate: 100%;
 }
