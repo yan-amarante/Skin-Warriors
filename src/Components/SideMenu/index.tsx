@@ -113,6 +113,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                         <>
                             <li key={item.id}>
                                 <SkinCard
+                                    type="horizontal"
                                     id={item.id}
                                     image={item.image}
                                     name={item.name}

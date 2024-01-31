@@ -5,7 +5,14 @@ import AddCartIcon from "../Icons/AddCartIcon"
 import { Sale } from "../../Pages/OfertasScreen/OfertasScreen"
 
 
-function SkinCard({ id, image, name, pattern, price, wear, category }: Sale) {
+interface SkinCardProps extends Sale {
+
+    type: string;
+
+}
+
+
+function SkinCard({ type, id, image, name, pattern, price, wear, category }: SkinCardProps) {
 
     const skinPropsContainer: Sale = {
 
@@ -26,9 +33,18 @@ function SkinCard({ id, image, name, pattern, price, wear, category }: Sale) {
     }
 
 
+    function returnDirectionStyle(){
+
+        if(type === "vertical") return "vertical-direction"
+
+        else if(type === "horizontal") return "horizontal-direction"
+
+    }
+
+
     return (
 
-        <section className="skin-card-container">
+        <section className={`skin-card-container ${returnDirectionStyle()}`}>
             <section className="image-container">
                 <img className="skin-image" src={image} alt="" />
             </section>

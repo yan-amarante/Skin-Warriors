@@ -75,6 +75,7 @@ function OfertasScreen() {
 
             <li key={sale.id}>
                 <SkinCard
+                    type="vertical"
                     id={sale.id}
                     image={sale.image}
                     name={sale.name}
