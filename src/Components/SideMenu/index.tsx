@@ -108,24 +108,28 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                 null
             }
             {type === "cart" ?
-                skin?.map((item) => {
-                    return (
-                        <>
-                            <li key={item.id}>
-                                <SkinCard
-                                    type="horizontal"
-                                    id={item.id}
-                                    image={item.image}
-                                    name={item.name}
-                                    pattern={item.pattern}
-                                    price={item.price}
-                                    wear={item.wear}
-                                    category={item.category}
-                                />
-                            </li>
-                        </>
-                    )
-                })
+                <ul className="list-cart" role="list">
+                    {
+                        skin?.map((item) => {
+                            return (
+                                <>
+                                    <li key={item.id}>
+                                        <SkinCard
+                                            type="horizontal"
+                                            id={item.id}
+                                            image={item.image}
+                                            name={item.name}
+                                            pattern={item.pattern}
+                                            price={item.price}
+                                            wear={item.wear}
+                                            category={item.category}
+                                        />
+                                    </li>
+                                </>
+                            )
+                        })
+                    }
+                </ul>
                 : null
             }
         </section>

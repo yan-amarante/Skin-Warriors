@@ -73,7 +73,7 @@ function OfertasScreen() {
 
         return sales?.map((sale) => (
 
-            <li key={sale.id}>
+            <li className="skins-list-item" key={sale.id}>
                 <SkinCard
                     type="vertical"
                     id={sale.id}
@@ -102,6 +102,7 @@ function OfertasScreen() {
 
     }
 
+    
     return (
 
         <main className="sales-container">

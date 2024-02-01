@@ -87,3 +87,10 @@
 .hide-right-side_menu{
     translate: 100%;
 }
+
+.list-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
