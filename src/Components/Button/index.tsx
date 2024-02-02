@@ -1,30 +1,22 @@
 import "./styles.css"
 
-import { useNavigate } from "react-router-dom"
-
 
 type buttonProps = {
 
-    page: string;
+    title: string;
+
+    className: string;
+
+    onClick: React.MouseEventHandler;
 
 }
 
 
-function Button({ page }:buttonProps) {
-
-    const navigate = useNavigate()
-
-
-    function changePage(){
-
-        navigate(page)
-
-    }
-
+function Button({ title, className, onClick }:buttonProps) {
 
     return(
 
-        <button onClick={changePage} className="cta-button-home"><p className="cta-button-text">OFERTAS</p></button>
+        <button onClick={onClick} className={`cta-button-home ${className}`}><p className="cta-button-text">{title}</p></button>
 
     )
 

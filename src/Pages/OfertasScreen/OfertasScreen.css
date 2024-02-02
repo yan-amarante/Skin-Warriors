@@ -72,7 +72,7 @@
             align-self: flex-start;
         }
 
-        .create-sale-form{
+        .create-sale-form {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -80,22 +80,34 @@
             height: 60%;
         }
 
-        .close-create-sale:hover{
+        .close-create-sale:hover {
             color: #F52B00;
         }
     }
 }
 
-.cta-button-home{
-    bottom: 0 !important;
-    width: 60% !important;
-}
-
-.cta-button-text{
+.cta-button-text {
     color: white;
     font-family: oswald;
     font-weight: 300;
     font-size: 2rem;
     position: relative;
     z-index: 1;
+}
+
+.page-number-list {
+    grid-area: pagesCount;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+
+    .page-list-items {
+        width: 5%;
+
+        .page-button {
+            width: 70px;
+            height: 80px;
+        }
+    }
 }

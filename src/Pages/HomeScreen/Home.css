@@ -9,5 +9,10 @@
     background-repeat: no-repeat;
     background-position: 60% 100%;
     background-size: 60%;
+
+    .home-cta-button{
+        width: 10%;
+        height: 7%;
+    }
 }
 

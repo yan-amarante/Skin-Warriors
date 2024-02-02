@@ -6,8 +6,10 @@ import { useState, useEffect } from "react"
 
 import CreateSale from "../../Components/CreateSale"
 
+import Button from "../../Components/Button"
 
-const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales"
+
+const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales?page="
 
 
 export type Sale = {
@@ -46,14 +48,14 @@ function OfertasScreen() {
 
     useEffect(() => {
 
-        listSales()
+        listSales(API_LIST_SALES + "1")
 
     }, [])
 
 
-    async function listSales() {
+    async function listSales(URL: string) {
 
-        const response: Response = await fetch(API_LIST_SALES)
+        const response: Response = await fetch(URL)
 
         const data: Sale = await response.json()
 
@@ -71,22 +73,26 @@ function OfertasScreen() {
 
     function renderSalesList() {
 
-        return sales?.map((sale) => (
+        return sales?.map((sale) => {
 
-            <li className="skins-list-item" key={sale.id}>
-                <SkinCard
-                    type="vertical"
-                    id={sale.id}
-                    image={sale.image}
-                    name={sale.name}
-                    pattern={sale.pattern}
-                    price={sale.price}
-                    wear={sale.wear}
-                    category={sale.category}
-                />
-            </li>
+            if (typeof sale === "object") {
 
-        ))
+                return <li className="skins-list-item" key={sale.id}>
+                    <SkinCard
+                        type="vertical"
+                        id={sale.id}
+                        image={sale.image}
+                        name={sale.name}
+                        pattern={sale.pattern}
+                        price={sale.price}
+                        wear={sale.wear}
+                        category={sale.category}
+                    />
+                </li>
+
+            }
+
+        })
 
     }
 
@@ -102,7 +108,36 @@ function OfertasScreen() {
 
     }
 
-    
+    function changePage(pageNumber:string){
+
+        listSales(API_LIST_SALES + pageNumber)
+
+    }
+
+    function renderPageNumbers() {
+
+        const totalOfPages: any = sales !== null ? sales[sales.length - 1] : 0
+
+        const numberOfPages = []
+
+        for (let i = 1; i <= totalOfPages; i++) {
+
+            numberOfPages.push(i)
+
+        }
+
+        return numberOfPages.map((item) => {
+
+            return <li className="page-list-items">
+                <Button onClick={() => changePage(String(item))} className="page-button" title={String(item)} />
+            </li>
+
+        })
+
+
+    }
+
+
     return (
 
         <main className="sales-container">
@@ -116,7 +151,9 @@ function OfertasScreen() {
                 {sales !== null ? renderSalesList() : null}
             </ul>
             {renderCreateSaleComponent()}
-            <section></section>
+            <ul className="page-number-list" role="list">
+                {renderPageNumbers()}
+            </ul>
         </main>
 
     )
