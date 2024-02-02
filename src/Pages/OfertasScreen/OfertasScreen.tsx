@@ -108,7 +108,7 @@ function OfertasScreen() {
 
     }
 
-    function changePage(pageNumber:string){
+    function changePage(pageNumber: string) {
 
         listSales(API_LIST_SALES + pageNumber)
 
@@ -137,6 +137,32 @@ function OfertasScreen() {
 
     }
 
+    function renderSkeletonLoad() {
+
+        const numberOfPages = []
+
+        for (let i = 0; i < 14; i++) {
+
+            numberOfPages.push(i)
+
+        }
+
+        return numberOfPages.map((item) => {
+
+            return <li className="skins-list-item">
+                <section className="skeleton-load-container skin-card-container">
+                    <div className="skeleton-load-image"></div>
+                    <div className="skeleton-load-text"></div>
+                    <div className="skeleton-load-text"></div>
+                    <div className="skeleton-load-text"></div>
+                    <div className="skeleton-load-text"></div>
+                </section>
+            </li>
+
+        })
+
+    }
+
 
     return (
 
@@ -148,7 +174,7 @@ function OfertasScreen() {
                 <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
             </section>
             <ul role="list" className="skins-list-container">
-                {sales !== null ? renderSalesList() : null}
+                {sales !== null ? renderSalesList() : renderSkeletonLoad()}
             </ul>
             {renderCreateSaleComponent()}
             <ul className="page-number-list" role="list">
