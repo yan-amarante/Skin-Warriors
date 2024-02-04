@@ -110,7 +110,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
             return (
 
-                <option value={item.categoryName}>{item.categoryName}</option>
+                <h2 className="input-label" onClick={() => updateFormInfos("category", item.categoryName)}>{item.categoryName}</h2>
 
             )
 
@@ -126,7 +126,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                 return Object.keys(item.weapons).map((item: any) => {
 
-                    return <option value={item}>{item}</option>
+                    return <h2 className="input-label" onClick={() => updateFormInfos("name", item)}>{item}</h2>
 
                 })
 
@@ -152,7 +152,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                     return Object.keys(item.weapons[formInfos.name]).map((item: any) => {
 
-                        if (!null) return <option value={item}>{item}</option>
+                        if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("pattern", item)}>{item}</h2>
 
                     })
 
@@ -174,7 +174,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                     return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
 
-                        if (!null) return <option value={item.name}>{item.name}</option>
+                        if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
 
                     })
 
@@ -251,10 +251,10 @@ function CreateSale({ updateState }: CreateSaleProps) {
         <section className="elements-background create-sale-container">
             <Close onClick={() => updateState(false)} className="close-create-sale" />
             <form className="create-sale-form">
-                <Dropdown title="Categorias" onChange={() => updateFormInfos("category", categoriesSelect.current?.value)} selectRef={categoriesSelect} options={renderCategoriesOptions()} defaultMessage="Selecione uma categoria" />
-                <Dropdown title="Nome" onChange={() => updateFormInfos("name", nameSelect.current?.value)} selectRef={nameSelect} options={renderSkinsNameOptions()} defaultMessage="Selecione uma arma" />
-                <Dropdown title="Pintura" onChange={() => updateFormInfos("pattern", patternNameSelect.current?.value)} selectRef={patternNameSelect} options={renderSkinsPatterns()} defaultMessage="Selecione uma skin" />
-                <Dropdown title="Qualidade" onChange={() => updateFormInfos("wear", wearSelect.current?.value)} selectRef={wearSelect} options={renderSkinsWears()} defaultMessage="Selecione uma qualidade" />
+                <Dropdown title="Categorias" options={renderCategoriesOptions()} />
+                <Dropdown title="Nome" options={renderSkinsNameOptions()} />
+                <Dropdown title="Pintura" options={renderSkinsPatterns()} />
+                <Dropdown title="Qualidade" options={renderSkinsWears()} />
                 <input onChange={() => updateFormInfos("price", priceSelect.current?.value)} ref={priceSelect} type="text" />
                 <img src={renderSkinImage()} ref={imageSrc} alt="" />
             </form>
