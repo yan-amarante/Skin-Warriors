@@ -7,9 +7,12 @@ import { useState, useEffect } from "react"
 import CreateSale from "../../Components/CreateSale"
 
 import Button from "../../Components/Button"
+import Dropdown from "../../Components/Dropdown"
 
 
 const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales?page="
+
+const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
 
 
 export type Sale = {
@@ -45,13 +48,27 @@ function OfertasScreen() {
 
     const [createSale, setCreateSale] = useState<boolean>(false)
 
+    const [categories, setCategories] = useState<any>(null)
+
 
     useEffect(() => {
 
         listSales(API_LIST_SALES + "1")
 
+        listCategories()
+
     }, [])
 
+
+    async function listCategories() {
+
+        const response: Response = await fetch(API_SEARCH_CATEGORIES)
+
+        const data: Sale = await response.json()
+
+        transformToArray(data, setCategories)
+
+    }
 
     async function listSales(URL: string) {
 
@@ -59,15 +76,15 @@ function OfertasScreen() {
 
         const data: Sale = await response.json()
 
-        transformToArray(data)
+        transformToArray(data, setSales)
 
     }
 
-    function transformToArray(object: Sale) {
+    function transformToArray(object: Sale, updateState: any) {
 
         const array: any[] = Object.values(object)
 
-        setSales(array)
+        updateState(array)
 
     }
 
@@ -163,14 +180,33 @@ function OfertasScreen() {
 
     }
 
+    function renderCategoriesOptions(weapons: any) {
+
+        return weapons.map((item: any) => {
+
+            return <h2 className="input-label">{item}</h2>
+
+        })
+
+    }
+
+    function renderCategories() {
+
+        return categories?.map((item: any) => {
+
+            return <Dropdown title={item.categoryName} options={renderCategoriesOptions(Object.keys(item.weapons))} />
+
+        })
+
+    }
 
     return (
 
         <main className="sales-container">
             <section className="elements-background skins-filters-container">
-
             </section>
             <section className="elements-background skins-categories-container">
+                {renderCategories()}
                 <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
             </section>
             <ul role="list" className="skins-list-container">

@@ -1,0 +1,33 @@
+.dropdown-container{
+    position: relative;
+    width: 20%;
+}
+
+.title-arrow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.disabled-dropdown{
+    display: none;
+}
+
+.enabled-dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background: rgba(33, 35, 37, 0.9) !important;
+    width: 100%;
+}
+
+.input-label {
+    color: white;
+    font-family: oswald;
+    font-weight: 300;
+    font-size: 1rem;
+}
+.arrow-icon{
+    color: #ffffff;
+}
