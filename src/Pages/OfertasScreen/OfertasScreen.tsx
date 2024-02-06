@@ -7,7 +7,10 @@ import { useState, useEffect } from "react"
 import CreateSale from "../../Components/CreateSale"
 
 import Button from "../../Components/Button"
+
 import Dropdown from "../../Components/Dropdown"
+
+import CheckBox from "../../Components/CheckBox"
 
 
 const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales?page="
@@ -49,6 +52,20 @@ function OfertasScreen() {
     const [createSale, setCreateSale] = useState<boolean>(false)
 
     const [categories, setCategories] = useState<any>(null)
+
+    const [wearFilter, setWearFilter] = useState<any>({
+
+        "Nova de Fábrica": false,
+
+        "Pouco Usada": false,
+
+        "Testada em Campo": false,
+
+        "Bem Desgastada": false,
+
+        "Veterana de Guerra": false
+
+    })
 
 
     useEffect(() => {
@@ -200,10 +217,36 @@ function OfertasScreen() {
 
     }
 
+    function updateWearState(wear: any) {
+
+        if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true)) {
+
+            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
+
+            listSales(API_LIST_SALES + `1&wear=${wear}`)
+
+        }
+
+        else if (wearFilter[wear]) {
+
+            setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
+
+            listSales(API_LIST_SALES + "1")
+
+        }
+        
+    }
+
     return (
 
         <main className="sales-container">
             <section className="elements-background skins-filters-container">
+                <h2>Desgaste</h2>
+                <CheckBox state={wearFilter["Nova de Fábrica"]} updateState={() => updateWearState("Nova de Fábrica")} title="Nova de Fábrica" />
+                <CheckBox state={wearFilter["Pouco Usada"]} updateState={() => updateWearState("Pouco Usada")} title="Pouco Usada" />
+                <CheckBox state={wearFilter["Testada em Campo"]} updateState={() => updateWearState("Testada em Campo")} title="Testada em Campo" />
+                <CheckBox state={wearFilter["Bem Desgastada"]} updateState={() => updateWearState("Bem Desgastada")} title="Bem Desgastada" />
+                <CheckBox state={wearFilter["Veterana de Guerra"]} updateState={() => updateWearState("Veterana de Guerra")} title="Veterana de Guerra" />
             </section>
             <section className="elements-background skins-categories-container">
                 {renderCategories()}

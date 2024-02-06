@@ -14,6 +14,8 @@
         grid-area: filter;
         width: 85%;
         justify-self: center;
+        display: flex;
+        flex-direction: column;
     }
 
     .skins-categories-container {

@@ -1,0 +1,16 @@
+.check-box-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .check-box {
+        border: 1px solid #ffffff;
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+.enabled-checkBox{
+    background-color: red;
+}
