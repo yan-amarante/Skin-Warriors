@@ -67,6 +67,8 @@ function OfertasScreen() {
 
     })
 
+    const [selectedWeapon, setSelectedWeapon] = useState<any>(null)
+
 
     useEffect(() => {
 
@@ -144,7 +146,24 @@ function OfertasScreen() {
 
     function changePage(pageNumber: string) {
 
-        listSales(API_LIST_SALES + pageNumber)
+        let wear = null
+
+        Object.entries(wearFilter).forEach((item) => {
+
+            if (item[1] === true) {
+
+                wear = item[0]
+            }
+
+        })
+
+        if (wear !== null && selectedWeapon === null) listSales(API_LIST_SALES + `${pageNumber}&wear=${wear}`)
+
+        else if (wear && selectedWeapon !== null) listSales(API_LIST_SALES + `${pageNumber}&name=${selectedWeapon}&wear=${wear}`)
+
+        else if (wear === null && selectedWeapon !== null) listSales(API_LIST_SALES + `${pageNumber}&name=${selectedWeapon}`)
+
+        else listSales(API_LIST_SALES + pageNumber)
 
     }
 
@@ -197,11 +216,79 @@ function OfertasScreen() {
 
     }
 
+    function updateCategoryState(weapon: string) {
+
+        let wear = null
+
+        Object.entries(wearFilter).forEach((item) => {
+
+            if (item[1] === true) {
+
+                wear = item[0]
+            }
+
+        })
+
+        if (selectedWeapon === null && wear === null) {
+
+            setSelectedWeapon(weapon)
+
+            listSales(API_LIST_SALES + `1&name=${weapon}`)
+
+        }
+
+        else if (selectedWeapon === null && wear !== null) {
+
+            setSelectedWeapon(weapon)
+
+            listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
+
+        }
+
+        else if (selectedWeapon !== null && wear === null) {
+
+
+            if (weapon !== selectedWeapon) {
+
+                setSelectedWeapon(weapon)
+
+                listSales(API_LIST_SALES + `1&name=${weapon}`)
+
+            } else {
+
+                setSelectedWeapon(null)
+
+                listSales(API_LIST_SALES + "1")
+
+            }
+
+        }
+
+        else if (selectedWeapon && wear !== null) {
+
+            if (weapon !== selectedWeapon) {
+
+                setSelectedWeapon(weapon)
+
+                listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
+
+            } else {
+
+                setSelectedWeapon(null)
+
+                listSales(API_LIST_SALES + `1&wear=${wear}`)
+
+            }
+
+        }
+
+    }
+
     function renderCategoriesOptions(weapons: any) {
 
         return weapons.map((item: any) => {
 
-            return <h2 className="input-label">{item}</h2>
+            return <h2 onClick={() => updateCategoryState(item)} className="input-label">{item}</h2>
 
         })
 
@@ -219,7 +306,7 @@ function OfertasScreen() {
 
     function updateWearState(wear: any) {
 
-        if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true)) {
+        if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon === null) {
 
             setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
 
@@ -227,14 +314,29 @@ function OfertasScreen() {
 
         }
 
-        else if (wearFilter[wear]) {
+        else if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon !== null) {
+
+            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
+
+            listSales(API_LIST_SALES + `1&name=${selectedWeapon}&wear=${wear}`)
+
+        }
+
+        else if (selectedWeapon !== null) {
+
+            listSales(API_LIST_SALES + `1&name=${selectedWeapon}`)
+
+            setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
+
+        }
+        else if (selectedWeapon === null) {
 
             setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
 
             listSales(API_LIST_SALES + "1")
 
         }
-        
+
     }
 
     return (

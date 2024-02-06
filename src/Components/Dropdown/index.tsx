@@ -16,7 +16,7 @@ type DropdownProps<T extends ReactNode> = {
 }
 
 
-function Dropdown<FunctionType extends ReactNode>({ title, options, defaultMessage, optionsRef }: DropdownProps<FunctionType>) {
+function Dropdown<FunctionType extends ReactNode>({ title, options, defaultMessage }: DropdownProps<FunctionType>) {
 
     const [dropdown, setDropdown] = useState<boolean>(false)
 
