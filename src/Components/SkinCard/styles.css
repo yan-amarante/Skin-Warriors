@@ -83,7 +83,8 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
             width: 100%;
 
             .skin-price {
@@ -107,4 +108,15 @@
 
 
     }
+}
+
+.remove-item{
+    width: 10%;
+    height: 10%;
+    color: white;
+    transition: 0.2s ease-out;
+}
+
+.remove-item:hover {
+    color: #F52B00;
 }

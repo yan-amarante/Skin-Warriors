@@ -4,6 +4,12 @@ import AddCartIcon from "../Icons/AddCartIcon"
 
 import { Sale } from "../../Pages/OfertasScreen/OfertasScreen"
 
+import Close from "../Icons/Close";
+
+import { useContext } from 'react'
+
+import { cartContext } from "../../Context/cartContext"
+
 
 interface SkinCardProps extends Sale {
 
@@ -13,6 +19,15 @@ interface SkinCardProps extends Sale {
 
 
 function SkinCard({ type, id, image, name, pattern, price, wear, category }: SkinCardProps) {
+
+    const cartContextValue = useContext(cartContext)
+
+
+    if (!cartContextValue) throw new Error("useCartContext deve ser usado dentro de um cartProvider")
+
+
+    const { skin, setSkin } = cartContextValue
+
 
     const skinPropsContainer: Sale = {
 
@@ -33,11 +48,19 @@ function SkinCard({ type, id, image, name, pattern, price, wear, category }: Ski
     }
 
 
-    function returnDirectionStyle(){
+    function returnDirectionStyle() {
 
-        if(type === "vertical") return "vertical-direction"
+        if (type === "vertical") return "vertical-direction"
 
-        else if(type === "horizontal") return "horizontal-direction"
+        else if (type === "horizontal") return "horizontal-direction"
+
+    }
+
+    function removeItemFromCart() {
+
+        const newArray = skin?.filter((item) => item.id !== id)
+
+        setSkin(newArray)
 
     }
 
@@ -54,7 +77,7 @@ function SkinCard({ type, id, image, name, pattern, price, wear, category }: Ski
                 <p className="skin-wear">{wear}</p>
                 <section className="add_cart-container">
                     <p className="skin-price">{price}</p>
-                    <AddCartIcon skinProp={skinPropsContainer} className="add_cart-icon" />
+                    {type === "horizontal" ? <Close onClick={removeItemFromCart} className="remove-item" /> : <AddCartIcon skinProp={skinPropsContainer} className="add_cart-icon" />}
                 </section>
             </article>
         </section>

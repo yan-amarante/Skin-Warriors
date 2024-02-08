@@ -12,6 +12,11 @@ import { cartContext } from "../../Context/cartContext"
 
 import SkinCard from "../SkinCard"
 
+import Button from "../Button"
+
+
+const API_CLOSE_SALE = "https://api-skin-warriors.onrender.com/sales/close-sale/"
+
 
 type SideMenuProps = {
 
@@ -89,6 +94,36 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
 
     }
 
+    async function closePurchase() {
+
+        const config: any = {
+
+            method: "DELETE",
+
+            headers: {
+
+                "Content-Type": "application/json",
+
+                "Access-Control-Allow-Origin": "*",
+
+                "mode": "no-cors"
+
+            }
+
+        }
+
+        if (skin?.length !== undefined) {
+
+            for (let i = 0; i <= skin?.length; i++) {
+
+                await fetch(API_CLOSE_SALE + skin[i].id, config)
+
+            }
+
+        }
+
+    }
+
     return (
 
         <section className={`menu-container ${verifySideMenuState()} ${returnRightDirection()}`}>
@@ -108,28 +143,31 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                 null
             }
             {type === "cart" ?
-                <ul className="list-cart" role="list">
-                    {
-                        skin?.map((item) => {
-                            return (
-                                <>
-                                    <li key={item.id}>
-                                        <SkinCard
-                                            type="horizontal"
-                                            id={item.id}
-                                            image={item.image}
-                                            name={item.name}
-                                            pattern={item.pattern}
-                                            price={item.price}
-                                            wear={item.wear}
-                                            category={item.category}
-                                        />
-                                    </li>
-                                </>
-                            )
-                        })
-                    }
-                </ul>
+                <>
+                    <ul className="list-cart" role="list">
+                        {
+                            skin?.map((item) => {
+                                return (
+                                    <>
+                                        <li key={item.id}>
+                                            <SkinCard
+                                                type="horizontal"
+                                                id={item.id}
+                                                image={item.image}
+                                                name={item.name}
+                                                pattern={item.pattern}
+                                                price={item.price}
+                                                wear={item.wear}
+                                                category={item.category}
+                                            />
+                                        </li>
+                                    </>
+                                )
+                            })
+                        }
+                    </ul>
+                    <Button title="Finalizar Compra" className="buy-button" onClick={closePurchase} />
+                </>
                 : null
             }
         </section>
@@ -163,17 +201,17 @@ function SaleIcon({ className }: classNameProp) {
     )
 }
 
-function AddSaleIcon({ className }: classNameProp) {
+// function AddSaleIcon({ className }: classNameProp) {
 
-    return (
+//     return (
 
-        <svg className={className} width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.9526 12.5H26.6602C26.8769 12.5011 27.088 12.5906 27.2467 12.755C27.406 12.9199 27.4989 13.1469 27.5 13.3874V24.4777C27.5 24.7767 27.4138 25.1688 27.2582 25.5584C27.1023 25.9485 26.8963 26.2874 26.6944 26.4965L13.418 40.247C13.4179 40.2471 13.4177 40.2473 13.4176 40.2474C13.2584 40.4113 13.0468 40.5 12.8301 40.5C12.6133 40.5 12.4018 40.4113 12.2425 40.2474C12.2424 40.2473 12.2423 40.2471 12.2421 40.247L0.751408 28.3459C0.751283 28.3458 0.751158 28.3456 0.751034 28.3455C0.592127 28.18 0.5 27.9524 0.5 27.7117C0.5 27.471 0.592128 27.2435 0.751034 27.0779C0.751158 27.0778 0.751283 27.0776 0.751408 27.0775L14.0277 13.327C14.2281 13.1196 14.553 12.9078 14.9264 12.7477C15.3003 12.5873 15.673 12.5 15.9526 12.5ZM18.7463 23.3392C19.1331 23.5053 19.5484 23.5911 19.9682 23.5913C20.8169 23.5916 21.6272 23.2425 22.2219 22.6269C22.8161 22.0119 23.1471 21.1813 23.1474 20.3186C23.1477 19.4559 22.8172 18.6251 22.2234 18.0097C21.6291 17.3937 20.819 17.0441 19.9703 17.0438C19.5505 17.0436 19.1352 17.1292 18.7483 17.295C18.3614 17.4608 18.011 17.7034 17.7166 18.0081C17.4223 18.3128 17.1897 18.6735 17.0312 19.0694C16.8727 19.4652 16.7913 19.8889 16.7912 20.3164C16.791 20.744 16.8722 21.1677 17.0304 21.5637C17.1886 21.9596 17.421 22.3205 17.7151 22.6254C18.0093 22.9303 18.3595 23.1731 18.7463 23.3392Z" stroke="currentColor" />
-            <path d="M31.7273 5.38462H27V8.61539H31.7273V14H35.2727V8.61539H40V5.38462H35.2727V0H31.7273V5.38462Z" stroke="currentColor" />
-        </svg>
+//         <svg className={className} width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+//             <path d="M15.9526 12.5H26.6602C26.8769 12.5011 27.088 12.5906 27.2467 12.755C27.406 12.9199 27.4989 13.1469 27.5 13.3874V24.4777C27.5 24.7767 27.4138 25.1688 27.2582 25.5584C27.1023 25.9485 26.8963 26.2874 26.6944 26.4965L13.418 40.247C13.4179 40.2471 13.4177 40.2473 13.4176 40.2474C13.2584 40.4113 13.0468 40.5 12.8301 40.5C12.6133 40.5 12.4018 40.4113 12.2425 40.2474C12.2424 40.2473 12.2423 40.2471 12.2421 40.247L0.751408 28.3459C0.751283 28.3458 0.751158 28.3456 0.751034 28.3455C0.592127 28.18 0.5 27.9524 0.5 27.7117C0.5 27.471 0.592128 27.2435 0.751034 27.0779C0.751158 27.0778 0.751283 27.0776 0.751408 27.0775L14.0277 13.327C14.2281 13.1196 14.553 12.9078 14.9264 12.7477C15.3003 12.5873 15.673 12.5 15.9526 12.5ZM18.7463 23.3392C19.1331 23.5053 19.5484 23.5911 19.9682 23.5913C20.8169 23.5916 21.6272 23.2425 22.2219 22.6269C22.8161 22.0119 23.1471 21.1813 23.1474 20.3186C23.1477 19.4559 22.8172 18.6251 22.2234 18.0097C21.6291 17.3937 20.819 17.0441 19.9703 17.0438C19.5505 17.0436 19.1352 17.1292 18.7483 17.295C18.3614 17.4608 18.011 17.7034 17.7166 18.0081C17.4223 18.3128 17.1897 18.6735 17.0312 19.0694C16.8727 19.4652 16.7913 19.8889 16.7912 20.3164C16.791 20.744 16.8722 21.1677 17.0304 21.5637C17.1886 21.9596 17.421 22.3205 17.7151 22.6254C18.0093 22.9303 18.3595 23.1731 18.7463 23.3392Z" stroke="currentColor" />
+//             <path d="M31.7273 5.38462H27V8.61539H31.7273V14H35.2727V8.61539H40V5.38462H35.2727V0H31.7273V5.38462Z" stroke="currentColor" />
+//         </svg>
 
-    )
-}
+//     )
+// }
 
 
 export default SideMenu

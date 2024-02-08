@@ -26,13 +26,15 @@ function AddCartIcon({ className, skinProp }: AddCartIConProps) {
     }
 
 
-    const { setSkin } = contextValue
+    const { skin, setSkin } = contextValue
 
 
     function addItemToCart() {
 
-        setSkin((prevState: Sale[]) => ([ ...prevState, skinProp ]))
-        
+        const skinExist = skin?.find((item) => item.id === skinProp.id)
+
+        if (skinExist === undefined) setSkin((prevState: Sale[]) => ([...prevState, skinProp]))
+
     }
 
     return (

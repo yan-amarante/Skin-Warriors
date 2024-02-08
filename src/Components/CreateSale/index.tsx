@@ -58,12 +58,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     const categoriesSelect = useRef<HTMLSelectElement>(null)
 
-    const nameSelect = useRef<HTMLSelectElement>(null)
-
-    const patternNameSelect = useRef<HTMLSelectElement>(null)
-
-    const wearSelect = useRef<HTMLSelectElement>(null)
-
     const priceSelect = useRef<HTMLInputElement>(null)
 
     const imageSrc = useRef<HTMLImageElement>(null)

@@ -200,7 +200,7 @@ function OfertasScreen() {
 
         }
 
-        return numberOfPages.map((item) => {
+        return numberOfPages.map(() => {
 
             return <li className="skins-list-item">
                 <section className="skeleton-load-container skin-card-container">
