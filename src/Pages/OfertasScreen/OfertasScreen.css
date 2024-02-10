@@ -16,6 +16,8 @@
         justify-self: center;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .skins-categories-container {
@@ -48,12 +50,28 @@
         grid-area: skinsList;
         display: flex;
         flex-direction: row;
+        align-items: center;
         flex-wrap: wrap;
         width: 100%;
 
+
+        @media (max-width: 768px) {
+            grid-column-start: 1;
+        }
+
+
+
         .skins-list-item {
-            width: 100%;
-            flex: 0 0 calc(14% - 10px);
+            width: 14%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+
+            @media (min-width: 768px) and (max-width: 1366px) {
+                width: 33%;
+            }
+
         }
     }
 
@@ -107,6 +125,10 @@
     width: 100%;
     gap: 1rem;
     justify-content: center;
+    
+    @media (max-width: 768px) {
+        grid-column-start: 1;
+    }
 
     .page-list-items {
         width: 5%;
@@ -142,6 +164,18 @@
 
 }
 
+.enabled-weapon {
+    color: #F52B00 !important;
+}
+
+.disabled-weapon {
+    color: #ffffff !important;
+}
+
+.disabled-button {
+    border: 1px solid #212325 !important;
+}
+
 @keyframes skeletonLoad {
 
     0% {
@@ -149,5 +183,6 @@
     }
 
     100% {
-        background-color: hsl(210, 6%, 24%);    }
+        background-color: hsl(210, 6%, 24%);
+    }
 }

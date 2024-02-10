@@ -25,7 +25,7 @@ function CheckBox({ title, updateState,state }: CheckBoxProps) {
 
         <section className="check-box-container">
             <div onClick={updateState} className={`check-box ${changeCheckBoxStyle()}`}></div>
-            <h2>{title}</h2>
+            <h2 className="input-label">{title}</h2>
         </section>
     )
 }

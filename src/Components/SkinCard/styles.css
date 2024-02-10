@@ -5,13 +5,15 @@
     gap: 1.2vw;
     width: 200px;
     height: 350px;
+    justify-content: space-evenly;
 }
 
 .horizontal-direction{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 450px;
+    justify-content: space-evenly;
+    width: 400px;
     height: 200px;
 }
 
@@ -20,7 +22,6 @@
     border-radius: 5px;
     background: rgba(33, 35, 37, 0.01);
     backdrop-filter: blur(5px);
-    justify-content: space-evenly;
 
     .image-container {
         display: flex;
@@ -108,6 +109,10 @@
 
 
     }
+}
+
+.skin-infos-horizontal {
+    width: 50%;
 }
 
 .remove-item{

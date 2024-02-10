@@ -5,7 +5,7 @@ import React, { ReactNode, useState } from 'react';
 
 type DropdownProps<T extends ReactNode> = {
 
-    title: string;
+    title?: string;
 
     options: T;
 

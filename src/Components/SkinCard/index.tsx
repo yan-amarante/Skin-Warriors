@@ -71,7 +71,7 @@ function SkinCard({ type, id, image, name, pattern, price, wear, category }: Ski
             <section className="image-container">
                 <img className="skin-image" src={image} alt="" />
             </section>
-            <article className="skin-infos">
+            <article className={type === "vertical" ? "skin-infos" : "skin-infos skin-infos-horizontal"}>
                 <h2 className="skin-name">{name}</h2>
                 <p className="skin-pattern">{pattern}</p>
                 <p className="skin-wear">{wear}</p>
