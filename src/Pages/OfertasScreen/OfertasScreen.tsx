@@ -262,18 +262,17 @@ function OfertasScreen() {
 
     function updateCategoryState(weapon: string) {
 
-        let wear = null
+        let currentWear = null
 
-        Object.entries(wearFilter).forEach((item) => {
+        const wears = Object.entries(wearFilter)
 
-            if (item[1] === true) {
+        wears.forEach((wear) => {
 
-                wear = item[0]
-            }
+            if (wear[1] === true) currentWear = wear[0]
 
         })
 
-        if (selectedWeapon === null && wear === null) {
+        if (selectedWeapon === null && currentWear === null) {
 
             setSelectedWeapon(weapon)
 
@@ -281,15 +280,15 @@ function OfertasScreen() {
 
         }
 
-        else if (selectedWeapon === null && wear !== null) {
+        else if (selectedWeapon === null && currentWear !== null) {
 
             setSelectedWeapon(weapon)
 
-            listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
+            listSales(API_LIST_SALES + `1&name=${weapon}&wear=${currentWear}`)
 
         }
 
-        else if (selectedWeapon !== null && wear === null) {
+        else if (selectedWeapon !== null && currentWear === null) {
 
 
             if (weapon !== selectedWeapon) {
@@ -308,19 +307,19 @@ function OfertasScreen() {
 
         }
 
-        else if (selectedWeapon && wear !== null) {
+        else if (selectedWeapon && currentWear !== null) {
 
             if (weapon !== selectedWeapon) {
 
                 setSelectedWeapon(weapon)
 
-                listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
+                listSales(API_LIST_SALES + `1&name=${weapon}&wear=${currentWear}`)
 
             } else {
 
                 setSelectedWeapon(null)
 
-                listSales(API_LIST_SALES + `1&wear=${wear}`)
+                listSales(API_LIST_SALES + `1&wear=${currentWear}`)
 
             }
 
@@ -356,36 +355,70 @@ function OfertasScreen() {
 
     }
 
-    function updateWearState(wear: any) {
+    function verifyIfHasActiveFilter() {
 
-        if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon === null) {
+        const wears = Object.values(wearFilter)
 
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
 
-            listSales(API_LIST_SALES + `1&wear=${wear}`)
+        return wears.find((wear) => wear === true)
+
+    }
+
+    function updateWearState(wear: string) {
+
+        const pageNumber: string = "1"
+
+        const wearParam: string = `wear=${wear}`
+
+        const weaponNameParam: string = `name=${selectedWeapon}`
+
+
+        if (!wearFilter[wear] && !verifyIfHasActiveFilter()) {
+
+            if (selectedWeapon === null) {
+
+                const API_URL = `${API_LIST_SALES}${pageNumber}&${wearParam}`
+
+
+                setWearFilter((prevObject: any) => ({ ...prevObject, [wear]: true }))
+
+                listSales(API_URL)
+
+            }
+
+            else if (selectedWeapon !== null) {
+
+                const API_URL = `${API_LIST_SALES}${pageNumber}&${weaponNameParam}&${wearParam}`
+
+
+                setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
+
+                listSales(API_URL)
+
+            }
 
         }
 
-        else if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon !== null) {
-
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
-
-            listSales(API_LIST_SALES + `1&name=${selectedWeapon}&wear=${wear}`)
-
-        }
 
         else if (selectedWeapon !== null) {
 
-            listSales(API_LIST_SALES + `1&name=${selectedWeapon}`)
+            const API_URL = `${API_LIST_SALES}${pageNumber}&${weaponNameParam}`
+
+
+            listSales(API_URL)
 
             setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
 
         }
+
         else if (selectedWeapon === null) {
+
+            const API_URL = `${API_LIST_SALES}${pageNumber}`
+
 
             setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
 
-            listSales(API_LIST_SALES + "1")
+            listSales(API_URL)
 
         }
 

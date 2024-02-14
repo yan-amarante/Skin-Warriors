@@ -56,8 +56,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
     })
 
 
-    const categoriesSelect = useRef<HTMLSelectElement>(null)
-
     const priceSelect = useRef<HTMLInputElement>(null)
 
     const imageSrc = useRef<HTMLImageElement>(null)
@@ -67,9 +65,9 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
         fetchCategories()
 
-        updateFormInfos("name", categoriesSelect.current?.value)
+        updateFormInfos("pattern", undefined)
 
-    }, [formInfos.category]);
+    }, [formInfos.category])
 
 
     useEffect(() => {
@@ -112,21 +110,60 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     }
 
-    function renderSkinsNameOptions() {
+    function chooseKeyByParameter(key: string, item: any) {
+
+        if (key === "name") {
+
+            if (formInfos.category !== null) return item.weapons
+
+        }
+
+        else if (key === "pattern") {
+
+            if (formInfos.name && item.weapons[formInfos.name] !== undefined) return item.weapons[formInfos.name]
+
+            else return undefined
+
+        }
+
+    }
+
+    function renderOptionsByCategory(key: string) {
 
         return categories?.map((item: any) => {
 
             if (item.categoryName === formInfos.category) {
 
-                return Object.keys(item.weapons).map((item: any) => {
+                const iterateKey = chooseKeyByParameter(key, item)
 
-                    return <h2 className="input-label" onClick={() => updateFormInfos("name", item)}>{item}</h2>
+                if (iterateKey !== undefined) {
 
-                })
+                    return Object.keys(iterateKey).map((itemKey) => (
+
+                        <h2 key={itemKey} className="input-label" onClick={() => updateFormInfos(key, itemKey)}>
+                            {itemKey}
+                        </h2>
+
+
+                    ))
+
+                } else return <h2>null</h2>
 
             }
 
         })
+
+    }
+
+    function renderSkinsNameOptions() {
+
+        if (formInfos.category !== null) return renderOptionsByCategory("name")
+
+    }
+
+    function renderSkinsPatterns() {
+
+        if (formInfos.name !== undefined) return renderOptionsByCategory("pattern")
 
     }
 
@@ -136,41 +173,27 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     }
 
-    function renderSkinsPatterns() {
-
-        return categories?.map((item: any) => {
-
-            if (item.categoryName === formInfos.category) {
-
-                if (formInfos.name && item.weapons[formInfos.name] !== undefined) {
-
-                    return Object.keys(item.weapons[formInfos.name]).map((item: any) => {
-
-                        if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("pattern", item)}>{item}</h2>
-
-                    })
-
-                }
-
-            }
-
-        })
-
-    }
-
     function renderSkinsWears() {
 
         return categories?.map((item: any) => {
 
-            if (item.categoryName === formInfos.category && categories !== null) {
+            if (item.categoryName === formInfos.category && categories !== undefined) {
 
                 if (formInfos.name && formInfos.pattern) {
 
-                    return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
+                    if (item.weapons[formInfos.name] !== undefined) {
 
-                        if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
+                        if (item.weapons[formInfos.name][formInfos.pattern].wears !== undefined) {
 
-                    })
+                            return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
+
+                                if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
+
+                            })
+
+                        }
+
+                    } else return <h2>null</h2>
 
                 }
 
