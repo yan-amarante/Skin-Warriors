@@ -1,3 +1,5 @@
+import "./styles.css"
+
 import { useState, useEffect, useRef } from "react"
 
 import Close from "../../Components/Icons/Close"
@@ -5,6 +7,8 @@ import Close from "../../Components/Icons/Close"
 import Dropdown from "../../Components/Dropdown"
 
 import { Categories } from "../../Pages/OfertasScreen/OfertasScreen"
+
+import Button from "../Button"
 
 
 const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
@@ -90,6 +94,14 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     }
 
+    function changeColorByState(currentState: string | undefined, state: string) {
+
+        if (formInfos[currentState] === state) return "enabled-weapon"
+
+        else if (formInfos[currentState] !== state) return "disabled-weapon"
+
+    }
+
     function renderCategoriesOptions() {
 
         if (categories === null) {
@@ -102,7 +114,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
             return (
 
-                <h2 className="input-label" onClick={() => updateFormInfos("category", item.categoryName)}>{item.categoryName}</h2>
+                <h2 className={`input-label-dropdown ${changeColorByState("category", item.categoryName)}`} onClick={() => updateFormInfos("category", item.categoryName)}>{item.categoryName}</h2>
 
             )
 
@@ -140,7 +152,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                     return Object.keys(iterateKey).map((itemKey) => (
 
-                        <h2 key={itemKey} className="input-label" onClick={() => updateFormInfos(key, itemKey)}>
+                        <h2 key={itemKey} className={`input-label-dropdown ${changeColorByState(key, itemKey)}`} onClick={() => updateFormInfos(key, itemKey)}>
                             {itemKey}
                         </h2>
 
@@ -187,7 +199,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                             return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
 
-                                if (!null) return <h2 className="input-label" onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
+                                if (!null) return <h2 className={`input-label-dropdown ${changeColorByState("wear", item.name)}`} onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
 
                             })
 
@@ -272,10 +284,10 @@ function CreateSale({ updateState }: CreateSaleProps) {
                 <Dropdown title="Nome" options={renderSkinsNameOptions()} />
                 <Dropdown title="Pintura" options={renderSkinsPatterns()} />
                 <Dropdown title="Qualidade" options={renderSkinsWears()} />
-                <input onChange={() => updateFormInfos("price", priceSelect.current?.value)} ref={priceSelect} type="text" />
+                <input className="price-input input-label" onChange={() => updateFormInfos("price", priceSelect.current?.value)} ref={priceSelect} type="text" />
                 <img src={renderSkinImage()} ref={imageSrc} alt="" />
             </form>
-            <button onClick={sendSale} className="cta-button-home cta-button-text">Publicar Oferta</button>
+            <Button title="Publicar Oferta" onClick={sendSale} />
         </section>
 
     )

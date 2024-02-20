@@ -12,9 +12,11 @@ import Home from './Pages/HomeScreen/Home.tsx'
 
 import OfertasScreen from './Pages/OfertasScreen/OfertasScreen.tsx'
 
-import { NavigationProvider } from './Context/navigationContext.jsx'
+import { NavigationProvider } from './Context/navigationContext.tsx'
 
-import { CartProvider } from './Context/cartContext.jsx'
+import { CartProvider } from './Context/cartContext.tsx'
+
+import { SalesFiltersProvider } from './Context/salesFiltersContext.tsx'
 
 
 const router = createBrowserRouter([
@@ -55,11 +57,13 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
   <React.StrictMode>
-    <CartProvider>
-      <NavigationProvider>
-        <RouterProvider router={router} />
-      </NavigationProvider>
-    </CartProvider>
+    <SalesFiltersProvider>
+      <CartProvider>
+        <NavigationProvider>
+          <RouterProvider router={router} />
+        </NavigationProvider>
+      </CartProvider>
+    </SalesFiltersProvider>
   </React.StrictMode >,
 
 )

@@ -10,42 +10,6 @@
     width: 100%;
     min-height: 90vh;
 
-    .skins-filters-container {
-        grid-area: filter;
-        width: 85%;
-        justify-self: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .skins-categories-container {
-        grid-area: categories;
-        height: 50%;
-        width: 100%;
-        justify-self: center;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        z-index: 1;
-
-        .create-sale-button {
-            color: white;
-            background: none;
-            border: none;
-            font-family: oswald;
-            font-weight: 300;
-            font-size: 1rem;
-            transition: color 0.2s ease-out;
-        }
-
-        .create-sale-button:hover {
-            color: #F52B00;
-        }
-    }
-
     .skins-list-container {
         grid-area: skinsList;
         display: flex;
@@ -74,39 +38,6 @@
 
         }
     }
-
-    .create-sale-container {
-        width: 30%;
-        height: 70%;
-        position: absolute;
-        align-self: center;
-        justify-self: center;
-        justify-content: space-around;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 1;
-
-        .close-create-sale {
-            width: 10%;
-            height: 10%;
-            color: white;
-            transition: 0.2s ease-out;
-            align-self: flex-start;
-        }
-
-        .create-sale-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-            height: 60%;
-        }
-
-        .close-create-sale:hover {
-            color: #F52B00;
-        }
-    }
 }
 
 .cta-button-text {
@@ -116,28 +47,6 @@
     font-size: 2rem;
     position: relative;
     z-index: 1;
-}
-
-.page-number-list {
-    grid-area: pagesCount;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 1rem;
-    justify-content: center;
-    
-    @media (max-width: 768px) {
-        grid-column-start: 1;
-    }
-
-    .page-list-items {
-        width: 5%;
-
-        .page-button {
-            width: 70px;
-            height: 80px;
-        }
-    }
 }
 
 .skeleton-load-container {
@@ -170,10 +79,6 @@
 
 .disabled-weapon {
     color: #ffffff !important;
-}
-
-.disabled-button {
-    border: 1px solid #212325 !important;
 }
 
 @keyframes skeletonLoad {

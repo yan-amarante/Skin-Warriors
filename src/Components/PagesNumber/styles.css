@@ -1,0 +1,21 @@
+.page-number-list {
+    grid-area: pagesCount;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+    justify-content: center;
+    
+    @media (max-width: 768px) {
+        grid-column-start: 1;
+    }
+
+    .page-list-items {
+        width: 5%;
+
+        .page-button {
+            width: 70px;
+            height: 80px;
+        }
+    }
+}

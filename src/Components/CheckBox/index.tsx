@@ -13,11 +13,12 @@ type CheckBoxProps = {
 
 function CheckBox({ title, updateState, state }: CheckBoxProps) {
 
+
     function changeCheckBoxStyle() {
 
-        if (state) return "enabled-checkBox"
+        if (state === title) return "enabled-checkBox"
 
-        else if (!state) return "disabled-checkBox"
+        else return "disabled-checkBox"
 
     }
 

@@ -1,0 +1,25 @@
+.skins-categories-container {
+    grid-area: categories;
+    height: 50%;
+    width: 100%;
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1;
+
+    .create-sale-button {
+        color: white;
+        background: none;
+        border: none;
+        font-family: oswald;
+        font-weight: 300;
+        font-size: 1rem;
+        transition: color 0.2s ease-out;
+    }
+
+    .create-sale-button:hover {
+        color: #F52B00;
+    }
+}

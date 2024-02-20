@@ -10,7 +10,7 @@ import { navigationContext } from "../../Context/navigationContext"
 
 import { cartContext } from "../../Context/cartContext"
 
-import SkinCard from "../SkinCard"
+import HorizontalSkinCard from "../HorizontalSkinCard"
 
 import Button from "../Button"
 
@@ -154,8 +154,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                                 return (
                                     <>
                                         <li key={item.id}>
-                                            <SkinCard
-                                                type="horizontal"
+                                            <HorizontalSkinCard
                                                 id={item.id}
                                                 image={item.image}
                                                 name={item.name}

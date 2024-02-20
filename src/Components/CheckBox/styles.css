@@ -12,10 +12,17 @@
         height: 30px;
     }
 
+    .check-box:hover{
+        border-color: #F52B00;
+        transition: border-color 0.3s ease-out;
+    }
+
 }
 
 .enabled-checkBox {
-    background: url(/src/assets/skinCardBg.svg);
+    background: url("../../assets/topographyRedSmall.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    border-color: #F52B00 !important;
 }

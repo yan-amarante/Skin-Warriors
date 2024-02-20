@@ -4,19 +4,9 @@
     align-items: center;
     gap: 1.2vw;
     width: 95%;
-    height: 95%;
     max-width: 200px;
     height: 350px;
     justify-content: space-evenly;
-}
-
-.horizontal-direction{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 400px;
-    height: 200px;
 }
 
 .skin-card-container {
@@ -111,19 +101,4 @@
 
 
     }
-}
-
-.skin-infos-horizontal {
-    width: 50%;
-}
-
-.remove-item{
-    width: 10%;
-    height: 10%;
-    color: white;
-    transition: 0.2s ease-out;
-}
-
-.remove-item:hover {
-    color: #F52B00;
 }

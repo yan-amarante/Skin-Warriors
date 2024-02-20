@@ -1,0 +1,9 @@
+.skins-filters-container {
+    grid-area: filter;
+    width: 85%;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
