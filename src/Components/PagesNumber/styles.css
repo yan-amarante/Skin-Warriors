@@ -5,6 +5,9 @@
     width: 100%;
     gap: 1rem;
     justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
+    height: 100%;
     
     @media (max-width: 768px) {
         grid-column-start: 1;

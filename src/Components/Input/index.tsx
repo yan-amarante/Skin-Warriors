@@ -5,16 +5,18 @@ type inputProps = {
 
     title: string;
 
+    onChange: any
+
 }
 
 
-function Input({title}:inputProps){
+function Input({title, onChange}:inputProps){
 
     return(
 
         <section>
             <h3 className="input-label">{title}</h3>
-            <input className="input" type="text" />
+            <input onChange={onChange} className="input" type="text" />
         </section>
 
     )

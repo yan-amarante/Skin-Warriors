@@ -1,6 +1,6 @@
 .skins-categories-container {
     grid-area: categories;
-    height: 50%;
+    height: 100%;
     width: 100%;
     justify-self: center;
     display: flex;

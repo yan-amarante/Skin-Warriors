@@ -1,6 +1,6 @@
 import "./styles.css"
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
 
 
 type DropdownProps<T extends ReactNode> = {
@@ -19,6 +19,36 @@ type DropdownProps<T extends ReactNode> = {
 function Dropdown<FunctionType extends ReactNode>({ title, options, defaultMessage }: DropdownProps<FunctionType>) {
 
     const [dropdown, setDropdown] = useState<boolean>(false)
+
+
+    const dropdownRef = useRef<any>(null)
+
+
+    useEffect(() => {
+
+        let handler = (e: any) => {
+
+            if (dropdownRef.current !== null) {
+
+                if (!dropdownRef.current.contains(e.target)) {
+
+                    setDropdown(false)
+
+                }
+
+            }
+        }
+
+        document.addEventListener("mousedown", handler)
+
+        return () => {
+
+            document.removeEventListener("mousedown", handler)
+
+        }
+
+    })
+
 
     function openOptions() {
 
@@ -39,7 +69,7 @@ function Dropdown<FunctionType extends ReactNode>({ title, options, defaultMessa
 
     return (
 
-        <section className="dropdown-container">
+        <section ref={dropdownRef} className="dropdown-container">
             <section onClick={openOptions} className="title-arrow">
                 <h3 className="input-label">{title}</h3>
                 <Arrow />

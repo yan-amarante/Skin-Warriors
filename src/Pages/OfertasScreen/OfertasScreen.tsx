@@ -20,7 +20,7 @@ const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/lis
 
 export type Sale = {
 
-    id: number;
+    id?: number;
 
     image: string;
 
@@ -28,7 +28,7 @@ export type Sale = {
 
     pattern: string;
 
-    price: string;
+    price: string | number;
 
     wear: string;
 
@@ -78,11 +78,15 @@ function OfertasScreen() {
 
         if (salesFilters?.currentWear !== undefined && salesFilters?.currentWeapon === undefined) {
 
+            setSales(null)
+
             listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&wear=${salesFilters?.currentWear}`)
 
         }
 
         else if (salesFilters?.currentWear && salesFilters?.currentWeapon !== undefined) {
+
+            setSales(null)
 
             listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&wear=${salesFilters?.currentWear}&name=${salesFilters?.currentWeapon}`)
 
@@ -90,10 +94,14 @@ function OfertasScreen() {
 
         else if (salesFilters?.currentWear === undefined && salesFilters?.currentWeapon !== undefined) {
 
+            setSales(null)
+
             listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&name=${salesFilters?.currentWeapon}`)
 
         }
         else {
+
+            setSales(null)
 
             listSales(`${API_LIST_SALES}${salesFilters?.currentPage}`)
 

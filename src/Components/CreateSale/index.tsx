@@ -2,13 +2,13 @@ import "./styles.css"
 
 import { useState, useEffect, useRef } from "react"
 
-import Close from "../../Components/Icons/Close"
-
 import Dropdown from "../../Components/Dropdown"
 
 import { Categories } from "../../Pages/OfertasScreen/OfertasScreen"
 
 import Button from "../Button"
+
+import Input from "../Input"
 
 
 const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
@@ -60,8 +60,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
     })
 
 
-    const priceSelect = useRef<HTMLInputElement>(null)
-
     const imageSrc = useRef<HTMLImageElement>(null)
 
 
@@ -96,19 +94,13 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     function changeColorByState(currentState: string | undefined, state: string) {
 
-        if (formInfos[currentState] === state) return "enabled-weapon"
+        if (formInfos[currentState as keyof typeof formInfos] === state) return "enabled-weapon"
 
-        else if (formInfos[currentState] !== state) return "disabled-weapon"
+        else if (formInfos[currentState as keyof typeof formInfos] !== state) return "disabled-weapon";
 
     }
 
     function renderCategoriesOptions() {
-
-        if (categories === null) {
-
-            fetchCategories()
-
-        }
 
         return categories?.map((item) => {
 
@@ -174,7 +166,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
     }
 
     function renderSkinsPatterns() {
-
+        setTimeout(() => console.log("1"), 1000)
         if (formInfos.name !== undefined) return renderOptionsByCategory("pattern")
 
     }
@@ -278,16 +270,18 @@ function CreateSale({ updateState }: CreateSaleProps) {
     return (
 
         <section className="elements-background create-sale-container">
-            <Close onClick={() => updateState(false)} className="close-create-sale" />
             <form className="create-sale-form">
                 <Dropdown title="Categorias" options={renderCategoriesOptions()} />
                 <Dropdown title="Nome" options={renderSkinsNameOptions()} />
                 <Dropdown title="Pintura" options={renderSkinsPatterns()} />
+                <img className="skin-preview" src={renderSkinImage()} ref={imageSrc} alt="" />
                 <Dropdown title="Qualidade" options={renderSkinsWears()} />
-                <input className="price-input input-label" onChange={() => updateFormInfos("price", priceSelect.current?.value)} ref={priceSelect} type="text" />
-                <img src={renderSkinImage()} ref={imageSrc} alt="" />
+                <Input title="Preço" onChange={(e: any) => updateFormInfos("price", e.target.value)} />
             </form>
-            <Button title="Publicar Oferta" onClick={sendSale} />
+            <section className="buttons-container">
+                <Button title="Publicar Oferta" onClick={sendSale} />
+                <Button title="Cancelar" onClick={() => updateState(false)} />
+            </section>
         </section>
 
     )
