@@ -22,17 +22,44 @@
     background: rgba(33, 35, 37, 0.9) !important;
     width: 100%;
     min-width: 200px;
-    height: 200px;
+    height: 100px;
     overflow: scroll;
     z-index: 1;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666A70;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+
+
 .input-label {
-    color: white;
     font-family: oswald;
     font-weight: 300;
     font-size: 1rem;
     transition: color 0.2s ease-out;
+}
+
+.input-label-enabled {
+    color: #ffffff !important;
+}
+
+.input-label-disabled {
+    color: #666A70 !important;
 }
 
 .input-label-dropdown {
@@ -47,7 +74,8 @@
 .title-arrow:hover .input-label {
     color: #F52B00 !important;
 }
-.input-label-dropdown:hover{
+
+.input-label-dropdown:hover {
     color: #F52B00 !important;
 }
 

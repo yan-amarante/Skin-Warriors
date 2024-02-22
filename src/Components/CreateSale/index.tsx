@@ -24,7 +24,7 @@ type formInfos = {
 
     wear: string | null | undefined;
 
-    price: number | null | undefined;
+    price: string | null | undefined;
 
     category: string | null | undefined;
 
@@ -70,7 +70,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
         updateFormInfos("pattern", undefined)
 
     }, [formInfos.category])
-
 
     useEffect(() => {
 
@@ -151,7 +150,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                     ))
 
-                } else return <h2>null</h2>
+                }
 
             }
 
@@ -166,7 +165,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
     }
 
     function renderSkinsPatterns() {
-        setTimeout(() => console.log("1"), 1000)
+
         if (formInfos.name !== undefined) return renderOptionsByCategory("pattern")
 
     }
@@ -197,7 +196,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                         }
 
-                    } else return <h2>null</h2>
+                    }
 
                 }
 
@@ -227,43 +226,57 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
     }
 
-    async function sendSale() {
+    function replaceComma(price: any) {
 
-        const config: any = {
+        if (price !== undefined) {
 
-            method: "POST",
-
-            body: JSON.stringify({
-
-                image: formInfos.image,
-
-                name: formInfos.name,
-
-                pattern: formInfos.pattern,
-
-                wear: formInfos.wear,
-
-                price: formInfos.price,
-
-                category: formInfos.category,
-
-            }),
-
-            headers: {
-
-                "Content-Type": "application/json",
-
-                "Access-Control-Allow-Origin": "*",
-
-                "mode": "no-cors"
-
-            }
+            return price.replace(/,/g, '.')
 
         }
 
-        await fetch(API_POST_SALE, config)
+    }
 
-        alert("sucesso")
+    async function sendSale() {
+
+        if (formInfos.image && formInfos.name && formInfos.pattern && formInfos.wear && formInfos.price && formInfos.category !== null || undefined) {
+
+            const config: any = {
+
+                method: "POST",
+
+                body: JSON.stringify({
+
+                    image: formInfos.image,
+
+                    name: formInfos.name,
+
+                    pattern: formInfos.pattern,
+
+                    wear: formInfos.wear,
+
+                    price: replaceComma(formInfos.price),
+
+                    category: formInfos.category,
+
+                }),
+
+                headers: {
+
+                    "Content-Type": "application/json",
+
+                    "Access-Control-Allow-Origin": "*",
+
+                    "mode": "no-cors"
+
+                }
+
+            }
+
+            await fetch(API_POST_SALE, config)
+
+            alert("sucesso")
+
+        }
 
     }
 
@@ -276,7 +289,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
                 <Dropdown title="Pintura" options={renderSkinsPatterns()} />
                 <img className="skin-preview" src={renderSkinImage()} ref={imageSrc} alt="" />
                 <Dropdown title="Qualidade" options={renderSkinsWears()} />
-                <Input title="Preço" onChange={(e: any) => updateFormInfos("price", e.target.value)} />
+                <Input classname="input-width" title="Preço" onChange={(e: any) => updateFormInfos("price", e.target.value)} />
             </form>
             <section className="buttons-container">
                 <Button title="Publicar Oferta" onClick={sendSale} />

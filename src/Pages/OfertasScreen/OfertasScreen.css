@@ -14,9 +14,10 @@
         grid-area: skinsList;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
         width: 100%;
+        gap: 0.7rem;
 
 
         @media (max-width: 768px) {
@@ -26,7 +27,7 @@
 
 
         .skins-list-item {
-            width: 14%;
+            width: 13%;
 
             @media (max-width: 768px) {
                 width: 100%;
@@ -50,11 +51,12 @@
 }
 
 .skeleton-load-container {
-    width: 200px;
-    height: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    max-width: 200px;
+    min-height: 300px;
     justify-content: space-evenly;
 
 

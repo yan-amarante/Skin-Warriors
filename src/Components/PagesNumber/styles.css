@@ -3,18 +3,17 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    gap: 1rem;
+    gap: 0.6vw;
     justify-content: center;
     align-items: flex-end;
-    margin-bottom: 0.5rem;
-    height: 100%;
+    height: 90%;
+    padding: 1rem;
     
     @media (max-width: 768px) {
         grid-column-start: 1;
     }
 
     .page-list-items {
-        width: 5%;
 
         .page-button {
             width: 70px;

@@ -6,11 +6,10 @@
 }
 
 .input {
-    background: none;
-    border: none;
-    border-bottom: 1px solid #ffffff;
     color: #ffffff;
     font-family: oswald;
     font-weight: 300;
     font-size: 1rem;
+    border: 1px solid #212325;
+    background-color: rgba(33, 35, 37, 0.3);
 }

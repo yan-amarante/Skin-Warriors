@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     gap: 0.8rem;
-    width: 50%;
+    width: 60%;
 
     .check-box {
         border: 1px solid #212325;

@@ -137,7 +137,9 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
     return (
 
         <section className="elements-background skins-categories-container">
-            {renderCategories()}
+            <section className="categories-dropdowns-container">
+                {renderCategories()}
+            </section>
             <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
         </section>
 
