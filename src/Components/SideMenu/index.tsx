@@ -127,11 +127,17 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
 
     }
 
+    function chooseClassByParentComponent(){
+
+        if(type === "cart") return "cart-type"
+
+        else if(type === "menu") return "menu-type"
+    }
 
     return (
 
         <section className={`menu-container ${verifySideMenuState()} ${returnRightDirection()}`}>
-            <Close onClick={updateMenuState} className="close-menu" />
+            <Close onClick={updateMenuState} className={`close-menu ${chooseClassByParentComponent()}`} />
             {type === "menu" ?
                 <ul className="list-nav" role="list">
                     <li onClick={() => changePage("/")} className="list-nav-items">

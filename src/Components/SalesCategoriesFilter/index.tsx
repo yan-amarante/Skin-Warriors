@@ -134,11 +134,25 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
     }
 
+    function renderSkeletonLoad() {
+
+        return (
+            <>
+                <div className="skeleton-load-category"></div>
+                <div className="skeleton-load-category"></div>
+                <div className="skeleton-load-category"></div>
+                <div className="skeleton-load-category"></div>
+                <div className="skeleton-load-category"></div>
+                <div className="skeleton-load-category"></div>
+            </>
+        )
+    }
+
     return (
 
         <section className="elements-background skins-categories-container">
             <section className="categories-dropdowns-container">
-                {renderCategories()}
+                {categories === null ? renderSkeletonLoad() : renderCategories()}
             </section>
             <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
         </section>

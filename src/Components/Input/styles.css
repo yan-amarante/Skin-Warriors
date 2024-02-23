@@ -10,6 +10,7 @@
     font-family: oswald;
     font-weight: 300;
     font-size: 1rem;
+    background: #1C1D1F ;
     border: 1px solid #212325;
-    background-color: rgba(33, 35, 37, 0.3);
+    border-radius: 5px;
 }

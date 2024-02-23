@@ -1,5 +1,5 @@
 .menu-container {
-    width: 470px;
+    width: 30%;
     height: 100%;
     border: 1px solid #212325;
     border-radius: 5px;
@@ -19,8 +19,12 @@
         height: 10%;
         color: white;
         transition: 0.2s ease-out;
+    }
+    .cart-type{
         align-self: flex-start;
-
+    }
+    .menu-type{
+        align-self: flex-end;
     }
 
     .list-nav {
