@@ -14,13 +14,19 @@
 
     @media (max-width: 768px) {
         grid-column-start: 1;
+        width: 95%;
     }
 
     .skeleton-load-category {
         width: 80px;
         height: 20px;
         animation: skeletonLoad 2s linear infinite alternate;
+
+        @media (max-width: 768px) {
+            width: 30%;
+        }
     }
+
 
     .categories-dropdowns-container {
         display: flex;
@@ -31,6 +37,8 @@
 
         @media (max-width: 768px) {
             width: 80%;
+            flex-wrap: wrap;
+
         }
     }
 

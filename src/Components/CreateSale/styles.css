@@ -10,6 +10,16 @@
     align-items: center;
     z-index: 1;
 
+    @media (max-width: 1365px) {
+        width: 40%;
+        height: 20%;
+    }
+    @media (max-width: 767px) {
+        width: 90%;
+        height: 10%;
+    }
+
+
     .close-create-sale {
         width: 10%;
         height: 10%;

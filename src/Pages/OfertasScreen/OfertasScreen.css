@@ -11,18 +11,29 @@
     min-height: 90vh;
     position: relative;
 
+    @media (max-width: 1365px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .skins-list-container {
         grid-area: skinsList;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         flex-wrap: wrap;
-        width: 100%;
         gap: 0.7rem;
-
+        width: 100%;
+        justify-content: flex-start;
 
         @media (max-width: 768px) {
-            grid-column-start: 1;
+            justify-content: center;
+        }
+
+        @media (min-width: 767px) and (max-width: 1365px) {
+            width: 80%;
+            justify-content: flex-start;
         }
 
 
@@ -31,11 +42,11 @@
             width: 13%;
 
             @media (max-width: 767px) {
-                width: 100%;
+                width: 33%;
             }
 
             @media (min-width: 768px) and (max-width: 1365px) {
-                width: 50%;
+                width: 32%;
             }
 
         }
@@ -97,7 +108,11 @@
     margin: auto auto;
     gap: 1rem;
 
-    .caution-icon{
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+
+    .caution-icon {
         width: 40%;
         height: 40%;
         color: #FF0000;
@@ -108,6 +123,7 @@
         font-family: oswald;
         font-weight: 300;
         font-size: 1.3rem;
+        text-align: center;
     }
 }
 

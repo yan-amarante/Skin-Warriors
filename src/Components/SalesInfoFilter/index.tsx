@@ -106,24 +106,16 @@ function SalesInfoFilter() {
 
     return (
         <>
-            {viewportWidth < 1366 ?
-                <section onClick={toggleFilters} className="button-toggle-filters">
-                    <FilterIcon />
-                    <section className={changeClassnameIfToggled()}>
-                        <Close className="close-icon-filters" onClick={toggleFilters} />
-                        {renderFilterOptions()}
-                    </section>
-                </section>
-                :
-                <section className="elements-background skins-filters-container">
-                    <h2 className="input-label">Desgaste</h2>
-                    <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Nova de Fábrica")} title="Nova de Fábrica" />
-                    <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Pouco Usada")} title="Pouco Usada" />
-                    <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Testada em Campo")} title="Testada em Campo" />
-                    <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Bem Desgastada")} title="Bem Desgastada" />
-                    <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Veterana de Guerra")} title="Veterana de Guerra" />
-                </section>
-            }
+
+            <section className="elements-background skins-filters-container">
+                <h2 className="input-label">Desgaste</h2>
+                <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Nova de Fábrica")} title="Nova de Fábrica" />
+                <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Pouco Usada")} title="Pouco Usada" />
+                <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Testada em Campo")} title="Testada em Campo" />
+                <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Bem Desgastada")} title="Bem Desgastada" />
+                <CheckBox state={salesFilters?.currentWear} updateState={() => updateWearState("Veterana de Guerra")} title="Veterana de Guerra" />
+            </section>
+
         </>
     )
 

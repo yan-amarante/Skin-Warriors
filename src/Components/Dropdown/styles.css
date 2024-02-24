@@ -1,6 +1,10 @@
 .dropdown-container {
     position: relative;
     width: 100%;
+
+    @media (max-width: 768px) {
+        width: 30%;
+    }
 }
 
 .title-arrow {
@@ -17,7 +21,7 @@
 .enabled-dropdown {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     position: absolute;
     background: #1C1D1F !important;
     border: 1px solid #212325;
@@ -26,6 +30,10 @@
     height: 100px;
     overflow: scroll;
     z-index: 1;
+
+    @media (max-width: 768px) {
+        min-width: 150px;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -38,7 +46,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #666A70;
+    background: #848991;
     border-radius: 5px;
 }
 

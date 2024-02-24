@@ -54,7 +54,7 @@ function OfertasScreen() {
 
 
 
-    const { salesFilters } = salesFiltersContextValue
+    const { salesFilters, setSalesFilters } = salesFiltersContextValue
 
     const [sales, setSales] = useState<Sale[] | null>(null)
 
@@ -63,7 +63,7 @@ function OfertasScreen() {
 
     useEffect(() => {
 
-        listSales(API_LIST_SALES + salesFilters?.currentPage)
+        fetchByfilters()
 
     }, [])
 
@@ -153,7 +153,7 @@ function OfertasScreen() {
             })
 
         } else return <section className="error-empty-query">
-            <CautionIcon/>
+            <CautionIcon />
             <h2 className="error-text">A categoria requisitada não possui nenhum item cadastrado</h2>
         </section>
 
@@ -201,8 +201,8 @@ function OfertasScreen() {
     return (
 
         <main className="sales-container">
-            <SalesInfoFilter />
             <SalesCategoriesFilter updateCreateSaleState={setCreateSale} />
+            <SalesInfoFilter />
             <ul role="list" className="skins-list-container">
                 {sales !== null ? renderSalesList() : renderSkeletonLoad()}
             </ul>
