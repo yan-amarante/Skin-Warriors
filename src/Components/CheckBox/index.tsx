@@ -11,21 +11,22 @@ type CheckBoxProps = {
 
 }
 
-function CheckBox({ title, updateState,state }: CheckBoxProps) {
+function CheckBox({ title, updateState, state }: CheckBoxProps) {
 
-    function changeCheckBoxStyle(){
 
-        if(state) return "enabled-checkBox"
+    function changeCheckBoxStyle() {
 
-        else if(!state) return "disabled-checkBox"
-        
+        if (state === title) return "enabled-checkBox"
+
+        else return "disabled-checkBox"
+
     }
 
     return (
 
         <section className="check-box-container">
             <div onClick={updateState} className={`check-box ${changeCheckBoxStyle()}`}></div>
-            <h2>{title}</h2>
+            <h2 className="input-label">{title}</h2>
         </section>
     )
 }

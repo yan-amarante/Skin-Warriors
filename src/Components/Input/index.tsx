@@ -3,18 +3,22 @@ import "./styles.css"
 
 type inputProps = {
 
-    title: string;
+    title?: string;
+
+    onChange: any;
+
+    classname: string;
 
 }
 
 
-function Input({title}:inputProps){
+function Input({ title, onChange, classname }: inputProps) {
 
-    return(
+    return (
 
         <section>
             <h3 className="input-label">{title}</h3>
-            <input className="input" type="text" />
+            <input onChange={onChange} className={`input ${classname}`} type="text" />
         </section>
 
     )

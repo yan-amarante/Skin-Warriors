@@ -17,7 +17,8 @@
         transition: color 0.2s ease-out, opacity 0.2s ease-out 0.2s;
         opacity: 1;
     }
-    .menu-disabled{
+
+    .menu-disabled {
         opacity: 0;
     }
 
@@ -29,4 +30,16 @@
         color: #F52B00;
     }
 
+    .cart-container {
+        position: relative;
+        .cart-notification {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background-color: #F52B00;
+            border-radius: 50vw;
+            right: -20%;
+            top: -25%;
+        }
+    }
 }

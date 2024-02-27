@@ -5,18 +5,29 @@ type buttonProps = {
 
     title: string;
 
-    className: string;
+    className?: string;
 
     onClick: React.MouseEventHandler;
+
+    isActive?: boolean;
 
 }
 
 
-function Button({ title, className, onClick }:buttonProps) {
+function Button({ title, className, onClick, isActive }: buttonProps) {
 
-    return(
+    function returnState() {
 
-        <button onClick={onClick} className={`cta-button-home ${className}`}><p className="cta-button-text">{title}</p></button>
+        if (isActive) return ""
+
+        else return "cta-button-home-disabled disabled-button"
+        
+    }
+
+
+    return (
+
+        <button onClick={onClick} className={`cta-button-home ${className} ${returnState()}`}><p className="cta-button-text">{title}</p></button>
 
     )
 

@@ -1,26 +1,26 @@
 import "./OfertasScreen.css"
 
-import SkinCard from "../../Components/SkinCard"
+import VerticalSkinCard from "../../Components/VerticalSkinCard"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import CreateSale from "../../Components/CreateSale"
 
-import Button from "../../Components/Button"
+import SalesInfoFilter from "../../Components/SalesInfoFilter"
 
-import Dropdown from "../../Components/Dropdown"
+import SalesCategoriesFilter from "../../Components/SalesCategoriesFilter"
 
-import CheckBox from "../../Components/CheckBox"
+import PagesNumber from "../../Components/PagesNumber"
+
+import { salesFiltersContext } from "../../Context/salesFiltersContext"
 
 
 const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales?page="
 
-const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
-
 
 export type Sale = {
 
-    id: number;
+    id?: number;
 
     image: string;
 
@@ -28,7 +28,7 @@ export type Sale = {
 
     pattern: string;
 
-    price: string;
+    price: string | number;
 
     wear: string;
 
@@ -47,45 +47,65 @@ export type Categories = {
 
 function OfertasScreen() {
 
+    const salesFiltersContextValue = useContext(salesFiltersContext)
+
+
+    if (!salesFiltersContextValue) throw new Error("usesalesFiltersContext deve ser usado dentro de um salesFiltersProvider")
+
+
+
+    const { salesFilters } = salesFiltersContextValue
+
     const [sales, setSales] = useState<Sale[] | null>(null)
 
     const [createSale, setCreateSale] = useState<boolean>(false)
 
-    const [categories, setCategories] = useState<any>(null)
-
-    const [wearFilter, setWearFilter] = useState<any>({
-
-        "Nova de Fábrica": false,
-
-        "Pouco Usada": false,
-
-        "Testada em Campo": false,
-
-        "Bem Desgastada": false,
-
-        "Veterana de Guerra": false
-
-    })
-
-    const [selectedWeapon, setSelectedWeapon] = useState<any>(null)
-
 
     useEffect(() => {
 
-        listSales(API_LIST_SALES + "1")
-
-        listCategories()
+        fetchByfilters()
 
     }, [])
 
+    useEffect(() => {
 
-    async function listCategories() {
+        fetchByfilters()
 
-        const response: Response = await fetch(API_SEARCH_CATEGORIES)
+    }, [salesFilters])
 
-        const data: Sale = await response.json()
 
-        transformToArray(data, setCategories)
+    function fetchByfilters() {
+
+        if (salesFilters?.currentWear !== undefined && salesFilters?.currentWeapon === undefined) {
+
+            setSales(null)
+
+            listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&wear=${salesFilters?.currentWear}`)
+
+        }
+
+        else if (salesFilters?.currentWear && salesFilters?.currentWeapon !== undefined) {
+
+            setSales(null)
+
+            listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&wear=${salesFilters?.currentWear}&name=${salesFilters?.currentWeapon}`)
+
+        }
+
+        else if (salesFilters?.currentWear === undefined && salesFilters?.currentWeapon !== undefined) {
+
+            setSales(null)
+
+            listSales(`${API_LIST_SALES}${salesFilters?.currentPage}&name=${salesFilters?.currentWeapon}`)
+
+        }
+        else {
+
+            setSales(null)
+
+            listSales(`${API_LIST_SALES}${salesFilters?.currentPage}`)
+
+        }
 
     }
 
@@ -109,84 +129,39 @@ function OfertasScreen() {
 
     function renderSalesList() {
 
-        return sales?.map((sale) => {
 
-            if (typeof sale === "object") {
+        if (sales && sales?.length > 1) {
 
-                return <li className="skins-list-item" key={sale.id}>
-                    <SkinCard
-                        type="vertical"
-                        id={sale.id}
-                        image={sale.image}
-                        name={sale.name}
-                        pattern={sale.pattern}
-                        price={sale.price}
-                        wear={sale.wear}
-                        category={sale.category}
-                    />
-                </li>
+            return sales?.map((sale) => {
 
-            }
+                if (typeof sale === "object") {
 
-        })
+                    return <li className="skins-list-item" key={sale.id}>
+                        <VerticalSkinCard
+                            id={sale.id}
+                            image={sale.image}
+                            name={sale.name}
+                            pattern={sale.pattern}
+                            price={sale.price}
+                            wear={sale.wear}
+                            category={sale.category}
+                        />
+                    </li>
 
-    }
+                }
 
-    function updateCreateSale() {
+            })
 
-        setCreateSale((prevCreateSale) => !prevCreateSale)
+        } else return <section className="error-empty-query">
+            <CautionIcon />
+            <h2 className="error-text">A categoria requisitada não possui nenhum item cadastrado</h2>
+        </section>
 
     }
 
     function renderCreateSaleComponent() {
 
         if (createSale) return <CreateSale updateState={setCreateSale} />
-
-    }
-
-    function changePage(pageNumber: string) {
-
-        let wear = null
-
-        Object.entries(wearFilter).forEach((item) => {
-
-            if (item[1] === true) {
-
-                wear = item[0]
-            }
-
-        })
-
-        if (wear !== null && selectedWeapon === null) listSales(API_LIST_SALES + `${pageNumber}&wear=${wear}`)
-
-        else if (wear && selectedWeapon !== null) listSales(API_LIST_SALES + `${pageNumber}&name=${selectedWeapon}&wear=${wear}`)
-
-        else if (wear === null && selectedWeapon !== null) listSales(API_LIST_SALES + `${pageNumber}&name=${selectedWeapon}`)
-
-        else listSales(API_LIST_SALES + pageNumber)
-
-    }
-
-    function renderPageNumbers() {
-
-        const totalOfPages: any = sales !== null ? sales[sales.length - 1] : 0
-
-        const numberOfPages = []
-
-        for (let i = 1; i <= totalOfPages; i++) {
-
-            numberOfPages.push(i)
-
-        }
-
-        return numberOfPages.map((item) => {
-
-            return <li className="page-list-items">
-                <Button onClick={() => changePage(String(item))} className="page-button" title={String(item)} />
-            </li>
-
-        })
-
 
     }
 
@@ -216,155 +191,46 @@ function OfertasScreen() {
 
     }
 
-    function updateCategoryState(weapon: string) {
+    function returnNumberOfPages() {
 
-        let wear = null
-
-        Object.entries(wearFilter).forEach((item) => {
-
-            if (item[1] === true) {
-
-                wear = item[0]
-            }
-
-        })
-
-        if (selectedWeapon === null && wear === null) {
-
-            setSelectedWeapon(weapon)
-
-            listSales(API_LIST_SALES + `1&name=${weapon}`)
-
-        }
-
-        else if (selectedWeapon === null && wear !== null) {
-
-            setSelectedWeapon(weapon)
-
-            listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
-
-        }
-
-        else if (selectedWeapon !== null && wear === null) {
-
-
-            if (weapon !== selectedWeapon) {
-
-                setSelectedWeapon(weapon)
-
-                listSales(API_LIST_SALES + `1&name=${weapon}`)
-
-            } else {
-
-                setSelectedWeapon(null)
-
-                listSales(API_LIST_SALES + "1")
-
-            }
-
-        }
-
-        else if (selectedWeapon && wear !== null) {
-
-            if (weapon !== selectedWeapon) {
-
-                setSelectedWeapon(weapon)
-
-                listSales(API_LIST_SALES + `1&name=${weapon}&wear=${wear}`)
-
-            } else {
-
-                setSelectedWeapon(null)
-
-                listSales(API_LIST_SALES + `1&wear=${wear}`)
-
-            }
-
-        }
+        if (sales !== null) return sales[sales.length - 1]
 
     }
 
-    function renderCategoriesOptions(weapons: any) {
-
-        return weapons.map((item: any) => {
-
-            return <h2 onClick={() => updateCategoryState(item)} className="input-label">{item}</h2>
-
-        })
-
-    }
-
-    function renderCategories() {
-
-        return categories?.map((item: any) => {
-
-            return <Dropdown title={item.categoryName} options={renderCategoriesOptions(Object.keys(item.weapons))} />
-
-        })
-
-    }
-
-    function updateWearState(wear: any) {
-
-        if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon === null) {
-
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
-
-            listSales(API_LIST_SALES + `1&wear=${wear}`)
-
-        }
-
-        else if (!wearFilter[wear] && !Object.values(wearFilter).find((item) => item === true) && selectedWeapon !== null) {
-
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: true }))
-
-            listSales(API_LIST_SALES + `1&name=${selectedWeapon}&wear=${wear}`)
-
-        }
-
-        else if (selectedWeapon !== null) {
-
-            listSales(API_LIST_SALES + `1&name=${selectedWeapon}`)
-
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
-
-        }
-        else if (selectedWeapon === null) {
-
-            setWearFilter((prevState: any) => ({ ...prevState, [wear]: false }))
-
-            listSales(API_LIST_SALES + "1")
-
-        }
-
-    }
 
     return (
 
         <main className="sales-container">
-            <section className="elements-background skins-filters-container">
-                <h2>Desgaste</h2>
-                <CheckBox state={wearFilter["Nova de Fábrica"]} updateState={() => updateWearState("Nova de Fábrica")} title="Nova de Fábrica" />
-                <CheckBox state={wearFilter["Pouco Usada"]} updateState={() => updateWearState("Pouco Usada")} title="Pouco Usada" />
-                <CheckBox state={wearFilter["Testada em Campo"]} updateState={() => updateWearState("Testada em Campo")} title="Testada em Campo" />
-                <CheckBox state={wearFilter["Bem Desgastada"]} updateState={() => updateWearState("Bem Desgastada")} title="Bem Desgastada" />
-                <CheckBox state={wearFilter["Veterana de Guerra"]} updateState={() => updateWearState("Veterana de Guerra")} title="Veterana de Guerra" />
-            </section>
-            <section className="elements-background skins-categories-container">
-                {renderCategories()}
-                <button onClick={() => updateCreateSale()} className="create-sale-button">Publicar Oferta</button>
-            </section>
+            <SalesCategoriesFilter updateCreateSaleState={setCreateSale} />
+            <SalesInfoFilter />
             <ul role="list" className="skins-list-container">
                 {sales !== null ? renderSalesList() : renderSkeletonLoad()}
             </ul>
             {renderCreateSaleComponent()}
-            <ul className="page-number-list" role="list">
-                {renderPageNumbers()}
-            </ul>
+            <PagesNumber numberOfPages={returnNumberOfPages()} />
         </main>
 
     )
 
+}
+
+function CautionIcon() {
+
+    return (
+        <svg className="caution-icon" width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_17_34)">
+                <path d="M385.08 0H375.688H282.118H229.88H126.92L0 126.929V229.88V282.119V385.069L126.92 512H229.88H282.118H385.08L512 385.07V282.12V229.88V126.929L385.08 0ZM466.68 229.88V282.119V366.296L366.296 466.67H282.118H229.88H145.704L45.34 366.296V282.12V229.88V145.682L145.704 45.33H229.88H282.118H366.296L466.68 145.682V229.88Z" fill="currentColor" />
+                <path d="M284.53 125.07H227.47V292.925H284.53V125.07Z" fill="currentColor" />
+                <path d="M284.53 333.226H227.47V386.94H284.53V333.226Z" fill="currentColor" />
+            </g>
+            <defs>
+                <clipPath id="clip0_17_34">
+                    <rect width="512" height="512" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    )
 }
 
 

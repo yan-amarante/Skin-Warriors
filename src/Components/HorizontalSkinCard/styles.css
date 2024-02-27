@@ -1,22 +1,16 @@
-.vertical-direction{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2vw;
-    width: 95%;
-    height: 95%;
-    max-width: 200px;
-    height: 350px;
-    justify-content: space-evenly;
-}
-
-.horizontal-direction{
+.horizontal-direction {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     width: 400px;
     height: 200px;
+    background: #1C1D1F !important;
+
+    @media (max-width: 1365px) {
+        width: 300px;
+        height: 150px;
+    }
 }
 
 .skin-card-container {
@@ -25,24 +19,24 @@
     background: rgba(33, 35, 37, 0.01);
     backdrop-filter: blur(5px);
 
-    .image-container {
+    .image-container-horizontal {
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        .skin-image {
-            width: 90%;
+        .skin-image-horizontal {
+            width: 170px;
             height: auto;
             position: relative;
         }
     }
 
-    .image-container::before {
+    .image-container-horizontal::before {
         background-image: url('../../assets/skinCardBg.svg');
         content: ' ';
         position: absolute;
-        width: 80%;
-        height: 80%;
+        width: 150px;
+        height: 200px;
         background-size: contain;
         background-repeat: no-repeat;
         z-index: -1;
@@ -82,34 +76,6 @@
             font-size: 0.625rem;
         }
 
-        .add_cart-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-
-            .skin-price {
-                color: #ffffff;
-                font-family: oswald;
-                font-weight: 300;
-                font-size: 0.875rem;
-            }
-
-            .add_cart-icon{
-                color: #ffffff;
-                width: 30px;
-                height: auto;
-                transition: color 0.2s ease-out;
-            }
-
-            .add_cart-icon:hover{
-                color: #F52B00;
-            }
-        }
-
-
     }
 }
 
@@ -117,7 +83,7 @@
     width: 50%;
 }
 
-.remove-item{
+.remove-item {
     width: 10%;
     height: 10%;
     color: white;

@@ -5,21 +5,35 @@ import Button from "../../Components/Button/"
 import { useNavigate } from "react-router-dom"
 
 
+const styles = {
+
+    container: "container-home",
+
+    button: "home-cta-button"
+
+}
+
+
 function Home() {
+
+    const ofertasPageURL: string = "/ofertas"
+
+    const buttonTitle: string = "OFERTAS"
+
 
     const navigate = useNavigate()
 
 
-    function changePage(){
+    function changePage() {
 
-    navigate("/ofertas")
+        navigate(ofertasPageURL)
 
     }
 
     return (
 
-        <main className="container-home">
-            <Button className="home-cta-button" title="OFERTAS" onClick={changePage}/>
+        <main className={styles.container}>
+            <Button className={styles.button} title={buttonTitle} onClick={changePage} />
         </main>
 
     )

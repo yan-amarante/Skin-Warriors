@@ -10,7 +10,7 @@ import { navigationContext } from "../../Context/navigationContext"
 
 import { cartContext } from "../../Context/cartContext"
 
-import SkinCard from "../SkinCard"
+import HorizontalSkinCard from "../HorizontalSkinCard"
 
 import Button from "../Button"
 
@@ -51,7 +51,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
 
     const { currentPage, setCurrentPage } = navigationContextValue
 
-    const { skin } = cartContextValue
+    const { skin, setSkin } = cartContextValue
 
 
     function verifySideMenuState() {
@@ -112,22 +112,33 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
 
         }
 
+
         if (skin?.length !== undefined) {
 
-            for (let i = 0; i <= skin?.length; i++) {
+            for (let i = 0; i < skin?.length; i++) {
 
                 await fetch(API_CLOSE_SALE + skin[i].id, config)
 
             }
 
+            setSkin([])
+
         }
 
+    }
+
+    function chooseClassByParentComponent(){
+
+        if(type === "cart") return "cart-type"
+
+        else if(type === "menu") return "menu-type"
+        
     }
 
     return (
 
         <section className={`menu-container ${verifySideMenuState()} ${returnRightDirection()}`}>
-            <Close onClick={updateMenuState} className="close-menu" />
+            <Close onClick={updateMenuState} className={`close-menu ${chooseClassByParentComponent()}`} />
             {type === "menu" ?
                 <ul className="list-nav" role="list">
                     <li onClick={() => changePage("/")} className="list-nav-items">
@@ -142,7 +153,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                 :
                 null
             }
-            {type === "cart" ?
+            {type === "cart" && skin?.length ?
                 <>
                     <ul className="list-cart" role="list">
                         {
@@ -150,8 +161,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
                                 return (
                                     <>
                                         <li key={item.id}>
-                                            <SkinCard
-                                                type="horizontal"
+                                            <HorizontalSkinCard
                                                 id={item.id}
                                                 image={item.image}
                                                 name={item.name}

@@ -1,0 +1,63 @@
+.create-sale-container {
+    width: 30%;
+    height: 70%;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+
+    @media (max-width: 1365px) {
+        width: 40%;
+        height: 20%;
+    }
+    @media (max-width: 767px) {
+        width: 90%;
+        height: 10%;
+    }
+
+
+    .close-create-sale {
+        width: 10%;
+        height: 10%;
+        color: white;
+        transition: 0.2s ease-out;
+        align-self: flex-start;
+    }
+
+    .skin-preview {
+        position: absolute;
+        width: 150px;
+        height: 0px;
+    }
+
+    .create-sale-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 60%;
+
+
+    }
+
+    .close-create-sale:hover {
+        color: #F52B00;
+    }
+
+    .price-input {
+        border: 1px solid #212325;
+        background-color: rgba(33, 35, 37, 0.3);
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+}

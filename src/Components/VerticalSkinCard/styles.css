@@ -2,21 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.2vw;
-    width: 95%;
-    height: 95%;
+    width: 100%;
     max-width: 200px;
-    height: 350px;
+    min-height: 300px;
     justify-content: space-evenly;
-}
-
-.horizontal-direction{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 400px;
-    height: 200px;
 }
 
 .skin-card-container {
@@ -29,6 +18,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
 
         .skin-image {
             width: 90%;
@@ -41,9 +31,10 @@
         background-image: url('../../assets/skinCardBg.svg');
         content: ' ';
         position: absolute;
-        width: 80%;
-        height: 80%;
+        width: 100%;
+        height: 100%;
         background-size: contain;
+        background-position: center;
         background-repeat: no-repeat;
         z-index: -1;
     }
@@ -111,19 +102,4 @@
 
 
     }
-}
-
-.skin-infos-horizontal {
-    width: 50%;
-}
-
-.remove-item{
-    width: 10%;
-    height: 10%;
-    color: white;
-    transition: 0.2s ease-out;
-}
-
-.remove-item:hover {
-    color: #F52B00;
 }

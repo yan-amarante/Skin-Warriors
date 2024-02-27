@@ -2,15 +2,27 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0.8rem;
+    width: 60%;
 
     .check-box {
-        border: 1px solid #ffffff;
+        border: 1px solid #212325;
+        background-color: rgba(33, 35, 37, 0.3);
         width: 30px;
         height: 30px;
     }
 
+    .check-box:hover{
+        border-color: #F52B00;
+        transition: border-color 0.3s ease-out;
+    }
+
 }
 
-.enabled-checkBox{
-    background-color: red;
+.enabled-checkBox {
+    background: url("../../assets/topographyRedSmall.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: #F52B00 !important;
 }
