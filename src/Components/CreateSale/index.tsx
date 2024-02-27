@@ -230,7 +230,9 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
         if (price !== undefined) {
 
-            return price.replace(/,/g, '.')
+            const numericPart = String(price).replace(/[^0-9,.]/g, '');
+            
+            return numericPart.replace(/,/g, '.');
 
         }
 
@@ -274,8 +276,9 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
             await fetch(API_POST_SALE, config)
 
-            alert("sucesso")
 
+            updateState(false)
+            
         }
 
     }

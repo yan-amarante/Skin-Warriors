@@ -132,6 +132,7 @@ function SideMenu({ type, state, updateState }: SideMenuProps) {
         if(type === "cart") return "cart-type"
 
         else if(type === "menu") return "menu-type"
+        
     }
 
     return (

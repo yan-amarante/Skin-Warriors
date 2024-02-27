@@ -61,14 +61,14 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
         if (salesFilters?.currentWeapon === undefined && salesFilters?.currentWear === undefined) {
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon }))
+            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
 
 
         }
 
         else if (salesFilters?.currentWeapon === undefined && salesFilters?.currentWear !== undefined) {
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon }))
+            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
 
 
         }
@@ -78,12 +78,12 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
             if (weapon !== salesFilters?.currentWeapon) {
 
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon }))
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
 
 
             } else {
 
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined }))
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined, currentPage: "1" }))
 
 
             }
@@ -94,11 +94,11 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
             if (weapon !== salesFilters?.currentWeapon) {
 
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon }))
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
 
             } else {
 
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined }))
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined, currentPage: "1" }))
 
             }
 

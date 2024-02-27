@@ -67,9 +67,17 @@ function PagesNumber({ numberOfPages }: any) {
 
         return numberOfPagesForIteration.map((item) => {
 
-            return <li className="page-list-items">
-                <Button isActive={verifyCurrentPage(String(item))} onClick={() => changePage(String(item))} className="page-button" title={String(item)} />
-            </li>
+            if (salesFilters?.currentPage) {
+
+                if (item >= (parseInt(salesFilters?.currentPage) - 2) && item <= (parseInt(salesFilters?.currentPage) + 2) || item === totalOfPages || item === ((totalOfPages - totalOfPages) + 1)) {
+
+                    return <li className="page-list-items">
+                        <Button isActive={verifyCurrentPage(String(item))} onClick={() => changePage(String(item))} className="page-button" title={String(item)} />
+                    </li>
+
+                }
+
+            }
 
         })
 

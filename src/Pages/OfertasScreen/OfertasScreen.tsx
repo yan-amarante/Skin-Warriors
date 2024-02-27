@@ -54,7 +54,7 @@ function OfertasScreen() {
 
 
 
-    const { salesFilters, setSalesFilters } = salesFiltersContextValue
+    const { salesFilters } = salesFiltersContextValue
 
     const [sales, setSales] = useState<Sale[] | null>(null)
 

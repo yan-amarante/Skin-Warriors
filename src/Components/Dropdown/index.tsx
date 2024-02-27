@@ -1,6 +1,6 @@
 import "./styles.css"
 
-import React, { ReactNode, useState, useEffect, useRef } from 'react';
+import { ReactNode, useState, useEffect, useRef } from 'react';
 
 
 type DropdownProps<T extends ReactNode> = {

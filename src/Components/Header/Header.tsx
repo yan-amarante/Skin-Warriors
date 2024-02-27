@@ -12,12 +12,21 @@ import { useState, useContext } from "react"
 
 import { navigationContext } from "../../Context/navigationContext"
 
+import { cartContext } from "../../Context/cartContext"
+
 
 function Header() {
 
     const [menu, setMenu] = useState(false)
 
     const [cart, setCart] = useState(false)
+
+
+    const cartContextValue = useContext(cartContext)
+
+    if (!cartContextValue) throw new Error("useCartContext deve ser usado dentro de um cartProvider")
+
+    const { skin } = cartContextValue
 
 
     function toggleMenu() {
@@ -40,6 +49,13 @@ function Header() {
 
     }
 
+    function returnClassIfCartHasLength(){
+
+        if(skin?.length) return "cart-notification"
+
+        else return ""
+    }
+
 
     return (
 
@@ -47,8 +63,11 @@ function Header() {
             <SideMenu type="menu" state={menu} updateState={setMenu} />
             <Menu onClick={() => toggleMenu()} className={changeMenuIconOpacity()} />
             <SiteLogo />
-            <ShoppingCartLogo onClick={() => toggleCart()} />
-            <SideMenu type="cart" state={cart} updateState={setCart}/>
+            <section className="cart-container">
+            <div className={returnClassIfCartHasLength()}></div>
+                <ShoppingCartLogo onClick={() => toggleCart()} />
+            </section>
+            <SideMenu type="cart" state={cart} updateState={setCart} />
         </header>
 
     )

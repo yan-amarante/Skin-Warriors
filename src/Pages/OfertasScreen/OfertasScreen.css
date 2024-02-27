@@ -27,11 +27,11 @@
         width: 100%;
         justify-content: flex-start;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             justify-content: center;
         }
 
-        @media (min-width: 767px) and (max-width: 1365px) {
+        @media (min-width: 768px) and (max-width: 1365px) {
             width: 80%;
             justify-content: flex-start;
         }
@@ -46,7 +46,7 @@
             }
 
             @media (min-width: 768px) and (max-width: 1365px) {
-                width: 32%;
+                width: 23%;
             }
 
         }

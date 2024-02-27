@@ -22,3 +22,10 @@
         }
     }
 }
+
+.page-list-items:first-child{
+    padding-right: 0.7rem;
+}
+.page-list-items:last-child{
+    padding-left: 0.7rem;
+}
