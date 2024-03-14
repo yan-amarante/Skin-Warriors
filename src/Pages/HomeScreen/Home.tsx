@@ -2,17 +2,7 @@ import "./Home.css"
 
 import Button from "../../Components/Button/"
 
-import { useNavigate } from "react-router-dom"
-
-
-const styles = {
-
-    container: "container-home",
-
-    button: "home-cta-button"
-
-}
-
+import { NavigateFunction, useNavigate } from "react-router-dom"
 
 function Home() {
 
@@ -20,20 +10,20 @@ function Home() {
 
     const buttonTitle: string = "OFERTAS"
 
+    const navigate: NavigateFunction = useNavigate()
 
-    const navigate = useNavigate()
 
-
-    function changePage() {
+    function changePage(): void {
 
         navigate(ofertasPageURL)
 
     }
 
+
     return (
 
-        <main className={styles.container}>
-            <Button className={styles.button} title={buttonTitle} onClick={changePage} />
+        <main className="container-column container-home">
+            <Button className="home-cta-button" title={buttonTitle} onClick={changePage} />
         </main>
 
     )

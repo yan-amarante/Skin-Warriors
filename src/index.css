@@ -17,6 +17,15 @@
   --color-neutral-200: #D2D3D6;
 }
 
+.container-row{
+  display: flex;
+  flex-direction: row;
+}
+.container-column{
+  display: flex;
+  flex-direction: column;
+}
+
 .elements-background {
   border: 1px solid #212325;
   border-radius: 5px;

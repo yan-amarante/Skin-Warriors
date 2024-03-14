@@ -1,0 +1,35 @@
+.skeleton-load-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+    min-height: 300px;
+    justify-content: space-evenly;
+
+
+    .skeleton-load-image {
+        width: 90%;
+        height: 120px;
+        border-radius: 5px;
+        animation: skeletonLoad 2s linear infinite alternate;
+    }
+
+    .skeleton-load-text {
+        width: 80%;
+        height: 20px;
+        animation: skeletonLoad 2s linear infinite alternate;
+    }
+
+}
+
+@keyframes skeletonLoad {
+
+    0% {
+        background-color: hsl(210, 6%, 14%);
+    }
+
+    100% {
+        background-color: hsl(210, 6%, 24%);
+    }
+}
