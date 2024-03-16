@@ -57,7 +57,7 @@ function OfertasScreen() {
 
     const { salesFilters } = salesFiltersContextValue
 
-    const [fetchData, setUrl] = useFetch<Sale>();
+    const [fetchData, fetchEndpoint] = useFetch<Sale>();
 
     const [sales, setSales] = useState<Sale[] | null>(null)
 
@@ -68,11 +68,11 @@ function OfertasScreen() {
 
         fetchByfilters()
 
-    }, [salesFilters, setUrl])
+    }, [salesFilters])
 
     useEffect(() => {
 
-        listSales()
+        transformToArray()
 
     }, [fetchData])
 
@@ -92,11 +92,11 @@ function OfertasScreen() {
 
         setSales(null)
 
-        setUrl(url)
+        fetchEndpoint(url)
 
     }
 
-    function listSales() {
+    function transformToArray() {
 
         useArray(fetchData, setSales)
 

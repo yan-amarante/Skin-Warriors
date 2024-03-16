@@ -20,26 +20,30 @@ function PagesNumber({ numberOfPages }: any) {
 
     function changePage(pageNumber: string) {
 
-        if (salesFilters?.currentWear !== undefined && salesFilters?.currentWeapon === undefined) {
+        if (pageNumber !== salesFilters?.currentPage) {
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
+            if (salesFilters?.currentWear !== undefined && salesFilters?.currentWeapon === undefined) {
 
-        }
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
 
-        else if (salesFilters?.currentWear && salesFilters?.currentWeapon !== undefined) {
+            }
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
+            else if (salesFilters?.currentWear && salesFilters?.currentWeapon !== undefined) {
 
-        }
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
 
-        else if (salesFilters?.currentWear === undefined && salesFilters?.currentWeapon !== undefined) {
+            }
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
+            else if (salesFilters?.currentWear === undefined && salesFilters?.currentWeapon !== undefined) {
 
-        }
-        else {
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
 
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
+            }
+            else {
+
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
+
+            }
 
         }
 

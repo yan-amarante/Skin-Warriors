@@ -1,24 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
-let URL: string | null = null
 
-function setUrl(newUrl: string): void {
+function useFetch<TypeFromFetch>() {
 
-    URL = newUrl
-
-}
-
-function useFetch<ObjectFromFetch>() {
-
-    const [fetchValue, setFetchValue] = useState<ObjectFromFetch | null>(null)
-
-
-    useEffect(() => {
-
-        fetchEndpoint(URL)
-
-    }, [URL])
+    const [fetchValue, setFetchValue] = useState<TypeFromFetch | null>(null)
 
 
     async function fetchEndpoint(URLToFetch: string | null) {
@@ -27,7 +13,7 @@ function useFetch<ObjectFromFetch>() {
 
             const response = await fetch(URLToFetch)
 
-            const data: ObjectFromFetch = await response.json()
+            const data: TypeFromFetch = await response.json()
 
             setFetchValue(data)
 
@@ -35,7 +21,7 @@ function useFetch<ObjectFromFetch>() {
 
     }
 
-    return [fetchValue, setUrl] as [ObjectFromFetch | null, (newUrl: string) => void]
+    return [fetchValue, fetchEndpoint] as [TypeFromFetch | null, (URLToFetch: string) => Promise<void>]
 
 }
 
