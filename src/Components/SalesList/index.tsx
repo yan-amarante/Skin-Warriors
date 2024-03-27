@@ -21,7 +21,7 @@ function SalesList({ salesState }: SalesListProp) {
 
     function renderSalesList() {
 
-        if (!salesState || salesState.length < 1) return <FilterError />
+        if (!salesState || salesState.length <= 1) return <FilterError />
 
         return salesState?.map((sale: Sale) => {
 
@@ -50,7 +50,7 @@ function SalesList({ salesState }: SalesListProp) {
 
     return (
 
-        <ul role="list" className="skins-list-container">
+        <ul onClick={() => console.log(salesState)} role="list" className="skins-list-container">
             {salesState ? renderSalesList() : <SkeletonLoad />}
         </ul>
 

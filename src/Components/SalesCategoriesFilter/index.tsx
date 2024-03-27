@@ -8,6 +8,13 @@ import Dropdown from "../Dropdown"
 
 import { salesFiltersContext } from "../../Context/salesFiltersContext"
 
+import useUpdateFilters from "../../Hooks/useUpdateFilters"
+
+import useFetch from "../../Hooks/useFetch"
+
+import useArray from "../../Hooks/useArray"
+
+
 
 const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
 
@@ -16,14 +23,15 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
     const salesFiltersContextValue = useContext(salesFiltersContext)
 
-
     if (!salesFiltersContextValue) throw new Error("usesalesFiltersContext deve ser usado dentro de um salesFiltersProvider")
 
-
-    const { salesFilters, setSalesFilters } = salesFiltersContextValue
-
+    const { salesFilters } = salesFiltersContextValue
 
     const [categories, setCategories] = useState<any>(null)
+
+    const updateCategory = useUpdateFilters()
+
+    const [fetchValue, fetchEndpoint] = useFetch<any>()
 
 
     useEffect(() => {
@@ -32,22 +40,22 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
     }, [])
 
+    useEffect(() => {
+
+        transformToArray()
+
+    }, [fetchValue])
+
 
     async function listCategories() {
 
-        const response: Response = await fetch(API_SEARCH_CATEGORIES)
-
-        const data: Sale = await response.json()
-
-        transformToArray(data, setCategories)
+        await fetchEndpoint(API_SEARCH_CATEGORIES)
 
     }
 
-    function transformToArray(object: Sale, updateState: any) {
+    function transformToArray() {
 
-        const array: any[] = Object.values(object)
-
-        updateState(array)
+        useArray(fetchValue, setCategories)
 
     }
 
@@ -59,50 +67,7 @@ function SalesCategoriesFilter({ updateCreateSaleState }: any) {
 
     function updateCategoryState(weapon: string) {
 
-        if (salesFilters?.currentWeapon === undefined && salesFilters?.currentWear === undefined) {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
-
-
-        }
-
-        else if (salesFilters?.currentWeapon === undefined && salesFilters?.currentWear !== undefined) {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
-
-
-        }
-
-        else if (salesFilters?.currentWeapon !== undefined && salesFilters?.currentWear === undefined) {
-
-
-            if (weapon !== salesFilters?.currentWeapon) {
-
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
-
-
-            } else {
-
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined, currentPage: "1" }))
-
-
-            }
-
-        }
-
-        else if (salesFilters?.currentWeapon && salesFilters?.currentWear !== undefined) {
-
-            if (weapon !== salesFilters?.currentWeapon) {
-
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: weapon, currentPage: "1" }))
-
-            } else {
-
-                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWeapon: undefined, currentPage: "1" }))
-
-            }
-
-        }
+        updateCategory("weapon", weapon)
 
     }
 

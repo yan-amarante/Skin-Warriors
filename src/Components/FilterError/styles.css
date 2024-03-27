@@ -10,9 +10,11 @@
     border-radius: 5px;
     margin: auto auto;
     gap: 1rem;
+    grid-column: 1/-1;
 
-    @media (max-width: 768px) {
-        width: 80%;
+    @media (max-width: 1365px) {
+        width: 90%;
+        height: 90%;
     }
 
     .caution-icon {
