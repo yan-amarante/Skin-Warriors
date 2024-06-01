@@ -2,8 +2,6 @@ import "./styles.css"
 
 import { useState, useEffect, useContext } from "react"
 
-import { Sale } from "../../Pages/OfertasScreen/OfertasScreen"
-
 import Dropdown from "../Dropdown"
 
 import { salesFiltersContext } from "../../Context/salesFiltersContext"
