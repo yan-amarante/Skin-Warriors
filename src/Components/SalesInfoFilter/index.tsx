@@ -6,26 +6,66 @@ import { useContext } from "react"
 
 import { salesFiltersContext } from "../../Context/salesFiltersContext"
 
-import useUpdateFilters from "../../Hooks/useUpdateFilters"
-
 
 function SalesInfoFilter() {
 
     const salesFiltersContextValue = useContext(salesFiltersContext)
 
+
     if (!salesFiltersContextValue) throw new Error("usesalesFiltersContext deve ser usado dentro de um salesFiltersProvider")
 
-    const { salesFilters } = salesFiltersContextValue
-
-    const updateWear = useUpdateFilters()
 
 
-    function updateWearState(wear: string) {
+    const { salesFilters, setSalesFilters } = salesFiltersContextValue
 
-        updateWear("wear", wear)
+
+    function verifyIfHasActiveFilter(wear: string) {
+
+        if (salesFilters !== undefined) {
+
+            const wears = Object.values(salesFilters)
+
+
+            return wears.find((currentWear) => currentWear === wear)
+
+        }
 
     }
 
+    function updateWearState(wear: string) {
+
+        if (!salesFilters?.currentWear && !verifyIfHasActiveFilter(wear)) {
+
+            if (salesFilters?.currentWeapon === undefined) {
+
+                setSalesFilters((prevObject: any) => ({ ...prevObject, currentWear: wear, currentPage: "1" }))
+
+            }
+
+            else if (salesFilters?.currentWeapon !== undefined) {
+
+
+                setSalesFilters((prevState: any) => ({ ...prevState, currentWear: wear, currentPage: "1" }))
+
+            }
+
+        }
+
+
+        else if (salesFilters?.currentWeapon !== undefined && salesFilters?.currentWear) {
+
+            setSalesFilters((prevState: any) => ({ ...prevState, currentWear: undefined, currentPage: "1" }))
+
+
+        }
+
+        else if (salesFilters?.currentWeapon === undefined && salesFilters?.currentWear) {
+
+            setSalesFilters((prevState: any) => ({ ...prevState, currentWear: undefined, currentPage: "1" }))
+
+        }
+
+    }
 
     return (
         <>
