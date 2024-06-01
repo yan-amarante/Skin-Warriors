@@ -2,21 +2,31 @@ import "./styles.css"
 
 import { useState, useEffect, useRef } from "react"
 
-import Dropdown from "../../Components/Dropdown"
-
-import { Categories } from "../../Pages/OfertasScreen/OfertasScreen"
-
 import Button from "../Button"
 
-import Input from "../Input"
+import CreateSaleForm from "../CreateSaleForm"
 
-
-const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
 
 const API_POST_SALE: string = "https://api-skin-warriors.onrender.com/sales/create-sale"
 
 
-type formInfos = {
+interface FetchConfig {
+
+    method: string
+
+    body: string
+
+    headers: {
+
+        "Content-Type": string
+
+        "Access-Control-Allow-Origin": string
+
+    }
+
+}
+
+export type formInfos = {
 
     image: string | null | undefined;
 
@@ -41,8 +51,6 @@ type CreateSaleProps = {
 
 function CreateSale({ updateState }: CreateSaleProps) {
 
-    const [categories, setCategories] = useState<Categories[] | null>(null)
-
     const [formInfos, setformInfos] = useState<formInfos>({
 
         image: null,
@@ -60,169 +68,16 @@ function CreateSale({ updateState }: CreateSaleProps) {
     })
 
 
-    const imageSrc = useRef<HTMLImageElement>(null)
-
-
     useEffect(() => {
-
-        fetchCategories()
 
         updateFormInfos("pattern", undefined)
 
     }, [formInfos.category])
 
-    useEffect(() => {
-
-        updateFormInfos("image", imageSrc.current?.src)
-
-    }, [imageSrc.current?.src])
-
-
-    async function fetchCategories() {
-
-        const ENDPOINT = `${API_SEARCH_CATEGORIES}?patterns=${formInfos.category}`
-
-        const response: Response = await fetch(ENDPOINT)
-
-        const data: Categories[] = await response.json()
-
-
-        setCategories(Object.values(data))
-
-    }
-
-    function changeColorByState(currentState: string | undefined, state: string) {
-
-        if (formInfos[currentState as keyof typeof formInfos] === state) return "enabled-weapon"
-
-        else if (formInfos[currentState as keyof typeof formInfos] !== state) return "disabled-weapon";
-
-    }
-
-    function renderCategoriesOptions() {
-
-        return categories?.map((item) => {
-
-            return (
-
-                <h2 className={`input-label-dropdown ${changeColorByState("category", item.categoryName)}`} onClick={() => updateFormInfos("category", item.categoryName)}>{item.categoryName}</h2>
-
-            )
-
-        })
-
-    }
-
-    function chooseKeyByParameter(key: string, item: any) {
-
-        if (key === "name") {
-
-            if (formInfos.category !== null) return item.weapons
-
-        }
-
-        else if (key === "pattern") {
-
-            if (formInfos.name && item.weapons[formInfos.name] !== undefined) return item.weapons[formInfos.name]
-
-            else return undefined
-
-        }
-
-    }
-
-    function renderOptionsByCategory(key: string) {
-
-        return categories?.map((item: any) => {
-
-            if (item.categoryName === formInfos.category) {
-
-                const iterateKey = chooseKeyByParameter(key, item)
-
-                if (iterateKey !== undefined) {
-
-                    return Object.keys(iterateKey).map((itemKey) => (
-
-                        <h2 key={itemKey} className={`input-label-dropdown ${changeColorByState(key, itemKey)}`} onClick={() => updateFormInfos(key, itemKey)}>
-                            {itemKey}
-                        </h2>
-
-
-                    ))
-
-                }
-
-            }
-
-        })
-
-    }
-
-    function renderSkinsNameOptions() {
-
-        if (formInfos.category !== null) return renderOptionsByCategory("name")
-
-    }
-
-    function renderSkinsPatterns() {
-
-        if (formInfos.name !== undefined) return renderOptionsByCategory("pattern")
-
-    }
 
     function updateFormInfos(keyName: string, value: string | number | undefined) {
 
         setformInfos((prevState) => ({ ...prevState, [keyName]: value }))
-
-    }
-
-    function renderSkinsWears() {
-
-        return categories?.map((item: any) => {
-
-            if (item.categoryName === formInfos.category && categories !== undefined) {
-
-                if (formInfos.name && formInfos.pattern) {
-
-                    if (item.weapons[formInfos.name] !== undefined) {
-
-                        if (item.weapons[formInfos.name][formInfos.pattern].wears !== undefined) {
-
-                            return item.weapons[formInfos.name][formInfos.pattern].wears.map((item: any) => {
-
-                                if (!null) return <h2 className={`input-label-dropdown ${changeColorByState("wear", item.name)}`} onClick={() => updateFormInfos("wear", item.name)}>{item.name}</h2>
-
-                            })
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        })
-
-    }
-
-    function renderSkinImage(): string {
-
-        const skinImage = categories?.map((item: any) => {
-
-            if (formInfos.name && formInfos.pattern) {
-
-                return item.weapons[formInfos.name]?.[formInfos.pattern]?.image || null
-
-            }
-
-            return null
-
-        })
-
-        const validSkinImage = (skinImage ?? []).filter(image => image !== null && image !== undefined)[0]
-
-        return validSkinImage || ""
 
     }
 
@@ -231,7 +86,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
         if (price !== undefined) {
 
             const numericPart = String(price).replace(/[^0-9,.]/g, '');
-            
+
             return numericPart.replace(/,/g, '.');
 
         }
@@ -242,7 +97,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
         if (formInfos.image && formInfos.name && formInfos.pattern && formInfos.wear && formInfos.price && formInfos.category !== null || undefined) {
 
-            const config: any = {
+            const config: FetchConfig = {
 
                 method: "POST",
 
@@ -268,8 +123,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
                     "Access-Control-Allow-Origin": "*",
 
-                    "mode": "no-cors"
-
                 }
 
             }
@@ -278,7 +131,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
 
 
             updateState(false)
-            
+
         }
 
     }
@@ -286,14 +139,7 @@ function CreateSale({ updateState }: CreateSaleProps) {
     return (
 
         <section className="elements-background create-sale-container">
-            <form className="create-sale-form">
-                <Dropdown title="Categorias" options={renderCategoriesOptions()} />
-                <Dropdown title="Nome" options={renderSkinsNameOptions()} />
-                <Dropdown title="Pintura" options={renderSkinsPatterns()} />
-                <img className="skin-preview" src={renderSkinImage()} ref={imageSrc} alt="" />
-                <Dropdown title="Qualidade" options={renderSkinsWears()} />
-                <Input classname="input-width" title="Preço" onChange={(e: any) => updateFormInfos("price", e.target.value)} />
-            </form>
+            <CreateSaleForm formInfos={formInfos} updateFormInfos={updateFormInfos} />
             <section className="buttons-container">
                 <Button title="Publicar Oferta" onClick={sendSale} />
                 <Button title="Cancelar" onClick={() => updateState(false)} />
@@ -301,8 +147,6 @@ function CreateSale({ updateState }: CreateSaleProps) {
         </section>
 
     )
-
-    return null
 
 }
 

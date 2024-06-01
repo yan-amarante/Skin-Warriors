@@ -6,42 +6,23 @@ import { useContext } from "react"
 
 import { salesFiltersContext } from "../../Context/salesFiltersContext"
 
+import useUpdateFilters from "../../Hooks/useUpdateFilters"
+
 
 function PagesNumber({ numberOfPages }: any) {
 
     const salesFiltersContextValue = useContext(salesFiltersContext)
 
-
     if (!salesFiltersContextValue) throw new Error("usesalesFiltersContext deve ser usado dentro de um salesFiltersProvider")
 
+    const { salesFilters } = salesFiltersContextValue
 
-    const { salesFilters, setSalesFilters } = salesFiltersContextValue
+    const updatePage = useUpdateFilters()
 
 
     function changePage(pageNumber: string) {
 
-        if (salesFilters?.currentWear !== undefined && salesFilters?.currentWeapon === undefined) {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
-
-        }
-
-        else if (salesFilters?.currentWear && salesFilters?.currentWeapon !== undefined) {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
-
-        }
-
-        else if (salesFilters?.currentWear === undefined && salesFilters?.currentWeapon !== undefined) {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
-
-        }
-        else {
-
-            setSalesFilters((prevObject: any) => ({ ...prevObject, currentPage: pageNumber }))
-
-        }
+        updatePage("page", pageNumber)
 
     }
 
