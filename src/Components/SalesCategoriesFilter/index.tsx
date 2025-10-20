@@ -14,7 +14,7 @@ import useArray from "../../Hooks/useArray"
 
 
 
-const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
+const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors-production.up.railway.app/skins/search-categories"
 
 
 function SalesCategoriesFilter({ updateCreateSaleState }: any) {
