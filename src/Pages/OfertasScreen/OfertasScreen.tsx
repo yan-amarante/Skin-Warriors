@@ -19,7 +19,7 @@ import useArray from "../../Hooks/useArray"
 import SalesList from "../../Components/SalesList"
 
 
-const API_LIST_SALES: string = "https://api-skin-warriors.onrender.com/sales/list-sales?page="
+const API_LIST_SALES: string = "https://api-skin-warriors-production.up.railway.app/sales/list-sales?page="
 
 
 export type Sale = {
