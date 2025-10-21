@@ -11,7 +11,7 @@ import { formInfos } from "../CreateSale"
 import { Categories } from "../../Pages/OfertasScreen/OfertasScreen"
 
 
-const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors.onrender.com/skins/search-categories"
+const API_SEARCH_CATEGORIES: string = "https://api-skin-warriors-production.up.railway.app/skins/search-categories"
 
 
 type CreateSaleFormProps = {
