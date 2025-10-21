@@ -7,7 +7,7 @@ import Button from "../Button"
 import CreateSaleForm from "../CreateSaleForm"
 
 
-const API_POST_SALE: string = "https://api-skin-warriors.onrender.com/sales/create-sale"
+const API_POST_SALE: string = "https://api-skin-warriors-production.up.railway.app/sales/create-sale"
 
 
 interface FetchConfig {
