@@ -15,7 +15,7 @@ import HorizontalSkinCard from "../HorizontalSkinCard"
 import Button from "../Button"
 
 
-const API_CLOSE_SALE = "https://api-skin-warriors.onrender.com/sales/close-sale/"
+const API_CLOSE_SALE = "https://api-skin-warriors-production.up.railway.app/sales/close-sale/"
 
 
 type SideMenuProps = {
